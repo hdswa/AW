@@ -2,18 +2,49 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <title>Proyecto AW</title>
+        <title>Contacto</title>
     </head>
-<h1>contacto</h1>
-<p>texto</p>
+    <body>
+        <h1>Enlaces</h1>
+        <ol>
+            <li><a href="detalles.html">Detalles</a></li>
+            <li><a href="bocetos.html">Bocetos</a></li>
+            <li><a href="miembros.html">Miembros</a></li>
+            <li><a href="planificacion.html">Planificación</a></li>
+            <li><a href="contacto.html">Contactos</a></li>
+            <li><a href="index.html">Index</a></li>
+        </ol>
 
-<p>
-    <a href="detalles.html">Detalles</a>
-    <a href="bocetos.html">Bocetos</a>
-    <a href="miembros.html">Miembros</a>
-    <a href="planificacion.html">planificacion</a>
-    <a href="contacto.html">Contactos</a>
-    <a href="index.html">Index</a>
-    
-</p>
+        <h1>Formulario de contacto</h1>
+        <p>Rellena el siguiente Formulario:</p>
+        <form action="jorgbr01@ucm.es?subject=Formulario" method="POST" enctype="text/plain">
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" value="">
+            </div>
+            <div>
+                <label for="motivo">Motivo de la consulta:</label>
+                <input id="motivo">
+                <label><input type="radio" name="motivo" value="evaluacion" required>Evaluación</label>
+                <label><input type="radio" name="motivo" value="sugerencias">Sugerencias</label>
+                <label><input type="radio" name="motivo" value="criticas">Críticas</label>
+            </div>
+            <div>
+                <label for="consulta">Consulta:</label>
+                <input id="consulta">
+                <textarea name="consulta" rows="8" cols="50">Escribe aquí tu consulta.</textarea> 
+            </div>
+            <div>
+                <input type="checkbox" name="confirmacion" value="confirma" required> Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio.
+            </div> 
+            <div>
+                <input type="submit" name="enviar" value="Enviar">
+            </div>
+        </form>
+
+    </body>
 </html>
