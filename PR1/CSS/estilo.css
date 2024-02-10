@@ -12,3 +12,7 @@
     height: 100px;
     border-radius: 6px;
 }
+
+th, td, table {
+    border: 1px solid black;
+}
