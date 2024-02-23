@@ -1,53 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <title>Contacto</title>
-        <link rel="stylesheet" href="CSS/estilo.css">
-    </head>
-    <body>
-        <div class="header">        
-            <a href="index.html">        
-                <img src="./img/logo_sinfondo.png" alt="logo" class="logo">
-            </a>
-            <ol class="barra">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="detalles.html">Detalles</a></li>
-                <li><a href="bocetos.html">Bocetos</a></li>
-                <li><a href="miembros.html">Miembros</a></li>
-                <li><a href="planificacion.html">Planificación</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ol>
+<head>
+    <meta charset="utf-8">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <style>
+        /* Estilos para alinear los botones de radio en línea */
+        .radio-container label {
+            display: inline-block;
+            margin-right: 10px; /* Ajusta el espacio entre los botones */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">        
+        <a href="index.html">        
+            <img src="./img/logo_sinfondo.png" alt="logo" class="logo">
+        </a>
+        <ol class="barra">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="detalles.html">Detalles</a></li>
+            <li><a href="bocetos.html">Bocetos</a></li>
+            <li><a href="miembros.html">Miembros</a></li>
+            <li><a href="planificacion.html">Planificación</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ol>
+    </div>
+    <h1>Contacto</h1>
+    <h2>Formulario de contacto</h2>
+    <p>Rellena el siguiente formulario:</p>
+    <form action="mailto:jorgbr01@ucm.es?subject=Formulario" method="POST" enctype="text/plain" class="form">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="">
         </div>
-        <h1>Contacto</h1>
-        <h2>Formulario de contacto</h2>
-        <p>Rellena el siguiente Formulario:</p>
-        <form action="jorgbr01@ucm.es?subject=Formulario" method="POST" enctype="text/plain" class="form">
-            <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="">
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="text" id="email" value="">
-            </div>
-            <div>
-                <label for="motivo">Motivo de la consulta:</label>
-                <label><input type="radio" name="motivo" value="evaluacion" required>Evaluación</label>
-                <label><input type="radio" name="motivo" value="sugerencia">Sugerencia</label>
-                <label><input type="radio" name="motivo" value="critica">Crítica</label>
-            </div>
-            <div>
-                <label for="consulta">Consulta:</label>
-                <textarea name="consulta" rows="5" cols="30">Escribe aquí tu consulta.</textarea> 
-            </div>
-            <div>
-                <input type="checkbox" name="confirmacion" value="confirma" required> Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio.
-            </div> 
-            <div>
-                <input type="submit" name="enviar" value="Enviar">
-            </div>
-        </form>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="">
+        </div>
+        <div class="radio-container">
+            
+            <input type="radio" id="evaluacion" name="motivo" value="evaluacion" required>
+            <label for="evaluacion">Evaluación</label><br>
+            
+           
+            <input type="radio" id="sugerencia" name="motivo" value="sugerencia">
+            <label for="sugerencia">Sugerencia</label><br>
+            
+            
+            <input type="radio" id="critica" name="motivo" value="critica">
+            <label for="critica">Crítica</label><br>
 
-    </body>
+        </div>
+        <div>
+            <label for="consulta">Consulta:</label>
+            <textarea id="consulta" name="consulta" rows="5" cols="30">Escribe aquí tu consulta.</textarea> 
+        </div>
+        <div>
+            <input type="checkbox" id="confirmacion" name="confirmacion" value="confirma" required> 
+            <label for="confirmacion">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio.</label>
+        </div> 
+        <div>
+            <input type="submit" id="enviar" name="enviar" value="Enviar">
+        </div>
+    </form>
+
+</body>
 </html>
