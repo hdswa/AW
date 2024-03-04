@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+<?php session_start()?>
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 
 <html lang = "es">
@@ -16,9 +20,9 @@
 				require_once 'includes/vistas/sidebarIzq.php';
 			?>
 			<main>
-			<article>
-				<h1>Página principal</h1>
-			</article>
+				<article>
+					<h1>Página principal</h1>
+				</article>
 			</main>
 			
 		</div> <!-- Fin del contenedor -->
