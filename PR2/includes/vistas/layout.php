@@ -12,14 +12,14 @@
 
 if(isset($_SESSION['rol'])){
 	if($_SESSION['rol'] == "usuario"){
-		require('cabecera.php');
+		require('./cabecera.php');
 	}
 	else if($_SESSION['rol'] == "admin"){
-		require('admin.php');
+		require('./admin.php');
 	}
 }
 else{
-	require('cabecera.php');
+	require('./cabecera.php');
 }
 
 ?>
