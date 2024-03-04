@@ -11,14 +11,20 @@
 <div id="contenedor"> <!-- Inicio del contenedor -->
 
 	<?php
-		require_once 'vistas/cabecera.php';
-		require_once 'vistas/sidebarIzq.php';
+		require('cabecera.php');
+		require('sidebarIzq.php');
 	?>
 	<main>
 	  <article>
 		<h1>Página principal</h1>
+		<p>Aquí está el contenido público, visible para todos los usuarios.</p>
 	  </article>
 	</main>
+
+	<?php
+		require('sidebarDer.php');
+		require('pie.php');
+	?>
 	
 </div> <!-- Fin del contenedor -->
 

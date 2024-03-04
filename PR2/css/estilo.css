@@ -1,0 +1,162 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2.5px solid black;
+}
+
+header .logo {
+    flex: 0 0 auto;
+}
+
+header .menu {
+    display: flex;
+    justify-content: center;
+    flex: 1 0 auto;
+}
+
+header .menu input[type="button"] {
+    margin: 0 5px;
+}
+
+header .icons {
+    flex: 0 0 auto;
+    margin: 0 2px;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul dl {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b6d8f2;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    align-items: center; 
+    padding: 10px;  
+}
+
+.barra {
+    margin: 10;
+    padding: 10px;
+    text-align: center;
+}
+
+.barra li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.barra a {
+    text-decoration: none;
+    color: #1b2528;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.barra a:hover {
+    background-color: #86b4e4;
+}
+
+.logo {
+    display: inline;
+    width: 100px;
+    height: auto;
+    
+}
+
+.foto {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+}
+
+th, td, table {
+    border: 1px solid black;
+}
+
+* {
+    margin: 10;
+    padding: 100;
+    box-sizing: border-box;
+}
+
+
+form {
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: #eff0f1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* listas */
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ol li {
+    display: inline;
+    margin-right: 10px;
+}
+
