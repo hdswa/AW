@@ -1,5 +1,5 @@
 <?php
-require_once 'autorizacion.php';
+require_once './autorizacion.php';
 
 function saludo()
 {

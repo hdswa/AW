@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <!DOCTYPE html>
 
 <html lang = "es">
@@ -11,10 +10,10 @@
 	<body>
 
 		<div id="contenedor"> <!-- Inicio del contenedor -->
-
+			
 			<?php
-				require_once 'vistas/cabecera.php';
-				require_once 'vistas/sidebarIzq.php';
+				require_once 'includes/vistas/cabecera.php';
+				require_once 'includes/vistas/sidebarIzq.php';
 			?>
 			<main>
 			<article>
