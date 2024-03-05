@@ -28,6 +28,11 @@ class Usuario {
         return false;
     }
 
+    public function compruebaPassword($password)
+    {
+        return password_verify($password, $this->password);
+    }
+
     public static function buscaUsuario($nombreUsuario)
     {
         $app = Aplicacion::getSingleton();
