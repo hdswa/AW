@@ -19,6 +19,14 @@ class Aplicacion
 		return self::$instancia;
 	}
 
+	public static function getSingleton() {
+		if (  !self::$instancia instanceof self) {
+			self::$instancia = new self;
+		}
+		return self::$instancia;
+	}
+
+
 	/**
 	 * @var array Almacena los datos de configuración de la BD
 	 */
