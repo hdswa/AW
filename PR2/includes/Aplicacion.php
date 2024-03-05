@@ -142,4 +142,6 @@ class Aplicacion
 		}
 		return $this->conn;
 	}
+
+	
 }
