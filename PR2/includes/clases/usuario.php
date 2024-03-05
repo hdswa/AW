@@ -15,6 +15,7 @@ class Usuario {
         $this->email = $email;
         $this->password = $password;
         $this->foto = $foto;
+        $this->rol = "";
         
     }
 
@@ -54,19 +55,19 @@ class Usuario {
     }
     
     public function getNombre() {
-        return $this->Nombre;
+        return $this->username;
     }
 
     public function getEmail() {
-        return $this->Email;
+        return $this->email;
     }
 
     public function getContraseña() {
-        return $this->Contraseña;
+        return $this->password;
     }
 
     public function getFotoDePerfil() {
-        return $this->Foto_de_perfil;
+        return $this->foto;
     }
 
     public function getRol() {
@@ -74,19 +75,19 @@ class Usuario {
     }
 
     public function setNombre($Nombre) {
-        $this->Nombre = $Nombre;
+        $this->username = $Nombre;
     }
 
     public function setEmail($Email) {
-        $this->Email = $Email;
+        $this->email = $Email;
     }
 
     public function setContraseña($Contraseña) {
-        $this->Contraseña = $Contraseña;
+        $this->password = $Contraseña;
     }
 
     public function setFotoDePerfil($Foto_de_perfil) {
-        $this->Foto_de_perfil = $Foto_de_perfil;
+        $this->foto = $Foto_de_perfil;
     }
 
     public function setRol($rol) {
