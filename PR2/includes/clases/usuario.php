@@ -49,7 +49,7 @@ class Usuario {
             }
             $rs->free();
         } else {
-            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . $conn->error;
             exit();
         }
         return $result;
