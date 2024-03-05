@@ -28,13 +28,13 @@ $_SESSION['nombre'] = $usuario->nombre;
 
 if($_SESSION['rol'] == "usuario"){
 	$contenidoPrincipal=<<<EOS
-		<h1>Bienvenido ${_SESSION['nombre']}</h1>
+		<h1>Bienvenido {$_SESSION['nombre']}</h1>
 		<p>Usa el menú superior para navegar.</p>
 	EOS;
 }
 else if($_SESSION['rol'] == "admin"){
 	$contenidoPrincipal=<<<EOS
-		<h1>Bienvenido ${_SESSION['nombre']}</h1>
+		<h1>Bienvenido {$_SESSION['nombre']}</h1>
 		<p>Selecciona en el menú superior lo que quieras gestionar.</p>
 	EOS;
 }
