@@ -19,6 +19,37 @@ class Usuario {
         
     }
 
+    public static function login($nombreUsuario, $password)
+    {
+        $user = self::buscaUsuario($nombreUsuario);
+        if ($user && $user->compruebaPassword($password)) {
+            return $user;
+        }
+        return false;
+    }
+
+    public static function buscaUsuario($nombreUsuario)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM Usuarios U WHERE U.nombreUsuario = '%s'", $conn->real_escape_string($nombreUsuario));
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+                $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['rol']);
+                $user->id = $fila['id'];
+                $result = $user;
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $result;
+    }
+
     public function register($username, $email, $password, $foto) {
         $conn = Aplicacion::getInstance()->getConexionBd();
         $rol ="cliente";//defualt
