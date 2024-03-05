@@ -21,7 +21,6 @@ if ( ! $password || empty($password=trim($password)) ) {
 	$erroresFormulario['password'] = 'El password no puede estar vacío.';
 }
 
-
 if (count($erroresFormulario) === 0) {
 	$conn = $app->getConexionBd();
 	

@@ -5,7 +5,7 @@ body {
 div#contenedor {
 	width: 900px;
 	margin: auto;
-	border: 1px solid rgb(0, 0, 0);
+	border: 1px solid black;
 	background-color: #aaaaaa;
 	margin-top: 30px;
 }
@@ -13,11 +13,11 @@ div#contenedor {
 header {
 	padding: 30px;
 	height: 100px;
-	background-color: #6468a1;
+	background-color: #303030;
 	color: white;
 }
 
- a, header a:visited {
+header a, header a:visited {
 	color: white;
 	font-weight: bold;
 	text-decoration: none;
@@ -188,9 +188,4 @@ button, a.boton {
 
 a.deshabilitado {
 	color: rgba(16, 16, 16, 0.3);
-}
-
-.icons {
-	display: flex;
-	justify-content: space-between; /* Optional: Adds space between the icons */
 }
