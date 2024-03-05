@@ -36,7 +36,7 @@ class Usuario {
     public static function buscaUsuario($nombreUsuario)
     {
         $app = Aplicacion::getSingleton();
-        $conn = $app->conexionBd();
+        $conn = $app->getConexionBd();
         $query = sprintf("SELECT * FROM Usuarios U WHERE U.nombreUsuario = '%s'", $conn->real_escape_string($nombreUsuario));
         $rs = $conn->query($query);
         $result = false;
