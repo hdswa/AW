@@ -18,7 +18,7 @@ if ( ! $username || empty($username=trim($username)) || mb_strlen($username) < 5
 }
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ( ! $email || empty($email=trim($email)) || mb_strlen($email) < 5) {
-	$erroresFormulario['username'] = 'El username tiene que tener una longitud de al menos 5 caracteres.';
+	$erroresFormulario['username'] = 'El email tiene que tener una longitud de al menos 5 caracteres.';
 }
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ( ! $password || empty($password=trim($password)) || mb_strlen($password) < 5 ) {

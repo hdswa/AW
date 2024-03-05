@@ -48,4 +48,4 @@ VALUES ('usuario1',
             {"Nombre":"Bagel de Salmón","Cantidad":1,"Precio":5.00},
             {"Nombre":"Tostada de Aguacate","Cantidad":2,"Precio":4.50}
         ]', 
-        0);
+       0);
