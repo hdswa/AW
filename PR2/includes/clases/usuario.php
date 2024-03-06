@@ -33,7 +33,7 @@ class Usuario {
                 print("Ha entreado en if");
             } else {
                 print("ha entredo en else");
-                $query = sprintf("INSERT INTO Usuario(Nombre,Email, Contraseña,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
+                $query = sprintf("INSERT INTO Usuario(Nombre,Email, password,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
                     , $conn->real_escape_string($username)
                     , $conn->real_escape_string($email)
                     , contraseña_hash($contraseña, contraseña_DEFAULT)
@@ -107,8 +107,8 @@ class Usuario {
         return $this->email;
     }
 
-    public function getContraseña() {
-        return $this->contraseña;
+    public function getpassword() {
+        return $this->password;
     }
 
     public function getFotoDePerfil() {
@@ -127,8 +127,8 @@ class Usuario {
         $this->email = $Email;
     }
 
-    public function setContraseña($Contraseña) {
-        $this->contraseña = $Contraseña;
+    public function setpassword($password) {
+        $this->password = $password;
     }
 
     public function setFotoDePerfil($Foto_de_perfil) {

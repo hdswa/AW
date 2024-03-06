@@ -1,5 +1,5 @@
 -- Inserts para Usuario
-INSERT INTO Usuario (Nombre, Email, Contraseña, Foto_de_perfil, Rol)
+INSERT INTO Usuario (Nombre, Email, password, Foto_de_perfil, Rol)
 VALUES ('usuario1', 'usuario1@example.com', 'contraseña123', '/img/foto1.jpg', 'cliente'),
        ('usuario2', 'usuario2@example.com', 'contraseña456', '/img/foto2.jpg', 'cliente'),
        ('usuario3', 'usuario3@example.com', 'contraseña789', '/img/foto3.jpg', 'cliente'),
@@ -7,7 +7,7 @@ VALUES ('usuario1', 'usuario1@example.com', 'contraseña123', '/img/foto1.jpg', 
        ('usuario5', 'usuario5@example.com', 'contraseñadef', '/img/foto5.jpg', 'cliente');
 
 -- Inserts para Cafeteria
-INSERT INTO Cafeteria (Nombre, Descripcion, Dueño, Categoria, Ubicacion, Cantidad_de_likes)
+INSERT INTO Cafeteria (Nombre, Descripcion, owner, Categoria, Ubicacion, Cantidad_de_likes)
 VALUES ('cafeteria1', 'Cafetería acogedora con una amplia variedad de bebidas y aperitivos.', 'usuario1', 'Café', 'Calle Principal 123', 100),
        ('cafeteria2', 'Cafetería moderna especializada en café de especialidad.', 'usuario2', 'Café', 'Avenida Central 456', 150),
        ('cafeteria3', 'Cafetería con ambiente relajado y wifi gratuito.', 'usuario3', 'Café', 'Plaza del Sol 789', 80),
@@ -25,7 +25,7 @@ VALUES ('usuario1', 'cafeteria1', 5, 'Excelente café y ambiente acogedor.'),
        ('usuario3', 'cafeteria1', 5, 'Me encanta este lugar, siempre vengo a estudiar aquí.');
 
 -- Inserts para Productos (20 productos repartidos entre las diferentes cafeterias)
-INSERT INTO Productos (Nombre, Cafeteria_Dueño, Precio, Descripcion)
+INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Descripcion)
 VALUES ('Café Latte', 'cafeteria1', 2.50, 'Café espresso con leche caliente y espuma de leche.'),
        ('Capuchino', 'cafeteria1', 3.00, 'Café espresso con leche vaporizada y espuma de leche.'),
        ('Té Verde Matcha', 'cafeteria2', 3.50, 'Té verde japonés en polvo con leche caliente o fría.'),
@@ -39,7 +39,7 @@ VALUES ('Café Latte', 'cafeteria1', 2.50, 'Café espresso con leche caliente y 
 
 -- Puedes continuar agregando más productos para las diferentes cafeterías de manera similar.
 -- Insert para Carrito del Usuario1 con 5 productos
-INSERT INTO Carrito (Dueño, Item_list, Pagado)
+INSERT INTO Carrito (Owner, Item_list, Pagado)
 VALUES ('usuario1', 
         '[
             {"Nombre":"Café Latte","Cantidad":2,"Precio":2.50},

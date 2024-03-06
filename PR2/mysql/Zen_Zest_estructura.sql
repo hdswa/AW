@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Usuario;
 CREATE TABLE Usuario (
     Nombre VARCHAR(50) PRIMARY KEY,
     Email VARCHAR(100),
-    Contraseña VARCHAR(100),
+    Password VARCHAR(100),
     Foto_de_perfil VARCHAR(255),
     Rol VARCHAR(50)
 );
@@ -19,8 +19,8 @@ CREATE TABLE Usuario (
 CREATE TABLE Cafeteria (
     Nombre VARCHAR(50) PRIMARY KEY,
     Descripcion TEXT,
-    Dueño VARCHAR(50),
-    FOREIGN KEY (Dueño) REFERENCES Usuario(Nombre),
+    Owner VARCHAR(50),
+    FOREIGN KEY (Owner) REFERENCES Usuario(Nombre),
     Categoria VARCHAR(50),
     Ubicacion VARCHAR(255),
     Cantidad_de_likes INT
@@ -30,18 +30,18 @@ CREATE TABLE Cafeteria (
 CREATE TABLE Productos (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(100),
-    Cafeteria_Dueño VARCHAR(50),
-    FOREIGN KEY (Cafeteria_Dueño) REFERENCES Cafeteria(Nombre),
+    Cafeteria_Owner VARCHAR(50),
+    FOREIGN KEY (Cafeteria_Owner) REFERENCES Cafeteria(Nombre),
     Precio DECIMAL(10,2),
     Descripcion TEXT
 );
 
 -- Tabla Carrito
 CREATE TABLE Carrito (
-    Dueño VARCHAR(50),
+    Owner VARCHAR(50),
     Item_list JSON,
     Pagado BOOLEAN,
-    FOREIGN KEY (Dueño) REFERENCES Usuario(Nombre)
+    FOREIGN KEY (Owner) REFERENCES Usuario(Nombre)
 );
 
 -- Tabla Comentarios
