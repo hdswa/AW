@@ -19,9 +19,14 @@ function esAdmin(){
     return estaLogado() && $_SESSION['rol']=='admin';
 }
 
+function redirige($url)
+{
+    header("Location: $url");
+    exit();
+}
 function verificaLogado($urlNoLogado)
 {
     if (! estaLogado()) {
-        Utils::redirige($urlNoLogado);
+        redirige($urlNoLogado);
     }
 }
