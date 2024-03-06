@@ -11,13 +11,15 @@
 require(RAIZ_APP.'/vistas/comun/cabecera.php');
 require(RAIZ_APP.'/vistas/comun/sidebarIzq.php');
 ?>
+	<div class="container">	
 	<main>
 		<article>
 			<?= $contenidoPrincipal ?>
 		</article>
 	</main>
+</div>
 <?php
-require(RAIZ_APP.'/vistas/comun/sidebarDer.php');
+
 require(RAIZ_APP.'/vistas/comun/pie.php');
 ?>
 </div>
