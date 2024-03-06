@@ -6,20 +6,20 @@ require_once RAIZ_APP.'/Aplicacion.php';
 class Usuario {
     private $username;
     private $email;
-    private $password;
+    private $contraseña;
     private $foto;
     private $rol;
 
-    public function __construct($username, $email, $password, $foto) {
+    public function __construct($username, $email, $contraseña, $foto) {
         $this->username = $username;
         $this->email = $email;
-        $this->password = $password;
+        $this->contraseña = $contraseña;
         $this->foto = $foto;
         $this->rol = "";
         
     }
 
-    public function register($username, $email, $password, $foto) {
+    public function register($username, $email, $contraseña, $foto) {
         $conn = Aplicacion::getInstance()->getConexionBd();
         $rol ="cliente";//defualt
         
@@ -36,7 +36,7 @@ class Usuario {
                 $query = sprintf("INSERT INTO Usuario(Nombre,Email, Contraseña,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
                     , $conn->real_escape_string($username)
                     , $conn->real_escape_string($email)
-                    , password_hash($password, PASSWORD_DEFAULT)
+                    , contraseña_hash($contraseña, contraseña_DEFAULT)
                     , $conn->real_escape_string($foto)
                     , $conn->real_escape_string($rol)
                 );
@@ -53,7 +53,52 @@ class Usuario {
             exit();
         }
     }
+
+    public static function login($nombre, $contraseña)
+    {
+        $usuario = self::buscaUsuario($nombre);
+        if ($usuario && $usuario->compruebaContraseña($nombre, $contraseña)) {
+            return $usuario;
+        }
+        return false;
+    }
     
+    public static function buscaUsuario($nombre)
+    {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("SELECT * FROM usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            $row = $rs->fetch_assoc();
+            if ($row) {
+                $result = new Usuario($row['nombre'], $row['email'], $row['contraseña'], $row['foto_de_perfil'], $row['rol']);
+            }
+            $rs->free();
+        } else {
+            error_log("Error BD ({$conn->errno}): {$conn->error}");
+        }
+        return $result;
+    }
+
+    public function compruebaContraseña($nombre, $contraseña)
+    {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("SELECT * FROM usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
+        $rs = $conn->query($query);
+        if ($rs) {
+            $row = $rs->fetch_assoc();
+            if($row){
+                return password_verify($contraseña, $row['contraseña']); 
+            }
+            $rs->free();
+        } else {
+            error_log("Error BD ({$conn->errno}): {$conn->error}");
+        }
+
+        return false;
+    }
+
     public function getNombre() {
         return $this->username;
     }
@@ -63,7 +108,7 @@ class Usuario {
     }
 
     public function getContraseña() {
-        return $this->password;
+        return $this->contraseña;
     }
 
     public function getFotoDePerfil() {
@@ -83,7 +128,7 @@ class Usuario {
     }
 
     public function setContraseña($Contraseña) {
-        $this->password = $Contraseña;
+        $this->contraseña = $Contraseña;
     }
 
     public function setFotoDePerfil($Foto_de_perfil) {

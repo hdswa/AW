@@ -1,196 +1,129 @@
 body {
-	background-color: #CDCDCD;
+    font-family: Arial, sans-serif;
+    background-color: #b6d8f2;
+    padding: 20px;
 }
 
-div#contenedor {
-	width: 900px;
-	margin: auto;
-	border: 1px solid rgb(0, 0, 0);
-	background-color: #aaaaaa;
-	margin-top: 30px;
+h1, h2 {
+    color: #333;
+}
+
+p {
+    margin-bottom: 10px;
 }
 
 header {
-	padding: 30px;
-	height: 100px;
-	background-color: #6468a1;
-	color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+	margin-top: 1px;
 }
 
- a, header a:visited {
-	color: white;
-	font-weight: bold;
-	text-decoration: none;
-} 
-
-header a:hover {
-	color: red;
-	font-weight: bold;
-	text-decoration: underline;
-} 
-
-
-nav {
-	padding: 10px;
-	float: left;
-	width: 170px;
-	height: 400px;
-	background-color: #dddddd;
+.logo img {
+    width: 95px;
+    height: auto;
+	background-color: transparent;
 }
 
-nav a, nav a:visited {
-	color: red;
-	font-weight: bold;
-	text-decoration: none;
-} 
-
-nav a:hover {
-	color: red;
-	text-decoration: underline;
-} 
-
-
-aside {
-	padding: 10px;
-	float: right;
-	width: 170px;
-	height: 400px;
-	background-color: #dddddd;
+.icons a {
+    margin-left: 1px;
 }
 
-main {
-	padding: 10px;
-	float: left;
-	min-height: 600px;
-	width: 500px;
-	background-color: white;
+.icons img {
+    width: 30px;
+    height: auto;
 }
 
-footer {
-	clear: both;
-	padding: 20px;
-	background-color: #303030;
-	color: white;
-	text-align: center;
+
+th, td, table {
+    border: 1px solid black;
 }
 
-div.saludo {
-	width: 100%;
-	text-align: right;
+* {
+    margin: 10;
+    padding: 100;
+    box-sizing: border-box;
 }
 
-fieldset {
-	border: 1px solid black;
-	margin: auto;
-}
 
-fieldset div {
-	justify-content: center;
-	margin: 5px auto;
+form {
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: #eff0f1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-legend {
-	color: #fff;
-	background: #303030;
-	border: 1px solid black;
-	padding: 2px 6px;
-} 
 
 label {
-	margin-right: 0.5em;
-	display: block;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
 }
 
-input {
-	display: block;
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.form-field-error {
-	display: block;
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+    margin-bottom: 15px;
 }
 
-.mensajes {
-	position: fixed;
-	width: 100%;
-  }
-  
-.mensaje {
-	border: 2px solid black;
-	border-radius: 5px;
-	width: 30%;
-	margin: 0.2em auto;
-	background-color: #b0f5f1;
+input[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
-.mensajes input {
-	display: none;
+input[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
-.mensaje .cabecera {
-	font-size: 2em;
-	line-height: 0.7em;
-	text-align: right;
-	padding: 0 0.1em;
+
+/* listas */
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-.mensaje .contenido {
-	padding: 0.2em 1em;
-	text-align: center;
+ol li {
+    display: inline;
+    margin-right: 10px;
 }
 
-.mensajes input:checked + .mensaje {
-	display: none;
+#sidebarIzq {
+    width: 200px;
+    background-color: #b6d8f2;
+    padding: 20px;
+	margin-left: 1px;
 }
 
-form.inline {
-	display: inline;
+#sidebarIzq ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
 }
 
-form button.enlace, form button.enlace:visited {
-	color: white;
-	font-weight: bold;
-	text-decoration: none;
-	background-color: inherit;
-	border: none;
+#sidebarIzq ul li {
+    margin-bottom: 10px;
 }
 
-form button.enlace:hover {
-	color: red;
-	font-weight: bold;
-	text-decoration: underline;
-}
-
-button, a.boton {
-	border: 1px solid black;
-	font-size: 0.9em;
-	font-family: Arial;
-	font-weight: 400;
-}
-
-a.boton {
-	color: inherit;
-	text-decoration: none;
-	background-color: rgb(239, 239, 239);
-	padding: 1px 6px;
-	margin: 1px 5px;
-}
-
-button, a.boton {
-	border: 1px solid black;
-	font-size: 0.9em;
-	font-family: Arial;
-	font-weight: 400;
-}
-
-.inline {
-	display: inline;
-}
-
-a.deshabilitado {
-	color: rgba(16, 16, 16, 0.3);
-}
-
-.icons {
-	display: flex;
-	justify-content: space-between; /* Optional: Adds space between the icons */
+#sidebarIzq ul li a {
+    display: block;
+    text-decoration: plum;
+    color: #333;
 }
