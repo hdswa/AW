@@ -56,7 +56,7 @@ class Usuario {
     }
 
     public function register($username, $email, $password, $foto) {
-        $conn = Aplicacion::getInstance()->getConexionBd();
+        $conn = Aplicacion::getSingleton()->getConexionBd();
         $rol ="cliente";//defualt
         
         $query = sprintf("SELECT * FROM Usuario U WHERE U.Nombre = '%s'", $conn->real_escape_string($username));

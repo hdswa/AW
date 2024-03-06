@@ -10,18 +10,13 @@ class Aplicacion
 	/**
 	 * Devuele una instancia de {@see Aplicacion}.
 	 * 
-	 * @return Applicacion Obtiene la única instancia de la <code>Aplicacion</code>
+	 * @return Aplicacion Obtiene la única instancia de la <code>Aplicacion</code>
 	 */
-	public static function getInstance() {
-		if (  !self::$instancia instanceof self) {
-			self::$instancia = new static();
-		}
-		return self::$instancia;
-	}
+	
 
 	public static function getSingleton() {
 		if (  !self::$instancia instanceof self) {
-			self::$instancia = new self;
+			self::$instancia = new static();
 		}
 		return self::$instancia;
 	}
