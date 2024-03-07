@@ -33,7 +33,7 @@ class Usuario {
                 print("Ha entreado en if");
             } else {
                 print("ha entredo en else");
-                $query = sprintf("INSERT INTO Usuario(Nombre,Email, password,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
+                $query = sprintf("INSERT INTO Usuario(Nombre, Email, password,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
                     , $conn->real_escape_string($username)
                     , $conn->real_escape_string($email)
                     , self::hashcontraseña($contraseña)
@@ -71,7 +71,7 @@ class Usuario {
     public static function buscaUsuario($nombre)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT * FROM Usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
+        $query = sprintf("SELECT * FROM Usuario U WHERE U.Nombre='%s'", $conn->real_escape_string($nombre));
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
@@ -90,7 +90,7 @@ class Usuario {
     public function compruebaContraseña($nombre, $contraseña)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT * FROM Usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
+        $query = sprintf("SELECT * FROM Usuario U WHERE U.Nombre='%s'", $conn->real_escape_string($nombre));
         $rs = $conn->query($query);
         if ($rs) {
             $fila = $rs->fetch_assoc();

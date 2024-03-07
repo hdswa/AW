@@ -72,11 +72,11 @@ class cafeteria {
     }
 
     public function getDueno() {
-        return $this->dueno;
+        return $this->owner;
     }
 
     public function setDueno($dueno) {
-        $this->dueno = $dueno;
+        $this->owner = $dueno;
     }
 
     public function getCategoria() {
