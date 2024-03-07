@@ -71,13 +71,13 @@ class Usuario {
     public static function buscaUsuario($nombre)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT * FROM usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
+        $query = sprintf("SELECT * FROM Usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil'], $fila['Rol']);
+                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil']);
                 $result = $user;
             }
             $rs->free();
@@ -90,7 +90,7 @@ class Usuario {
     public function compruebaContraseña($nombre, $contraseña)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT * FROM usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
+        $query = sprintf("SELECT * FROM Usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
         $rs = $conn->query($query);
         if ($rs) {
             $fila = $rs->fetch_assoc();
@@ -114,7 +114,7 @@ class Usuario {
     }
 
     public function getpassword() {
-        return $this->password;
+        return $this->contraseña;
     }
 
     public function getFotoDePerfil() {
@@ -134,7 +134,7 @@ class Usuario {
     }
 
     public function setpassword($password) {
-        $this->password = $password;
+        $this->contraseña = $password;
     }
 
     public function setFotoDePerfil($Foto_de_perfil) {

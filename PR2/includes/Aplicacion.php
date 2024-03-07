@@ -10,7 +10,7 @@ class Aplicacion
 	/**
 	 * Devuele una instancia de {@see Aplicacion}.
 	 * 
-	 * @return Applicacion Obtiene la única instancia de la <code>Aplicacion</code>
+	 * @return Aplicacion Obtiene la única instancia de la <code>Aplicacion</code>
 	 */
 	public static function getInstance() {
 		if (  !self::$instancia instanceof self) {
