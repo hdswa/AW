@@ -2,17 +2,17 @@
 
 function estaLogado()
 {
-    return isset($_SESSION['username']);
+    return isset($_SESSION['nombre']);
 }
 
 function esMismoUsuario($username)
 {
-    return estaLogado() && $_SESSION['username'] == $username;
+    return estaLogado() && $_SESSION['nombre'] == $nombre;
 }
 
 function usernameLogado()
 {
-    return $_SESSION['username'] ?? false;
+    return $_SESSION['nombre'] ?? false;
 }
 
 function esAdmin(){

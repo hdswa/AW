@@ -36,7 +36,7 @@ class Usuario {
                 $query = sprintf("INSERT INTO Usuario(Nombre,Email, password,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
                     , $conn->real_escape_string($username)
                     , $conn->real_escape_string($email)
-                    , contraseña_hash($contraseña, contraseña_DEFAULT)
+                    , self::hashcontraseña($contraseña)
                     , $conn->real_escape_string($foto)
                     , $conn->real_escape_string($rol)
                 );
@@ -52,6 +52,11 @@ class Usuario {
             echo "Error SQL ({$conn->errno}):  {$conn->error}";
             exit();
         }
+    }
+
+    public static function hashcontraseña($contraseña)
+    {
+        return password_hash($contraseña, PASSWORD_BCRYPT); //he cambiado el algoritmo para que siempre sea una contraseña de 60 caracteres y no de error 
     }
 
     public static function login($nombre, $contraseña)
@@ -70,9 +75,10 @@ class Usuario {
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
-            $row = $rs->fetch_assoc();
-            if ($row) {
-                $result = new Usuario($row['nombre'], $row['email'], $row['contraseña'], $row['foto_de_perfil'], $row['rol']);
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil'], $fila['Rol']);
+                $result = $user;
             }
             $rs->free();
         } else {
@@ -87,9 +93,9 @@ class Usuario {
         $query = sprintf("SELECT * FROM usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
         $rs = $conn->query($query);
         if ($rs) {
-            $row = $rs->fetch_assoc();
-            if($row){
-                return password_verify($contraseña, $row['contraseña']); 
+            $fila = $rs->fetch_assoc();
+            if($fila){
+                return password_verify($contraseña, $fila['Password']); 
             }
             $rs->free();
         } else {

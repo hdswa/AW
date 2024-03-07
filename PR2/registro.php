@@ -11,7 +11,7 @@ $contenidoPrincipal = <<<EOS
 	<legend>Datos para el registro</legend>
 	
 	<div>
-		<label for="username">Username:</label>
+		<label for="username">Usuario:</label>
 		<input id="username" type="text" name="username" />
 	</div>
 	<div>
@@ -19,11 +19,11 @@ $contenidoPrincipal = <<<EOS
 		<input id="email" type="text" name="email" />
 	</div>
 	<div>
-		<label for="password">Password:</label>
+		<label for="password">Contraseña:</label>
 		<input id="password" type="password" name="password" />
 	</div>
 	<div>
-		<label for="password2">Reintroduce el password:</label>
+		<label for="password2">Reintroduce la contraseña:</label>
 		<input id="password2" type="password" name="password2" />
 	</div>
 	<div>

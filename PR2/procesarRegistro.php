@@ -46,6 +46,14 @@ if (count($erroresFormulario) === 0) {//register
 	
 }
 
+if ($_SESSION["login"] == true) {
+    $mensaje = "Bienvenido/a ${_SESSION["nombre"]}";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?mensaje=" . $mensaje . "'>";
+} else {
+    $mensaje = "Usuario erróneo";
+    echo "<meta http-equiv='refresh' content='0; url=login.php?mensaje=" . $mensaje . "'>";
+}
+
 $tituloPagina = 'Registro';
 
 $erroresGlobalesFormulario = generaErroresGlobalesFormulario($erroresFormulario);

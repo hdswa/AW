@@ -10,6 +10,9 @@ h1, h2 {
 
 p {
     margin-bottom: 10px;
+
+}
+
 div#contenedor {
 	width: 100%;
 	margin: auto;
@@ -31,6 +34,9 @@ header {
     width: 95px;
     height: auto;
 	background-color: transparent;
+
+}
+
  a, header a:visited {
 	color: rgb(0, 0, 0);
 	font-weight: bold;
@@ -59,6 +65,8 @@ nav {
 .icons img {
     width: 30px;
     height: auto;
+}
+
 .container {
 	display: flex;
 }
@@ -67,6 +75,7 @@ nav {
 	grid-template-columns: repeat(3, 1fr);
 	gap: 10px;
 }
+
 main {
 	padding: 10px;
 	float: left;
@@ -165,4 +174,15 @@ ol li {
     display: block;
     text-decoration: plum;
     color: #333;
+}
+
+.mensaje {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
 }
