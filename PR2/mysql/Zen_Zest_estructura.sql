@@ -23,6 +23,7 @@ CREATE TABLE Cafeteria (
     FOREIGN KEY (Owner) REFERENCES Usuario(Nombre),
     Categoria VARCHAR(50),
     Ubicacion VARCHAR(255),
+    Foto VARCHAR(255),
     Cantidad_de_likes INT
 );
 
@@ -33,16 +34,19 @@ CREATE TABLE Productos (
     Cafeteria_Owner VARCHAR(50),
     FOREIGN KEY (Cafeteria_Owner) REFERENCES Cafeteria(Nombre),
     Precio DECIMAL(10,2),
+    Foto VARCHAR(255),
     Descripcion TEXT
 );
 
 -- Tabla Carrito
 CREATE TABLE Carrito (
-    Owner VARCHAR(50),
-    Item_list JSON,
-    Pagado BOOLEAN,
-    FOREIGN KEY (Owner) REFERENCES Usuario(Nombre)
+  Owner VARCHAR(50),
+  Item_list JSON,
+  Pagado BOOLEAN,
+  FOREIGN KEY (Owner) REFERENCES Usuario(Nombre)
 );
+
+
 
 -- Tabla Comentarios
 CREATE TABLE Comentarios (

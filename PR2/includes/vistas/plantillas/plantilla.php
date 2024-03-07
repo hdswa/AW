@@ -18,6 +18,7 @@ require(RAIZ_APP.'/vistas/comun/sidebarIzq.php');
 	<div class="container">	
 	<main>
 		<article>
+			
 			<?= $contenidoPrincipal ?>
 		</article>
 	</main>
