@@ -1,5 +1,5 @@
 <?php
-<?php
+
 
 class Producto {
     private $id;
@@ -7,12 +7,32 @@ class Producto {
     private $cafeteriaOwner;
     private $precio;
     private $descripcion;
+    private $foto;
 
-    public function __construct($nombre, $cafeteriaOwner, $precio, $descripcion) {
+    public function __construct($nombre, $cafeteriaOwner, $precio, $foto,$descripcion) {
         $this->nombre = $nombre;
         $this->cafeteriaOwner = $cafeteriaOwner;
         $this->precio = $precio;
         $this->descripcion = $descripcion;
+        $this->foto=$foto;
+    }
+   
+    public static function getCafeAllItemsByOwner($cafeName){
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        
+        $query = sprintf("SELECT * FROM Productos WHERE Cafeteria_Owner='%s'", $conn->real_escape_string($cafeName));
+        $rs=$conn->query($query);
+        if ($rs->num_rows > 0) {
+            while ($fila = $rs->fetch_assoc()) {
+                $productos[] = new Producto($fila['Nombre'],$fila['Cafeteria_Owner'],$fila['Precio'],$fila['Foto'],$fila['Descripcion']);
+            }
+        } else
+        {
+            $productos = array();
+        }
+       
+        // Return the results
+        return $productos;
     }
 
     public function getId() {
@@ -31,6 +51,13 @@ class Producto {
         return $this->precio;
     }
 
+    public function getFoto(){
+        return $this->foto;
+    }
+    public function setFoto($foto){
+        $this->foto;
+    }
+
     public function getDescripcion() {
         return $this->descripcion;
     }
@@ -39,6 +66,7 @@ class Producto {
         $this->id = $id;
     }
 
+    
     // Add other setter methods if needed
 
     public function save() {

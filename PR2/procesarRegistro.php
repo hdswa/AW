@@ -35,9 +35,9 @@ if (count($erroresFormulario) === 0) {//register
 	$user = new Usuario($username, $email, $password, $foto,"");
 
 	if ($user->register($username, $email, $password, $foto)) {
-		$_SESSION['login'] = true;
-		$_SESSION['nombre'] = $nombre;
-		$_SESSION['esAdmin'] = false;
+		// $_SESSION['login'] = true;
+		// $_SESSION['nombre'] = $nombre;
+		// $_SESSION['esAdmin'] = false;
 		header('Location: index.php');
 		exit();
 	} else {

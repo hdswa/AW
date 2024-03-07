@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #b6d8f2;
+    background-color: #FFFFFF;
     padding: 20px;
 }
 
@@ -72,8 +72,8 @@ nav {
 }
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 10px;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 20px;
 }
 
 main {
