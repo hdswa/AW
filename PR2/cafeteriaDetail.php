@@ -29,7 +29,7 @@ if ($cafeteria==false){
         <input type="submit" value="Crear cafeteria">
     </form>
     EOS;
-    require __DIR__.'/includes/vistas/plantillas/plantilla.php';
+    require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';
     exit;
 }
 $contenidoPrincipal = <<<EOS
@@ -56,6 +56,6 @@ foreach ($productos as $producto) {
 }
 $contenidoPrincipal .="<h3>Buton para añadir al carrito</h3>";
 $contenidoPrincipal .= '</div>';
-require __DIR__.'/includes/vistas/plantillas/plantilla.php';
+require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';
 
 ?>

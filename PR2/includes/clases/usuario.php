@@ -82,6 +82,7 @@ class Usuario {
             }
             $rs->free();
         } else {
+            $result = false;    
             error_log("Error BD ({$conn->errno}): {$conn->error}");
         }
         return $result;
@@ -105,6 +106,86 @@ class Usuario {
         return false;
     }
 
+    public function encontrarSeguidos() {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $seguidos = [];
+    
+        $query = sprintf("SELECT U.Nombre, U.Email, U.Password, U.Foto_de_perfil FROM Usuario U INNER JOIN Seguidores S ON U.Nombre = S.Seguido WHERE S.Seguidor='%s'", $conn->real_escape_string($this->username));
+    
+        $rs = $conn->query($query);
+        if ($rs) {
+            while ($fila = $rs->fetch_assoc()) {
+                $usuario = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil']);
+                array_push($seguidos, $usuario);
+            }
+            $rs->free();
+        } else {
+            error_log("Error SQL ({$conn->errno}): {$conn->error}");
+        }
+    
+        return $seguidos;
+    }
+
+    public function seguirUsuario($nombreUsuarioASeguir) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("INSERT INTO Seguidores (Seguidor, Seguido) VALUES ('%s', '%s')",
+                         $conn->real_escape_string($this->username),
+                         $conn->real_escape_string($nombreUsuarioASeguir));
+    
+        if ($conn->query($query)) {
+            return true; // Seguimiento exitoso
+        } else {
+            error_log("Error al intentar seguir al usuario ({$conn->errno}): {$conn->error}");
+            return false; // Error al seguir al usuario
+        }
+    }
+    
+    public function dejarDeSeguirUsuario($nombreUsuarioADejarDeSeguir) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("DELETE FROM Seguidores WHERE Seguidor='%s' AND Seguido='%s'",
+                         $conn->real_escape_string($this->username),
+                         $conn->real_escape_string($nombreUsuarioADejarDeSeguir));
+    
+        if ($conn->query($query)) {
+            return true; // Dejó de seguir exitosamente
+        } else {
+            error_log("Error al intentar dejar de seguir al usuario ({$conn->errno}): {$conn->error}");
+            return false; // Error al dejar de seguir al usuario
+        }
+    }
+    
+
+    public function perfilUsuario() {
+        // Iniciar la construcción del HTML
+        $perfil = "<div class='perfil-usuario'>";
+
+        // Comprobar si existe una foto de perfil, de lo contrario, usar una predeterminada
+        $rutaFoto = $this->foto ? $this->foto : './img/basic/user.png';
+        $perfil .= "<img src='" . htmlspecialchars($rutaFoto) . "' alt='Foto de perfil' style='width: 200px; height: 200px;' />";
+        
+        //Formulario para modificar la foto de perfil del usuario
+        $perfil .= <<<HTML
+        <form action="procesarImagenUser.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="username" value="{$this->username}">
+            <input type="file" name="fotoPerfil" required>
+            <button type="submit">Añadir Foto</button>
+        </form>
+        HTML;
+
+        // Mostrar el nombre de usuario
+        $perfil .= "<p>Nombre de Usuario: " . htmlspecialchars($this->username) . "</p>";
+        
+        // Mostrar el email
+        $perfil .= "<p>Email: " . htmlspecialchars($this->email) . "</p>";
+        
+ 
+        // Finalizar el HTML
+        $perfil .= "</div>";
+
+        return $perfil;
+    }
+    
+    
     public function getNombre() {
         return $this->username;
     }
@@ -139,6 +220,22 @@ class Usuario {
 
     public function setFotoDePerfil($Foto_de_perfil) {
         $this->foto = $Foto_de_perfil;
+
+            // Obtén la conexión a la base de datos
+        $conn = Aplicacion::getInstance()->getConexionBd();
+
+        // Prepara la consulta SQL para actualizar la ruta de la foto de perfil
+        $query = sprintf("UPDATE Usuario U SET U.Foto_de_perfil='%s' WHERE U.Nombre='%s'",
+                        $conn->real_escape_string($Foto_de_perfil),
+                        $conn->real_escape_string($this->username));
+
+        // Ejecuta la consulta
+        if ($conn->query($query) === TRUE) {
+            return true; // Actualización exitosa
+        } else {
+            error_log("Error al actualizar la foto de perfil: " . $conn->error);
+            return false; // Error al actualizar
+        }
     }
 
     public function setRol($rol) {

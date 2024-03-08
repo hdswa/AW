@@ -36,6 +36,6 @@ if (is_a($carrito, 'Carrito')) {
   $contenidoPrincipal .="No tienes items en el carrito haga una compra";
 }
 
-require __DIR__.'/includes/vistas/plantillas/plantilla.php';
+require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';
 
 

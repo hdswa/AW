@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__.'/includes/config.php';
+require_once __DIR__.'/includes/Aplicacion.php';
 require_once __DIR__.'/includes/clases/usuario.php';
 
 ini_set('display_errors',1);
-ini_set('display_starup_errors',1);
+ini_set('display_startup_errors',1);
 error_reporting(E_ALL);
 
 

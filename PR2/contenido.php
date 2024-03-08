@@ -20,4 +20,4 @@ if (!isset($_SESSION["login"])) {
 	EOS;
 }
 
-require __DIR__.'/includes/vistas/plantillas/plantilla.php';
+require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';

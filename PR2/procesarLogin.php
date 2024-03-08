@@ -4,7 +4,7 @@ require_once 'includes/clases/usuario.php';
 
 
 ini_set('display_errors',1);
-ini_set('display_starup_errors',1);
+ini_set('display_startup_errors',1);
 error_reporting(E_ALL);
 
 $mensaje = "";
@@ -31,6 +31,5 @@ if ($_SESSION['login'] == true) {
     $mensaje = "El usuario o la contraseña no son válidos";
     echo "<meta http-equiv='refresh' content='0; url=login.php?mensaje=" . $mensaje . "'>";
 }
-
 
 

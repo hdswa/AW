@@ -11,6 +11,6 @@ require_once __DIR__.'/../helper/usuarios.php';
 
         <a href="cesta.php"><img src="img/basic/cesta.png" name="cesta" width="50"></a>
 
-        <a href="login.php"><img src="img/basic/user.png" name="login" width="50"></a>
+        <a href="perfil.php"><img src="img/basic/user.png" name="login" width="50"></a>
     </div>
 </header>
