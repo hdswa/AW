@@ -14,6 +14,7 @@ $contenidoPrincipal .= '<div class="grid-container">';
 foreach ($cafeterias as $cafeteria) {
     $foto_URL=".";
     $foto_URL.=$cafeteria->getFoto();
+    
     $nombre = $cafeteria->getNombre();
     //foto cuadrada 200px
     $contenidoPrincipal .= "<div class='cafeteria-item'>";

@@ -19,6 +19,30 @@ class cafeteria {
         $this->cantidadDeLikes = $cantidadDeLikes;
     }
 
+    public function saveCafeteria() {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        
+        if(self::getCafeteriaByName($this->nombre) != false){
+            return false;
+        }
+        $query = sprintf("INSERT INTO Cafeteria (Nombre, Descripcion, Owner, Categoria, Ubicacion, Foto, Cantidad_de_likes) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+            $conn->real_escape_string($this->nombre),
+            $conn->real_escape_string($this->descripcion),
+            $conn->real_escape_string($this->owner),
+            $conn->real_escape_string($this->categoria),
+            $conn->real_escape_string($this->ubicacion),
+            $conn->real_escape_string($this->foto),
+            $conn->real_escape_string($this->cantidadDeLikes)
+        );
+        
+        $result = $conn->query($query);
+        
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public static function getAllCafe() {
         
         $conn = Aplicacion::getInstance()->getConexionBd();
@@ -42,6 +66,23 @@ class cafeteria {
         $conn = Aplicacion::getInstance()->getConexionBd();
         
         $query = sprintf("SELECT * FROM Cafeteria C WHERE C.Nombre = '%s'", $conn->real_escape_string($name));
+        $rs = $conn->query($query);
+        if ($rs->num_rows > 0) {
+            $fila = $rs->fetch_assoc();
+            $cafeteria = new cafeteria($fila['Nombre'], $fila['Descripcion'], $fila['Owner'], $fila['Categoria'], $fila['Ubicacion'],$fila['Foto'], $fila['Cantidad_de_likes']);
+            $result=$cafeteria;
+            $rs->free();
+        } else
+        {
+            $result = false;
+        }
+        return $result;
+
+    }
+    public static function getCafeteriaByOwnerName($name){
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        
+        $query = sprintf("SELECT * FROM Cafeteria C WHERE C.Owner = '%s'", $conn->real_escape_string($name));
         $rs = $conn->query($query);
         if ($rs->num_rows > 0) {
             $fila = $rs->fetch_assoc();
@@ -99,16 +140,33 @@ class cafeteria {
         return $this->foto;
     }
 
-    public function setFoto($foto) {
-        $this->foto = $foto;
-    }
-
+   
     public function getCantidadDeLikes() {
         return $this->cantidadDeLikes;
     }
 
     public function setCantidadDeLikes($cantidadDeLikes) {
         $this->cantidadDeLikes = $cantidadDeLikes;
+    }
+
+    public function setFoto($foto) {
+        $this->foto = $foto;
+
+            // Obtén la conexión a la base de datos
+        $conn = Aplicacion::getInstance()->getConexionBd();
+
+        // Prepara la consulta SQL para actualizar la ruta de la foto de perfil
+        $query = sprintf("UPDATE Cafeteria C SET C.Foto='%s' WHERE C.Nombre='%s'",
+                        $conn->real_escape_string($foto),
+                        $conn->real_escape_string($this->nombre));
+
+        // Ejecuta la consulta
+        if ($conn->query($query) === TRUE) {
+            return true; // Actualización exitosa
+        } else {
+            error_log("Error al actualizar la foto de perfil: " . $conn->error);
+            return false; // Error al actualizar
+        }
     }
 }
 

@@ -35,6 +35,40 @@ class Producto {
         return $productos;
     }
 
+    public function saveProducto(){
+
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Foto, Descripcion) VALUES ('%s', '%s', '%s', '%s', '%s')",
+            $conn->real_escape_string($this->nombre),
+            $conn->real_escape_string($this->cafeteriaOwner),
+            $conn->real_escape_string($this->precio),
+            $conn->real_escape_string($this->foto),
+            $conn->real_escape_string($this->descripcion)
+        );
+        
+        $result = $conn->query($query);
+        
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function getProductoByNameAndOwner($name,$owner){
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("SELECT * FROM Productos WHERE Nombre='%s' AND Cafeteria_Owner='%s'", $conn->real_escape_string($name),$conn->real_escape_string($owner));
+        $rs=$conn->query($query);
+        if ($rs->num_rows > 0) {
+            $fila = $rs->fetch_assoc();
+            $producto = new Producto($fila['Nombre'],$fila['Cafeteria_Owner'],$fila['Precio'],$fila['Foto'],$fila['Descripcion']);
+        } else
+        {
+            $producto = false;
+        }
+        return $producto;
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -81,6 +115,22 @@ class Producto {
         // Implement the logic to delete the product from the database
     }
 
+    
+
+    public function deleteByNameAndOwner($name, $owner) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("DELETE FROM Productos WHERE Nombre='%s' AND Cafeteria_Owner='%s'", $conn->real_escape_string($name), $conn->real_escape_string($owner));
+        $result = $conn->query($query);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+        // Add other functions as per your requirements
+    
+    
     // Add other functions as per your requirements
 }
 

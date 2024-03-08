@@ -5,7 +5,15 @@ DROP TABLE IF EXISTS Comentarios;
 DROP TABLE IF EXISTS Carrito;
 DROP TABLE IF EXISTS Productos;
 DROP TABLE IF EXISTS Cafeteria;
+<<<<<<< Updated upstream
 DROP TABLE IF EXISTS Usuario;
+=======
+DROP TABLE IF EXISTS Seguidores;
+DROP TABLE IF EXISTS Usuario;
+
+
+
+>>>>>>> Stashed changes
 -- Tabla Usuario
 CREATE TABLE Usuario (
     Nombre VARCHAR(50) PRIMARY KEY,
