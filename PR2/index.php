@@ -20,7 +20,7 @@ if (isset($_SESSION['nombre'])) {
 
    
     if ($usuariosSeguidos == []) {
-        $contenidoPrincipal .= "<p>Todavía no sigues a nadie. Comienza a seguir a otros perfiles para ver valoraciones y comentarios.</p>";
+        $contenidoPrincipal .= "<p>Todavía no sigues a nadie. Comienza a seguir a otros perfiles para ver valoraciones y comentarios aquí.</p>";
     } else {
 
         // Obtener los comentarios de esos usuarios
