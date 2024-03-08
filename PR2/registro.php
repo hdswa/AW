@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/includes/config.php';
 
-$tituloPagina = 'Registro';
+$tituloPagina = 'Crear cuenta';
 
 $contenidoPrincipal = <<<EOS
 <h1>Crear cuenta</h1>

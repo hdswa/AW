@@ -2,10 +2,10 @@
 
 require_once __DIR__.'/includes/config.php';
 
-$tituloPagina = 'Login';
+$tituloPagina = 'Iniciar sesión';
 
 $contenidoPrincipal=<<<EOS
-    <h1> Iniciar Sesion </h1>
+    <h1> Iniciar sesión </h1>
     <form action="procesarLogin.php" method="POST" id="login">
     <fieldset>
         <legend>Datos para iniciar sesión</legend>
@@ -14,11 +14,12 @@ $contenidoPrincipal=<<<EOS
             <label for="username">Usuario:</label>
             <input id="username" type="text" name="nombre" placeholder="Usuario" required/>
         </div>        
-        <div>    
-            <br/><input type="password" name="password" placeholder="Contraseña" required/>
+        <div>
+            <label for="password">Contraseña:</label>    
+            <input id="password" type="password" name="password" placeholder="Contraseña" required/>
         </div> 
         <div>   
-            <br/><br/><button type="submit" id="login-button">INICIAR SESION</button>
+            <button type="submit" id="login-button">INICIAR SESION</button>
         </div>
     </fieldset>
     <h4>¿No tienes una cuenta aún?</h4>
