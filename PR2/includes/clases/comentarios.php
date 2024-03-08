@@ -42,6 +42,35 @@ class Comentarios {
         }
         return $comentarios;
     }
+    public static function getComentariosPorUsuario($usuario) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $comentarios = [];
+        
+        // Prepara la consulta SQL para evitar inyecciones SQL
+        $query = $conn->prepare("SELECT * FROM Comentarios WHERE Usuario = ?");
+        $query->bind_param("s", $usuario); // "s" indica que el parámetro es una cadena (string)
+        $query->execute();
+        
+        $resultado = $query->get_result();
+        
+        while ($fila = $resultado->fetch_assoc()) {
+            $comentarios[] = new Comentarios(
+                $fila['ID'],
+                $fila['Usuario'],
+                $fila['Cafeteria_Comentada'],
+                $fila['Valoracion'],
+                $fila['Mensaje']
+            );
+        }
+        
+        $query->close();
+        
+        return $comentarios;
+    }
+    
+    
+
+
     
     
 
