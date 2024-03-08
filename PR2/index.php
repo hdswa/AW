@@ -20,14 +20,14 @@ if (isset($_SESSION['nombre'])) {
 
    
     if ($usuariosSeguidos == []) {
-        $contenidoPrincipal .= "<p>Todavia no sigues a nadie.</p>";
+        $contenidoPrincipal .= "<p>Todavía no sigues a nadie. Comienza a seguir a otros perfiles para ver valoraciones y comentarios.</p>";
     } else {
 
         // Obtener los comentarios de esos usuarios
         $comentarios = Comentarios::getComentariosDeSeguidos($usuariosSeguidos);
 
 
-        $contenidoPrincipal = "<h2>Mira los ultimos comentarios realizados por tus amigos </h2>";
+        $contenidoPrincipal = "<h2>Echa un vistazo a los últimos comentarios realizados por tus amigos:</h2>";
 
         foreach ($comentarios as $comentario) {
             $contenidoPrincipal .= "<div class='comentario'>";
