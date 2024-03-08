@@ -1,13 +1,13 @@
 -- Inserts para Usuario
 INSERT INTO Usuario (Nombre, Email, Password_hash, Foto_de_perfil, Rol)
 VALUES ('profe',    'profe@example.com',    '$2y$10$a0EJlruBOC/S0RicOb5mneLoRQvDPXhjBDO0LpSdp58CnvIblJnXW', '/img/perfiles/profe.jpg', 'cliente'),
-       ('lucia',    'lucia@example.com',    '$2y$10$Lwgd1aHNKQeSR0APjDugtOqoLSSmb4zflF8lzz2VW0bThO7vhUnsW', '/img/perfiles/lucia_fotopersonal.jpg', 'cliente'),
+       ('lucia',    'lucia@example.com',    '$2y$10$Lwgd1aHNKQeSR0APjDugtOqoLSSmb4zflF8lzz2VW0bThO7vhUnsW', '/img/perfiles/lucia_fotopersonal.jpeg', 'cliente'),
        ('maria',    'maria@example.com',    '$2y$10$uLQGjf5eWq4YTvsOHtUMFe8gOU0IFvtsh5dmgjR68ukkekzzMO7FS', '/img/perfiles/maria_fotopersonal.jpg', 'cliente'),
-       ('usuario1', 'usuario1@example.com', '$2y$10$8CiAtMxhTmVAwVG8NPPN8uzQkZofRB4qz3y2EvzromhllHBAobJWW', '/img/perfiles/foto1.jpg', 'cliente'),
-       ('usuario2', 'usuario2@example.com', '$2y$10$xaI9VQHt9aIFYnsRPSuWcuszGYOz6N8WJbRSNhxNhU2UMJjx8eUB.', '/img/perfiles/foto2.jpg', 'cliente'),
-       ('usuario3', 'usuario3@example.com', '$2y$10$RO4EbCSxOF5YV8Qn1rbJYOf.xg7XJCLwYhjzmJCxZz32Wvg0n/C/a', '/img/perfiles/foto3.jpg', 'cliente'),
-       ('usuario4', 'usuario4@example.com', '$2y$10$PLrvUUvAiURYb0IJriCWK.sESSHgSKsoIaV6MqMxMPsCHa7N/.O.e', '/img/perfiles/foto4.jpg', 'cliente'),
-       ('usuario5', 'usuario5@example.com', '$2y$10$U6szMhYxKJqJKUR9NbXxm.59ppl0Qgoc/tPOmynIKhEQ8F8oVgoPm', '/img/perfiles/foto5.jpg', 'cliente');
+       ('usuario1', 'usuario1@example.com', '$2y$10$8CiAtMxhTmVAwVG8NPPN8uzQkZofRB4qz3y2EvzromhllHBAobJWW', '/img/perfiles/foto1.png', 'cliente'),
+       ('usuario2', 'usuario2@example.com', '$2y$10$xaI9VQHt9aIFYnsRPSuWcuszGYOz6N8WJbRSNhxNhU2UMJjx8eUB.', '/img/perfiles/foto2.png', 'cliente'),
+       ('usuario3', 'usuario3@example.com', '$2y$10$RO4EbCSxOF5YV8Qn1rbJYOf.xg7XJCLwYhjzmJCxZz32Wvg0n/C/a', '/img/perfiles/foto3.png', 'cliente'),
+       ('usuario4', 'usuario4@example.com', '$2y$10$PLrvUUvAiURYb0IJriCWK.sESSHgSKsoIaV6MqMxMPsCHa7N/.O.e', '/img/perfiles/foto4.png', 'cliente'),
+       ('usuario5', 'usuario5@example.com', '$2y$10$U6szMhYxKJqJKUR9NbXxm.59ppl0Qgoc/tPOmynIKhEQ8F8oVgoPm', '/img/perfiles/foto5.png', 'cliente');
 
 
 -- Inserts para Cafeteria
