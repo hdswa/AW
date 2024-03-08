@@ -30,29 +30,33 @@ if (isset($_SESSION['nombre'])) {
     $usuariosSeguidos = $user->encontrarSeguidos();
 
     $contenidoPrincipal = "<h1>Usuarios Seguidos por $username</h1>";
-    $contenidoPrincipal .= '<div class="usuarios-seguidos-container">';
+    if ($usuariosSeguidos == []) {
+        $contenidoPrincipal .= "<p>Todavia no sigues a nadie.</p>";
+    } else {
+        $contenidoPrincipal .= '<div class="usuarios-seguidos-container">';
 
-    foreach ($usuariosSeguidos as $usuarioSeguido) {
-        $nombre = htmlspecialchars($usuarioSeguido->getNombre());
-        $email = htmlspecialchars($usuarioSeguido->getEmail()); // Asumiendo que quieres mostrar el email
-        $foto = htmlspecialchars($usuarioSeguido->getFotoDePerfil());
+        foreach ($usuariosSeguidos as $usuarioSeguido) {
+            $nombre = htmlspecialchars($usuarioSeguido->getNombre());
+            $email = htmlspecialchars($usuarioSeguido->getEmail()); // Asumiendo que quieres mostrar el email
+            $foto = htmlspecialchars($usuarioSeguido->getFotoDePerfil());
 
-        $contenidoPrincipal .= "<div class='usuario-seguido-item'>";
-        $contenidoPrincipal .= "<img src='$foto' alt='Foto de perfil de $nombre' style='max-width: 100px; max-height: 100px;'>";
-        $contenidoPrincipal .= "<h2>$nombre</h2>";
-        $contenidoPrincipal .= "<p>$email</p>";
+            $contenidoPrincipal .= "<div class='usuario-seguido-item'>";
+            $contenidoPrincipal .= "<img src='$foto' alt='Foto de perfil de $nombre' style='max-width: 100px; max-height: 100px;'>";
+            $contenidoPrincipal .= "<h2>$nombre</h2>";
+            $contenidoPrincipal .= "<p>$email</p>";
 
-        // Formulario para dejar de seguir
-        $contenidoPrincipal .= "<form method='post' action=''>";
-        $contenidoPrincipal .= "<input type='hidden' name='dejarDeSeguir' value='$nombre'>";
-        $contenidoPrincipal .= "<button type='submit'>Dejar de seguir</button>";
-        $contenidoPrincipal .= "</form>";
+            // Formulario para dejar de seguir
+            $contenidoPrincipal .= "<form method='post' action=''>";
+            $contenidoPrincipal .= "<input type='hidden' name='dejarDeSeguir' value='$nombre'>";
+            $contenidoPrincipal .= "<button type='submit'>Dejar de seguir</button>";
+            $contenidoPrincipal .= "</form>";
 
-        $contenidoPrincipal .= "</div>";
-    }
+            $contenidoPrincipal .= "</div>";
+        }
 
-    $contenidoPrincipal .= '</div>';
-} else {
+        $contenidoPrincipal .= '</div>';
+    } 
+}else {
     // Si el usuario no está autenticado, redirigir a la página de login o mostrar un mensaje
     $contenidoPrincipal = "<p>Por favor, <a href='login.php'>inicia sesión</a> para ver los usuarios que sigues.</p>";
 }

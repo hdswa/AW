@@ -15,6 +15,66 @@ class Comentarios {
         $this->Mensaje = $Mensaje;
     }
 
+    public static function getComentariosDeSeguidos($usuariosSeguidos) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        
+        // Extrae los nombres de los usuarios seguidos de los objetos Usuario
+        $nombresSeguidos = array_map(function($usuario) {
+            return $usuario->getNombre(); // Asegúrate de que getNombre() devuelva una cadena con el nombre del usuario
+        }, $usuariosSeguidos);
+        
+        // Escapa cada nombre de usuario para seguridad
+        $nombresSeguidos = array_map([$conn, 'real_escape_string'], $nombresSeguidos);
+        
+        // Construye una parte de la consulta SQL para usar con IN()
+        $inQuery = "'" . join("','", $nombresSeguidos) . "'";
+        
+        // Ahora $inQuery contiene los nombres de usuario seguidos, listos para ser usados en la consulta
+        $query = "SELECT * FROM Comentarios WHERE Usuario IN ($inQuery) ORDER BY ID DESC";
+        
+        $result = $conn->query($query);
+        $comentarios = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $comentarios[] = new Comentarios($row['ID'], $row['Usuario'], $row['Cafeteria_Comentada'], $row['Valoracion'], $row['Mensaje']);
+            }
+            $result->free();
+        }
+        return $comentarios;
+    }
+    public static function getComentariosPorUsuario($usuario) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $comentarios = [];
+        
+        // Prepara la consulta SQL para evitar inyecciones SQL
+        $query = $conn->prepare("SELECT * FROM Comentarios WHERE Usuario = ?");
+        $query->bind_param("s", $usuario); // "s" indica que el parámetro es una cadena (string)
+        $query->execute();
+        
+        $resultado = $query->get_result();
+        
+        while ($fila = $resultado->fetch_assoc()) {
+            $comentarios[] = new Comentarios(
+                $fila['ID'],
+                $fila['Usuario'],
+                $fila['Cafeteria_Comentada'],
+                $fila['Valoracion'],
+                $fila['Mensaje']
+            );
+        }
+        
+        $query->close();
+        
+        return $comentarios;
+    }
+    
+    
+
+
+    
+    
+
+
     // Getters and Setters
     public function getID() {
         return $this->ID;

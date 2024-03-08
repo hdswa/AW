@@ -5,14 +5,15 @@
 require_once __DIR__.'/includes/config.php';
 require_once __DIR__.'/includes/clases/producto.php';
 require_once __DIR__.'/includes/clases/cafeteria.php';
-$tituloPagina = 'Título Cambiar';
+$tituloPagina = 'Cafeteria';
 $contenidoPrincipal="";
 
 if (isset($_GET['name'])){
     $name= $_GET['name'];
-
     $productos = Producto::getCafeAllItemsByOwner($name); // Assuming getCafeterias() is a function that returns an array of cafeterias
     $cafeteria= Cafeteria::getCafeteriaByName($name);
+    $descripcion=$cafeteria->getDescripcion();
+    $likes =$cafeteria->getCantidadDeLikes();
     }
 if (isset($_GET['owner'])){
     $owner=$_GET['owner'];
@@ -49,13 +50,18 @@ if (isset($_GET['owner'])){
 $fotoCafe=$cafeteria->getFoto();
 $fotoCafe=RUTA_APP.$fotoCafe;
 $contenidoPrincipal = <<<EOS
+<div class= 'cafeteria'>
 <h1>Cafeteria: $name</h1>
 
 <img src='$fotoCafe'alt='Image description' style='max-width: 200px; max-height: 200px;'>
-
+<h3>Descripcion: $descripcion </h3>
+<h3>Likes: $likes </h3>
+</div>
+<div class='productos'>
 <h1>Productos</h1>
+
 EOS;
-$contenidoPrincipal .= '<div class="grid-container">';
+//$contenidoPrincipal .= '<div class="grid-container">';
 
 // Dentro del bucle que muestra los productos en $contenidoPrincipal
 foreach ($productos as $producto) {
