@@ -9,7 +9,7 @@ require_once __DIR__.'/includes/config.php';
 require_once __DIR__.'/includes/clases/comentarios.php';
 require_once __DIR__.'/includes/clases/usuario.php';
 
-$tituloPagina = 'Comentarios Recientes';
+$tituloPagina = 'Inicio';
 $nombreUsuario = $_SESSION['nombre']; // Asegúrate de que el usuario está logueado
 
 $user = Usuario::buscaUsuario($nombreUsuario);
@@ -18,13 +18,14 @@ $usuariosSeguidos = $user->encontrarSeguidos();
 // Obtener los comentarios de esos usuarios
 $comentarios = Comentarios::getComentariosDeSeguidos($usuariosSeguidos);
 
-$contenidoPrincipal = "<h1>Comentarios Recientes de Usuarios Seguidos</h1>";
+$contenidoPrincipal = "<h1>Inicio</h1>";
+$contenidoPrincipal = "<h2>Mira los ultimos comentarios realizados por tus amigos </h2>";
 
 foreach ($comentarios as $comentario) {
     $contenidoPrincipal .= "<div class='comentario'>";
-    $contenidoPrincipal .= "<h2>Comentado por: " . htmlspecialchars($comentario->getUsuario()) . "</h2>";
-    $contenidoPrincipal .= "<p>Valoración: " . htmlspecialchars($comentario->getValoracion()) . "</p>";
-    $contenidoPrincipal .= "<p>" . htmlspecialchars($comentario->getMensaje()) . "</p>";
+    $contenidoPrincipal .= "<h2>" . htmlspecialchars($comentario->getUsuario()) . "</h2>";
+    $contenidoPrincipal .= "<p><b>Valoración:</b> " . htmlspecialchars($comentario->getValoracion()) . "/5</p>";
+    $contenidoPrincipal .= "<p><b>Comentario:</b> " . htmlspecialchars($comentario->getMensaje()) . "</p>";
     $contenidoPrincipal .= "</div>";
 }
 

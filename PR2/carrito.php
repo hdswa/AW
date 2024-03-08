@@ -4,7 +4,7 @@ require_once __DIR__.'/includes/config.php';
 require_once __DIR__.'/includes/clases/carrito.php';
 
 $tituloPagina = 'Carrito';
-$name= $_GET['name'];
+$name= $_SESSION['nombre'];
 
 $carrito = Carrito::getCarritoByOwner($name);
 

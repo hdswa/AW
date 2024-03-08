@@ -187,3 +187,12 @@ ol li {
     border-radius: 5px;
     z-index: 9999;
 }
+
+.comentario {
+    background-color: #90c0da; /* Color de fondo claro para la div */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno para no tocar los bordes */
+    margin: 10px 0; /* Margen superior e inferior para separar los comentarios */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+}
+
