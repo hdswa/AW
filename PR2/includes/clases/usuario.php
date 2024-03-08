@@ -165,6 +165,7 @@ class Usuario {
 
         //Formulario para modificar la foto de perfil del usuario
         $perfil .= <<<HTML
+        <h5>Modifica la foto de perfil</h5>
         <form action="procesarImagenUser.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="username" value="{$this->username}">
             <input type="file" name="fotoPerfil" required>
