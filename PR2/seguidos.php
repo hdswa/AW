@@ -29,7 +29,7 @@ if (isset($_SESSION['nombre'])) {
 
     $usuariosSeguidos = $user->encontrarSeguidos();
 
-    $contenidoPrincipal = "<h1>Usuarios seguidos por $username</h1>";
+    $contenidoPrincipal = "<h1>Usuarios seguidos por $username:</h1>";
     if ($usuariosSeguidos == []) {
         $contenidoPrincipal .= "<p>Todavía no sigues a nadie. Comienza a seguir a otros perfiles para verlos aquí.</p>";
     } else {
