@@ -49,6 +49,8 @@ if (isset($_GET['owner'])){
 
 $fotoCafe=$cafeteria->getFoto();
 $fotoCafe=RUTA_APP.$fotoCafe;
+$descripcion = $cafeteria->getDescripcion();
+$likes = $cafeteria->getCantidadDeLikes();
 $contenidoPrincipal = <<<EOS
 <div class= 'cafeteria'>
 <h1>Cafeteria: $name</h1>
