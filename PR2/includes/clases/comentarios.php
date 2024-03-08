@@ -17,11 +17,21 @@ class Comentarios {
 
     public static function getComentariosDeSeguidos($usuariosSeguidos) {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $usuariosSeguidos = array_map([$conn, 'real_escape_string'], $usuariosSeguidos);
-        $inQuery = "'" . join("','", $usuariosSeguidos) . "'";
         
+        // Extrae los nombres de los usuarios seguidos de los objetos Usuario
+        $nombresSeguidos = array_map(function($usuario) {
+            return $usuario->getNombre(); // Asegúrate de que getNombre() devuelva una cadena con el nombre del usuario
+        }, $usuariosSeguidos);
+        
+        // Escapa cada nombre de usuario para seguridad
+        $nombresSeguidos = array_map([$conn, 'real_escape_string'], $nombresSeguidos);
+        
+        // Construye una parte de la consulta SQL para usar con IN()
+        $inQuery = "'" . join("','", $nombresSeguidos) . "'";
+        
+        // Ahora $inQuery contiene los nombres de usuario seguidos, listos para ser usados en la consulta
         $query = "SELECT * FROM Comentarios WHERE Usuario IN ($inQuery) ORDER BY ID DESC";
-    
+        
         $result = $conn->query($query);
         $comentarios = [];
         if ($result) {
@@ -32,6 +42,7 @@ class Comentarios {
         }
         return $comentarios;
     }
+    
     
 
 
