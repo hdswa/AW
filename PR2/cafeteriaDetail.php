@@ -57,31 +57,26 @@ $contenidoPrincipal = <<<EOS
 EOS;
 $contenidoPrincipal .= '<div class="grid-container">';
 
+// Dentro del bucle que muestra los productos en $contenidoPrincipal
 foreach ($productos as $producto) {
-   
-   
-    $foto_URL =$producto->getFoto();
-    $foto_URL = RUTA_APP.$foto_URL;
-    $nombre = $producto->getNombre();
-    $precio = $producto->getPrecio();
-    $precio .="€";
-    $descripcion = $producto->getDescripcion();
-    
-    //foto cuadrada 200px
+    $foto_URL = RUTA_APP . htmlspecialchars($producto->getFoto());
+    $nombre = htmlspecialchars($producto->getNombre());
+    $precio = htmlspecialchars($producto->getPrecio());
+    $descripcion = htmlspecialchars($producto->getDescripcion());
+
     $contenidoPrincipal .= "<div class='cafeteria-item'>";
-    $contenidoPrincipal .="<img src='$foto_URL' alt='Image description' style='max-width: 200px; max-height: 200px;'>";
-    $contenidoPrincipal .="<h2>$nombre</h2>";
-    $contenidoPrincipal .="<h3>$precio</h3>";
-    $contenidoPrincipal .="<p>$descripcion</p>";
-    if (isset($owner)&&$owner==$_SESSION['nombre']){
-    $contenidoPrincipal .="<a href='procesarDeleteProducto.php?productoName=$nombre&cafeName=$name' class='square-button' style='background-color: gray; color: black;'>Borrar este producto</a>";
-    }
-    $contenidoPrincipal .= "</div><br>";
-    //boton para añadir
-    // Formulario para añadir al carrito
+    $contenidoPrincipal .= "<img src='$foto_URL' alt='Descripción de la imagen' style='max-width: 200px; max-height: 200px;'>";
+    $contenidoPrincipal .= "<h2>$nombre</h2>";
+    $contenidoPrincipal .= "<h3>$precio €</h3>";
+    $contenidoPrincipal .= "<p>$descripcion</p>";
+
+    // Formulario para añadir al carrito, ahora incluye cantidad y precio
     $contenidoPrincipal .= <<<HTML
-    <form action="añadirAlCarrito.php" method="post">
-        <input type="hidden" name="idProducto" value="$idProducto">
+    <form action="procesarAñadirAlCarrito.php" method="post">
+        <input type="hidden" name="nombreProducto" value="$nombre">
+        <input type="hidden" name="precioProducto" value="$precio">
+        <label for="cantidad-$nombre">Cantidad:</label>
+        <input type="number" id="cantidad-$nombre" name="cantidad" value="1" min="1" required>
         <input type="submit" value="Añadir al carrito">
     </form>
     HTML;
@@ -89,10 +84,9 @@ foreach ($productos as $producto) {
     $contenidoPrincipal .= "</div><br>"; 
 }
 
-<<<<<<< Updated upstream
-$contenidoPrincipal .="<h3>Buton para añadir al carrito</h3>";
-$contenidoPrincipal .= '</div>';
-$contenidoPrincipal .="<br>";
+
+///Updated upstream
+
 if (isset($owner)&&$owner==$_SESSION['nombre']){
     $contenidoPrincipal .= "<a href='addProducto.php' class='square-button' style='background-color: gray; color: black;'>Add Product</a>";
     $contenidoPrincipal .="<br>";
@@ -105,9 +99,9 @@ if (isset($owner)&&$owner==$_SESSION['nombre']){
 }
 
 
-=======
+
 //$contenidoPrincipal .= '</div>';
->>>>>>> Stashed changes
+
 require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';
 
 ?>
