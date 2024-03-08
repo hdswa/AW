@@ -50,7 +50,7 @@ class Carrito{
     }
 
     public function Pagado() {
-        $this->$pagado=true;
+        $this->$pagado = true;
     }
 
     public function getPrecioFinal() {
