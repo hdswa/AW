@@ -81,12 +81,12 @@ class Carrito {
     public function save() {
         $conn = Aplicacion::getInstance()->getConexionBd();
         if ($this->existsInDB()) {
-            $query = sprintf("UPDATE carrito SET Item_list='%s', Pagado=%d WHERE Owner='%s'",
+            $query = sprintf("UPDATE Carrito SET Item_list='%s', Pagado=%d WHERE Owner='%s'",
                 $conn->real_escape_string($this->itemList),
                 $this->pagado,
                 $conn->real_escape_string($this->owner));
         } else {
-            $query = sprintf("INSERT INTO carrito (Owner, Item_list, Pagado) VALUES ('%s', '%s', %d)",
+            $query = sprintf("INSERT INTO Carrito (Owner, Item_list, Pagado) VALUES ('%s', '%s', %d)",
                 $conn->real_escape_string($this->owner),
                 $conn->real_escape_string($this->itemList),
                 $this->pagado);
