@@ -23,4 +23,4 @@ foreach ($cafeterias as $cafeteria) {
     $contenidoPrincipal .= "</div><br>";
 }
 $contenidoPrincipal .= '</div>';
-require __DIR__.'/includes/vistas/plantillas/plantilla.php';
+require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';

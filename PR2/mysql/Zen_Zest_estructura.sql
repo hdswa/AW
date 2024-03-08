@@ -5,15 +5,11 @@ DROP TABLE IF EXISTS Comentarios;
 DROP TABLE IF EXISTS Carrito;
 DROP TABLE IF EXISTS Productos;
 DROP TABLE IF EXISTS Cafeteria;
-<<<<<<< Updated upstream
-DROP TABLE IF EXISTS Usuario;
-=======
 DROP TABLE IF EXISTS Seguidores;
 DROP TABLE IF EXISTS Usuario;
 
 
 
->>>>>>> Stashed changes
 -- Tabla Usuario
 CREATE TABLE Usuario (
     Nombre VARCHAR(50) PRIMARY KEY,
@@ -76,3 +72,13 @@ CREATE TABLE Chat (
     FOREIGN KEY (Usuario1) REFERENCES Usuario(Nombre),
     FOREIGN KEY (Usuario2) REFERENCES Usuario(Nombre)
 );
+
+-- Tabla Seguidores
+CREATE TABLE Seguidores (
+    Seguidor VARCHAR(50),
+    Seguido VARCHAR(50),
+    FOREIGN KEY (Seguidor) REFERENCES Usuario(Nombre),
+    FOREIGN KEY (Seguido) REFERENCES Usuario(Nombre),
+    PRIMARY KEY (Seguidor, Seguido)
+);
+

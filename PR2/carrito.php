@@ -3,7 +3,7 @@
 require_once __DIR__.'/includes/config.php';
 require_once __DIR__.'/includes/clases/carrito.php';
 
-$tituloPagina = 'Título Cambiar';
+$tituloPagina = 'Carrito';
 $name= $_GET['name'];
 
 $carrito = Carrito::getCarritoByOwner($name);
@@ -36,6 +36,6 @@ if (is_a($carrito, 'Carrito')) {
   $contenidoPrincipal .="No tienes items en el carrito haga una compra";
 }
 
-require __DIR__.'/includes/vistas/plantillas/plantilla.php';
+require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';
 
-?>
+

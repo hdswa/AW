@@ -5,6 +5,7 @@ VALUES ('usuario1', 'usuario1@example.com', 'contraseña123', '/img/foto1.jpg', 
        ('usuario3', 'usuario3@example.com', 'contraseña789', '/img/foto3.jpg', 'cliente'),
        ('usuario4', 'usuario4@example.com', 'contraseñaabc', '/img/foto4.jpg', 'cliente'),
        ('usuario5', 'usuario5@example.com', 'contraseñadef', '/img/foto5.jpg', 'cliente');
+   
 
 -- Inserts para Cafeteria
 INSERT INTO Cafeteria (Nombre, Descripcion, owner, Categoria, Ubicacion,Foto, Cantidad_de_likes)
@@ -50,3 +51,14 @@ VALUES ('usuario1',
         ]'
         , FALSE
        );
+
+
+INSERT INTO Seguidores (Seguidor, Seguido)
+VALUES ('usuario1', 'usuario2'),
+       ('usuario2', 'usuario1'),
+       ('usuario3', 'usuario2'),
+       ('lucia', 'usuario1'),
+       ('lucia', 'usuario2'),
+       ('lucia', 'usuario3');
+
+
