@@ -28,6 +28,7 @@ VALUES ('usuario1', 'cafeteria1', 5, 'Excelente café y ambiente acogedor.'),
        ('usuario2', 'cafeteria1', 4, 'Buena variedad de bebidas, pero el servicio puede mejorar.'),
        ('usuario3', 'cafeteria1', 5, 'Me encanta este lugar, siempre vengo a estudiar aquí.'),
        ('profe', 'cafeteria1', 5, 'Servicio atento y amable. Muy recomendable.'),
+        ('profe', 'cafeteria2', 3, 'Tardaron mucho en traer la comida.'),
        ('maria', 'cafeteria1', 5, 'Siempre que vengo a esta cafetería tengo una buena experiencia.'),
        ('lucia', 'cafeteria1', 4, 'Bien decorado, pero pedí un flat white y no sabían como hacerlo.');
 
