@@ -1,6 +1,6 @@
 -- Inserts para Usuario
 INSERT INTO Usuario (Nombre, Email, Password_hash, Foto_de_perfil, Rol)
-VALUES ('profe',    'profe@example.com',    '$2y$10$a0EJlruBOC/S0RicOb5mneLoRQvDPXhjBDO0LpSdp58CnvIblJnXW', '/img/perfiles/profe', 'cliente'),
+VALUES ('profe',    'profe@example.com',    '$2y$10$a0EJlruBOC/S0RicOb5mneLoRQvDPXhjBDO0LpSdp58CnvIblJnXW', '/img/perfiles/profe.jpg', 'cliente'),
        ('lucia',    'lucia@example.com',    '$2y$10$Lwgd1aHNKQeSR0APjDugtOqoLSSmb4zflF8lzz2VW0bThO7vhUnsW', '/img/perfiles/lucia_fotopersonal.jpg', 'cliente'),
        ('maria',    'maria@example.com',    '$2y$10$uLQGjf5eWq4YTvsOHtUMFe8gOU0IFvtsh5dmgjR68ukkekzzMO7FS', '/img/perfiles/maria_fotopersonal.jpg', 'cliente'),
        ('usuario1', 'usuario1@example.com', '$2y$10$8CiAtMxhTmVAwVG8NPPN8uzQkZofRB4qz3y2EvzromhllHBAobJWW', '/img/foto1.jpg', 'cliente'),
