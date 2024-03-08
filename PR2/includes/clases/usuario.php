@@ -161,7 +161,7 @@ class Usuario {
 
         // Comprobar si existe una foto de perfil, de lo contrario, usar una predeterminada
         $rutaFoto = $this->foto ? $this->foto : './img/basic/user.png';
-        $perfil .= "<img src='" . htmlspecialchars($rutaFoto) . "' alt='Foto de perfil' style='width: 200px; height: 200px;' />";
+        $perfil .= "<img src='" . htmlspecialchars($rutaFoto) . "' alt='Foto de perfil' style='width: 200px; height: 200px;' class='imagen_perfil' />";
 
         //Formulario para modificar la foto de perfil del usuario
         $perfil .= <<<HTML
@@ -178,7 +178,7 @@ class Usuario {
         // Mostrar el email
         $perfil .= "<p>Email: " . htmlspecialchars($this->email) . "</p>";
         
-        $perfil .= "<p>Rol: " .$rutaFoto. "</p>";
+       
         // Finalizar el HTML
         $perfil .= "</div>";
 

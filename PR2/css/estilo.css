@@ -191,8 +191,49 @@ ol li {
 .comentario {
     background-color: #90c0da; /* Color de fondo claro para la div */
     border-radius: 8px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno para no tocar los bordes */
+    margin: 10px 0; /* Margen superior e inferior para separar los comentarios */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+}
+
+.cafeteria {
+    background-color: #b7c4d6; /* Color de fondo claro para la div */
+    border-radius: 8px; /* Bordes redondeados */
     padding: 20px; /* Espaciado interno para no tocar los bordes */
     margin: 10px 0; /* Margen superior e inferior para separar los comentarios */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
 }
+
+
+.productos {
+    background-color: #b7c4d6;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Nuevo selector para el contenedor de items */
+.cafeteria-item {
+    background-color: #dce1e7;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.perfil-usuario{
+    background-color: #b7c4d6; /* Color de fondo claro para la div */
+    border-radius: 8px; /* Bordes redondeados */
+    padding : 10px;
+    margin : 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+    
+}
+
+.imagen_perfil {
+    align-content: center;
+    width: 100px; /* Establece el ancho de la imagen */
+    height: 100px; /* Establece el alto de la imagen para que sea igual al ancho */
+    border-radius: 50%; /* Esto hace que los bordes de la imagen sean completamente redondos */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse, útil para imágenes no cuadradas */
+}
+
 
