@@ -1,33 +1,51 @@
-<<<<<<< Updated upstream
 <?php
 
-class Chat {
-    private $Usuario1;
-    private $Usuario2;
+class Comentarios {
+    private $ID;
+    private $Usuario;
+    private $Cafeteria_Comentada;
+    private $Valoracion;
     private $Mensaje;
-    private $Tiempo_de_envio;
 
-    public function __construct($Usuario1, $Usuario2, $Mensaje, $Tiempo_de_envio) {
-        $this->Usuario1 = $Usuario1;
-        $this->Usuario2 = $Usuario2;
+    public function __construct($ID, $Usuario, $Cafeteria_Comentada, $Valoracion, $Mensaje) {
+        $this->ID = $ID;
+        $this->Usuario = $Usuario;
+        $this->Cafeteria_Comentada = $Cafeteria_Comentada;
+        $this->Valoracion = $Valoracion;
         $this->Mensaje = $Mensaje;
-        $this->Tiempo_de_envio = $Tiempo_de_envio;
     }
 
-    public function getUsuario1() {
-        return $this->Usuario1;
+    // Getters and Setters
+    public function getID() {
+        return $this->ID;
     }
 
-    public function setUsuario1($Usuario1) {
-        $this->Usuario1 = $Usuario1;
+    public function setID($ID) {
+        $this->ID = $ID;
     }
 
-    public function getUsuario2() {
-        return $this->Usuario2;
+    public function getUsuario() {
+        return $this->Usuario;
     }
 
-    public function setUsuario2($Usuario2) {
-        $this->Usuario2 = $Usuario2;
+    public function setUsuario($Usuario) {
+        $this->Usuario = $Usuario;
+    }
+
+    public function getCafeteriaComentada() {
+        return $this->Cafeteria_Comentada;
+    }
+
+    public function setCafeteriaComentada($Cafeteria_Comentada) {
+        $this->Cafeteria_Comentada = $Cafeteria_Comentada;
+    }
+
+    public function getValoracion() {
+        return $this->Valoracion;
+    }
+
+    public function setValoracion($Valoracion) {
+        $this->Valoracion = $Valoracion;
     }
 
     public function getMensaje() {
@@ -37,66 +55,7 @@ class Chat {
     public function setMensaje($Mensaje) {
         $this->Mensaje = $Mensaje;
     }
-
-    public function getTiempoDeEnvio() {
-        return $this->Tiempo_de_envio;
-    }
-
-    public function setTiempoDeEnvio($Tiempo_de_envio) {
-        $this->Tiempo_de_envio = $Tiempo_de_envio;
-    }
-
 }
 
-=======
-<?php
 
-class Chat {
-    private $Usuario1;
-    private $Usuario2;
-    private $Mensaje;
-    private $Tiempo_de_envio;
-
-    public function __construct($Usuario1, $Usuario2, $Mensaje, $Tiempo_de_envio) {
-        $this->Usuario1 = $Usuario1;
-        $this->Usuario2 = $Usuario2;
-        $this->Mensaje = $Mensaje;
-        $this->Tiempo_de_envio = $Tiempo_de_envio;
-    }
-
-    public function getUsuario1() {
-        return $this->Usuario1;
-    }
-
-    public function setUsuario1($Usuario1) {
-        $this->Usuario1 = $Usuario1;
-    }
-
-    public function getUsuario2() {
-        return $this->Usuario2;
-    }
-
-    public function setUsuario2($Usuario2) {
-        $this->Usuario2 = $Usuario2;
-    }
-
-    public function getMensaje() {
-        return $this->Mensaje;
-    }
-
-    public function setMensaje($Mensaje) {
-        $this->Mensaje = $Mensaje;
-    }
-
-    public function getTiempoDeEnvio() {
-        return $this->Tiempo_de_envio;
-    }
-
-    public function setTiempoDeEnvio($Tiempo_de_envio) {
-        $this->Tiempo_de_envio = $Tiempo_de_envio;
-    }
-
-}
-
->>>>>>> Stashed changes
 ?>
