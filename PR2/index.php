@@ -10,31 +10,35 @@ require_once __DIR__.'/includes/clases/comentarios.php';
 require_once __DIR__.'/includes/clases/usuario.php';
 
 $tituloPagina = 'Inicio';
-$nombreUsuario = $_SESSION['nombre']; // Asegúrate de que el usuario está logueado
-
-$user = Usuario::buscaUsuario($nombreUsuario);
-// Obtener los usuarios seguidos por el usuario actual
-$usuariosSeguidos = $user->encontrarSeguidos();
 
 $contenidoPrincipal = "<h1>Inicio</h1>";
+if (isset($_SESSION['nombre'])) {
+    $nombreUsuario = $_SESSION['nombre'];
+    $user = Usuario::buscaUsuario($nombreUsuario);
+    // Obtener los usuarios seguidos por el usuario actual
+    $usuariosSeguidos = $user->encontrarSeguidos();
 
-if ($usuariosSeguidos == []) {
-    $contenidoPrincipal .= "<p>Todavia no sigues a nadie.</p>";
-} else {
+   
+    if ($usuariosSeguidos == []) {
+        $contenidoPrincipal .= "<p>Todavia no sigues a nadie.</p>";
+    } else {
 
-    // Obtener los comentarios de esos usuarios
-    $comentarios = Comentarios::getComentariosDeSeguidos($usuariosSeguidos);
+        // Obtener los comentarios de esos usuarios
+        $comentarios = Comentarios::getComentariosDeSeguidos($usuariosSeguidos);
 
 
-    $contenidoPrincipal = "<h2>Mira los ultimos comentarios realizados por tus amigos </h2>";
+        $contenidoPrincipal = "<h2>Mira los ultimos comentarios realizados por tus amigos </h2>";
 
-    foreach ($comentarios as $comentario) {
-        $contenidoPrincipal .= "<div class='comentario'>";
-        $contenidoPrincipal .= "<h2>" . htmlspecialchars($comentario->getUsuario()) . "</h2>";
-        $contenidoPrincipal .= "<p><b>Valoración:</b> " . htmlspecialchars($comentario->getValoracion()) . "/5</p>";
-        $contenidoPrincipal .= "<p><b>Comentario:</b> " . htmlspecialchars($comentario->getMensaje()) . "</p>";
-        $contenidoPrincipal .= "</div>";
+        foreach ($comentarios as $comentario) {
+            $contenidoPrincipal .= "<div class='comentario'>";
+            $contenidoPrincipal .= "<h2>" . htmlspecialchars($comentario->getUsuario()) . "</h2>";
+            $contenidoPrincipal .= "<p><b>Valoración:</b> " . htmlspecialchars($comentario->getValoracion()) . "/5</p>";
+            $contenidoPrincipal .= "<p><b>Comentario:</b> " . htmlspecialchars($comentario->getMensaje()) . "</p>";
+            $contenidoPrincipal .= "</div>";
+        }
     }
+}else {
+    $contenidoPrincipal =  "<p>Por favor, <a href='login.php'>inicia sesión</a> para poder acceder a tu perfil.</p>";
 }
 
 require __DIR__.'/includes/vistas/plantillas/plantilla.php';
