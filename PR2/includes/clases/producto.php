@@ -35,6 +35,7 @@ class Producto {
         return $productos;
     }
 
+<<<<<<< Updated upstream
     public function saveProducto(){
 
         $conn = Aplicacion::getInstance()->getConexionBd();
@@ -68,6 +69,31 @@ class Producto {
         }
         return $producto;
     }
+=======
+    public function añadirProducto() {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        
+        $query = "INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Foto, Descripcion) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        
+        if ($stmt) {
+            $stmt->bind_param("ssdss", $this->nombre, $this->cafeteriaOwner, $this->precio, $this->foto, $this->descripcion);
+            if ($stmt->execute()) {
+                $this->id = $stmt->insert_id;
+                $stmt->close();
+                return true;
+            } else {
+                error_log("Error al insertar el producto: " . $stmt->error);
+                $stmt->close();
+                return false;
+            }
+        } else {
+            error_log("Error al preparar la declaración: " . $conn->error);
+            return false;
+        }
+    }
+    
+>>>>>>> Stashed changes
 
     public function getId() {
         return $this->id;

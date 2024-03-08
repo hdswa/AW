@@ -78,8 +78,18 @@ foreach ($productos as $producto) {
     }
     $contenidoPrincipal .= "</div><br>";
     //boton para añadir
+    // Formulario para añadir al carrito
+    $contenidoPrincipal .= <<<HTML
+    <form action="añadirAlCarrito.php" method="post">
+        <input type="hidden" name="idProducto" value="$idProducto">
+        <input type="submit" value="Añadir al carrito">
+    </form>
+    HTML;
+
+    $contenidoPrincipal .= "</div><br>"; 
 }
 
+<<<<<<< Updated upstream
 $contenidoPrincipal .="<h3>Buton para añadir al carrito</h3>";
 $contenidoPrincipal .= '</div>';
 $contenidoPrincipal .="<br>";
@@ -95,6 +105,9 @@ if (isset($owner)&&$owner==$_SESSION['nombre']){
 }
 
 
+=======
+//$contenidoPrincipal .= '</div>';
+>>>>>>> Stashed changes
 require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';
 
 ?>
