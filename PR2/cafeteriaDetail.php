@@ -22,7 +22,7 @@ if (isset($_GET['owner'])){
         $tituloPagina = 'Cafeteria no encontrada';
         $contenidoPrincipal = <<<EOS
         <h1>Vaya! Parece que aún no has creado tu propia cafetería...</h1>
-        <p>Para comenzar, porfavor, rellena el siguiente formulario:</p>
+        <p>Para comenzar, por favor, rellena el siguiente formulario:</p>
         <form action="procesarAddCafeteria.php" method="post" enctype="multipart/form-data">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br>
