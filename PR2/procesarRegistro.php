@@ -25,7 +25,7 @@ if ( ! $username || empty($username=trim($username)) || mb_strlen($username) < 5
 }
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ( ! $email || empty($email=trim($email)) || mb_strlen($email) < 5) {
-	$erroresFormulario['username'] = 'El email tiene que tener una longitud de al menos 5 caracteres.';
+	$erroresFormulario['email'] = 'El email tiene que tener una longitud de al menos 5 caracteres.';
 }
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ( ! $password || empty($password=trim($password)) || mb_strlen($password) < 5 ) {
@@ -49,14 +49,14 @@ if (count($erroresFormulario) === 0) {//register
 	}
 	
 }
-
+/** 
 if ($_SESSION["login"] == true) {
     $mensaje = "Bienvenido/a {$_SESSION["nombre"]}";
     echo "<meta http-equiv='refresh' content='0; url=index.php?mensaje=" . $mensaje . "'>";
 } else {
     $mensaje = "Usuario erróneo";
     echo "<meta http-equiv='refresh' content='0; url=login.php?mensaje=" . $mensaje . "'>";
-}
+}*/
 
 $tituloPagina = 'Registro';
 
@@ -69,22 +69,22 @@ $erroresGlobalesFormulario
 <fieldset>
 	<legend>Datos para el registro</legend>
 	<div>
-		<label for="username">email de usuario:</label>
+		<label for="username">Usuario:</label>
 		<input id="username" type="text" name="username" value="$username" />
 		{$erroresCampos['username']}
 	</div>
 	<div>
-		<label for="email">email:</label>
+		<label for="email">Email:</label>
 		<input id="email" type="text" name="email" value="$email" />
 		{$erroresCampos['email']}
 	</div>
 	<div>
-		<label for="password">Password:</label>
+		<label for="password">Contraseña:</label>
 		<input id="password" type="password" name="password" value="$password" />
 		{$erroresCampos['password']}
 	</div>
 	<div>
-		<label for="password2">Reintroduce el password:</label>
+		<label for="password2">Reintroduce la contraseña:</label>
 		<input id="password2" type="password" name="password2" value="$password2" />
 		{$erroresCampos['password2']}
 	</div>

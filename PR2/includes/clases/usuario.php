@@ -33,7 +33,7 @@ class Usuario {
                 print("Ha entreado en if");
             } else {
                 print("ha entredo en else");
-                $query = sprintf("INSERT INTO Usuario(Nombre, Email, password,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
+                $query = sprintf("INSERT INTO Usuario(Nombre, Email, Password_hash, Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s', '%s')"
                     , $conn->real_escape_string($username)
                     , $conn->real_escape_string($email)
                     , self::hashcontraseña($contraseña)
@@ -96,7 +96,7 @@ class Usuario {
         if ($rs) {
             $fila = $rs->fetch_assoc();
             if($fila){
-                return password_verify($contraseña, $fila['Password']); 
+                return password_verify($contraseña, $fila['Password_hash']); 
             }
             $rs->free();
         } else {
