@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__.'/includes/clases/cafeteria.php';
-
 require_once __DIR__.'/includes/config.php';
 
 $owner = $_SESSION['nombre'];
@@ -8,10 +7,10 @@ $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $categoria = $_POST['categoria'];
 $ubicacion = $_POST['ubicacion'];
-$archivo = $_POST['foto'];
+
 
 $directorioDestino = __DIR__ . '/img/cafeterias/';
-$rutaCarpeta = "./img/cafeterias/";
+$rutaCarpeta = "/img/cafeterias/";
 
 $archivo = $_FILES['foto'];
     
@@ -20,8 +19,8 @@ $archivo = $_FILES['foto'];
         // Define la ruta donde se almacenará la imagen
         
         $nombreArchivo = basename($archivo['name']);
-        $rutaArchivo = $directorioDestino . $name . "_" . $nombreArchivo;
-        $ruta_DB = $rutaCarpeta . $name . "_" . $nombreArchivo;
+        $rutaArchivo = $directorioDestino . $nombre . "_" . $nombreArchivo;
+        $ruta_DB = $rutaCarpeta . $nombre . "_" . $nombreArchivo;
         // Verifica el tipo de archivo (asegúrate de que sea una imagen)
         $tipoArchivo = strtolower(pathinfo($rutaArchivo, PATHINFO_EXTENSION));
         if (in_array($tipoArchivo, ['jpg', 'jpeg', 'png', 'gif'])) {
@@ -44,7 +43,7 @@ $archivo = $_FILES['foto'];
            
         }
     
+// header('Location: index.php');
+
 header('Location: index.php');
-
-
 ?>
