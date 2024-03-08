@@ -33,7 +33,7 @@ class Usuario {
                 print("Ha entreado en if");
             } else {
                 print("ha entredo en else");
-                $query = sprintf("INSERT INTO Usuario(Nombre, Email, password,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
+                $query = sprintf("INSERT INTO Usuario(Nombre,Email, password,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
                     , $conn->real_escape_string($username)
                     , $conn->real_escape_string($email)
                     , self::hashcontraseña($contraseña)
@@ -71,18 +71,17 @@ class Usuario {
     public static function buscaUsuario($nombre)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT * FROM Usuario U WHERE U.Nombre='%s'", $conn->real_escape_string($nombre));
+        $query = sprintf("SELECT * FROM usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil']);
+                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil'], $fila['Rol']);
                 $result = $user;
             }
             $rs->free();
         } else {
-            $result = false;    
             error_log("Error BD ({$conn->errno}): {$conn->error}");
         }
         return $result;
@@ -91,7 +90,7 @@ class Usuario {
     public function compruebaContraseña($nombre, $contraseña)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT * FROM Usuario U WHERE U.Nombre='%s'", $conn->real_escape_string($nombre));
+        $query = sprintf("SELECT * FROM usuario U WHERE U.nombre='%s'", $conn->real_escape_string($nombre));
         $rs = $conn->query($query);
         if ($rs) {
             $fila = $rs->fetch_assoc();
@@ -106,6 +105,8 @@ class Usuario {
         return false;
     }
 
+<<<<<<< Updated upstream
+=======
     public function encontrarSeguidos() {
         $conn = Aplicacion::getInstance()->getConexionBd();
         $seguidos = [];
@@ -162,7 +163,7 @@ class Usuario {
         // Comprobar si existe una foto de perfil, de lo contrario, usar una predeterminada
         $rutaFoto = $this->foto ? $this->foto : './img/basic/user.png';
         $perfil .= "<img src='" . htmlspecialchars($rutaFoto) . "' alt='Foto de perfil' style='width: 200px; height: 200px;' />";
-        
+
         //Formulario para modificar la foto de perfil del usuario
         $perfil .= <<<HTML
         <form action="procesarImagenUser.php" method="post" enctype="multipart/form-data">
@@ -178,7 +179,7 @@ class Usuario {
         // Mostrar el email
         $perfil .= "<p>Email: " . htmlspecialchars($this->email) . "</p>";
         
- 
+        $perfil .= "<p>Rol: " .$rutaFoto. "</p>";
         // Finalizar el HTML
         $perfil .= "</div>";
 
@@ -186,6 +187,7 @@ class Usuario {
     }
     
     
+>>>>>>> Stashed changes
     public function getNombre() {
         return $this->username;
     }
@@ -195,7 +197,7 @@ class Usuario {
     }
 
     public function getpassword() {
-        return $this->contraseña;
+        return $this->password;
     }
 
     public function getFotoDePerfil() {
@@ -215,27 +217,11 @@ class Usuario {
     }
 
     public function setpassword($password) {
-        $this->contraseña = $password;
+        $this->password = $password;
     }
 
     public function setFotoDePerfil($Foto_de_perfil) {
         $this->foto = $Foto_de_perfil;
-
-            // Obtén la conexión a la base de datos
-        $conn = Aplicacion::getInstance()->getConexionBd();
-
-        // Prepara la consulta SQL para actualizar la ruta de la foto de perfil
-        $query = sprintf("UPDATE Usuario U SET U.Foto_de_perfil='%s' WHERE U.Nombre='%s'",
-                        $conn->real_escape_string($Foto_de_perfil),
-                        $conn->real_escape_string($this->username));
-
-        // Ejecuta la consulta
-        if ($conn->query($query) === TRUE) {
-            return true; // Actualización exitosa
-        } else {
-            error_log("Error al actualizar la foto de perfil: " . $conn->error);
-            return false; // Error al actualizar
-        }
     }
 
     public function setRol($rol) {

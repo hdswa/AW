@@ -13,6 +13,7 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
 		<li><a href="<?= RUTA_APP ?>/index.php">Inicio</a></li>
 		<li><a href="<?= RUTA_APP ?>/seguidos.php">Seguidos</a></li>
 		<li><a href="<?= RUTA_APP ?>/cafeterias.php">Cafeterias</a></li>
+		
 		<?php
 			if ($status == 0) {	
 				echo ' <a href="./login.php">
@@ -23,7 +24,7 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
 				Carrito
 				</a> <br> <br>';
 
-				echo ' <a href="' . RUTA_APP . '/cafeteriaDetail.php?name=' . (isset($_SESSION['nombre']) ? urlencode($_SESSION['nombre']) : '') . '">
+				echo ' <a href="' . RUTA_APP . '/cafeteriaDetail.php?owner=' . (isset($_SESSION['nombre']) ? urlencode($_SESSION['nombre']) : '') . '">
 				Mi cafeteria
 				</a> <br> <br>';
 				echo ' <a href="./logout.php">

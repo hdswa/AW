@@ -65,6 +65,7 @@ nav {
 .icons img {
     width: 30px;
     height: auto;
+    float:right;
 }
 
 .container {
