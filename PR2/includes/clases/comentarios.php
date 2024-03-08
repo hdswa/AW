@@ -15,6 +15,26 @@ class Comentarios {
         $this->Mensaje = $Mensaje;
     }
 
+    public static function getComentariosDeSeguidos($usuariosSeguidos) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $usuariosSeguidos = array_map([$conn, 'real_escape_string'], $usuariosSeguidos);
+        $inQuery = "'" . join("','", $usuariosSeguidos) . "'";
+        
+        $query = "SELECT * FROM Comentarios WHERE Usuario IN ($inQuery) ORDER BY ID DESC";
+    
+        $result = $conn->query($query);
+        $comentarios = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $comentarios[] = new Comentarios($row['ID'], $row['Usuario'], $row['Cafeteria_Comentada'], $row['Valoracion'], $row['Mensaje']);
+            }
+            $result->free();
+        }
+        return $comentarios;
+    }
+    
+
+
     // Getters and Setters
     public function getID() {
         return $this->ID;
