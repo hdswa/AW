@@ -41,7 +41,7 @@ if (isset($_SESSION['nombre'])) {
             $foto = htmlspecialchars($usuarioSeguido->getFotoDePerfil());
 
             $contenidoPrincipal .= "<div class='usuario-seguido-item'>";
-            $contenidoPrincipal .= "<img src='$foto' alt='Foto de perfil de $nombre' style='max-width: 100px; max-height: 100px;'>";
+            $contenidoPrincipal .= "<img src='$foto' alt='Foto de perfil de $nombre' style='max-width: 100px; max-height: 100px;' class='imagen_usuario'/>";
             $contenidoPrincipal .= "<h2>$nombre</h2>";
             $contenidoPrincipal .= "<p>$email</p>";
 
