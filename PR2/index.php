@@ -15,18 +15,26 @@ $nombreUsuario = $_SESSION['nombre']; // Asegúrate de que el usuario está logu
 $user = Usuario::buscaUsuario($nombreUsuario);
 // Obtener los usuarios seguidos por el usuario actual
 $usuariosSeguidos = $user->encontrarSeguidos();
-// Obtener los comentarios de esos usuarios
-$comentarios = Comentarios::getComentariosDeSeguidos($usuariosSeguidos);
 
 $contenidoPrincipal = "<h1>Inicio</h1>";
-$contenidoPrincipal = "<h2>Mira los ultimos comentarios realizados por tus amigos </h2>";
 
-foreach ($comentarios as $comentario) {
-    $contenidoPrincipal .= "<div class='comentario'>";
-    $contenidoPrincipal .= "<h2>" . htmlspecialchars($comentario->getUsuario()) . "</h2>";
-    $contenidoPrincipal .= "<p><b>Valoración:</b> " . htmlspecialchars($comentario->getValoracion()) . "/5</p>";
-    $contenidoPrincipal .= "<p><b>Comentario:</b> " . htmlspecialchars($comentario->getMensaje()) . "</p>";
-    $contenidoPrincipal .= "</div>";
+if ($usuariosSeguidos == []) {
+    $contenidoPrincipal .= "<p>Todavia no sigues a nadie.</p>";
+} else {
+
+    // Obtener los comentarios de esos usuarios
+    $comentarios = Comentarios::getComentariosDeSeguidos($usuariosSeguidos);
+
+
+    $contenidoPrincipal = "<h2>Mira los ultimos comentarios realizados por tus amigos </h2>";
+
+    foreach ($comentarios as $comentario) {
+        $contenidoPrincipal .= "<div class='comentario'>";
+        $contenidoPrincipal .= "<h2>" . htmlspecialchars($comentario->getUsuario()) . "</h2>";
+        $contenidoPrincipal .= "<p><b>Valoración:</b> " . htmlspecialchars($comentario->getValoracion()) . "/5</p>";
+        $contenidoPrincipal .= "<p><b>Comentario:</b> " . htmlspecialchars($comentario->getMensaje()) . "</p>";
+        $contenidoPrincipal .= "</div>";
+    }
 }
 
 require __DIR__.'/includes/vistas/plantillas/plantilla.php';
