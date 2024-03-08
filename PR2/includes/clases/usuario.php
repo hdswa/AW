@@ -77,7 +77,7 @@ class Usuario {
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil']);
+                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password_hash'], $fila['Foto_de_perfil']);
                 $result = $user;
             }
             $rs->free();
@@ -110,12 +110,12 @@ class Usuario {
         $conn = Aplicacion::getInstance()->getConexionBd();
         $seguidos = [];
     
-        $query = sprintf("SELECT U.Nombre, U.Email, U.Password, U.Foto_de_perfil FROM Usuario U INNER JOIN Seguidores S ON U.Nombre = S.Seguido WHERE S.Seguidor='%s'", $conn->real_escape_string($this->username));
+        $query = sprintf("SELECT U.Nombre, U.Email, U.Password_hash, U.Foto_de_perfil FROM Usuario U INNER JOIN Seguidores S ON U.Nombre = S.Seguido WHERE S.Seguidor='%s'", $conn->real_escape_string($this->username));
     
         $rs = $conn->query($query);
         if ($rs) {
             while ($fila = $rs->fetch_assoc()) {
-                $usuario = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil']);
+                $usuario = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password_hash'], $fila['Foto_de_perfil']);
                 array_push($seguidos, $usuario);
             }
             $rs->free();
