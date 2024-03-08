@@ -3,9 +3,9 @@ function mostrarSaludo() {
 	$rutaApp = RUTA_APP;
 	$html='';
 	if (isset($_SESSION["login"]) && ($_SESSION["login"]===true)) {
-		$html = "Bienvenido, {$_SESSION['nombre']} <a href='{$rutaApp}/logout.php'>(salir)</a>";
+		$html = "Bienvenido, {$_SESSION['nombre']} <a href='{$rutaApp}/logout.php'>Cerrar sesión</a>";
 	} else {
-		$html = "Usuario desconocido. <a href='{$rutaApp}/login.php'>Login</a> <a href='{$rutaApp}/registro.php'>Registro</a>";
+		$html = "Usuario desconocido. <a href='{$rutaApp}/login.php'>Iniciar sesión</a> <a href='{$rutaApp}/registro.php'>Registro</a>";
 	}
 	return $html;
 }

@@ -21,20 +21,20 @@ if (isset($_GET['owner'])){
     if ($cafeteria==false){
         $tituloPagina = 'Cafeteria no encontrada';
         $contenidoPrincipal = <<<EOS
-        <h1>No tienes una cafeteria propia</h1>
-        <p>Para montar tu propia cafeteria rellane el siguiente formulario</p>
+        <h1>Vaya! Parece que aún no has creado tu propia cafetería...</h1>
+        <p>Para comenzar, porfavor, rellena el siguiente formulario:</p>
         <form action="procesarAddCafeteria.php" method="post" enctype="multipart/form-data">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br>
-            <label for="descripcion">Descripcion:</label>
+            <label for="descripcion">Descripción:</label>
             <input type="text" id="descripcion" name="descripcion" required><br>
-            <label for="categoria">Categoria:</label>
+            <label for="categoria">Categoría:</label>
             <input type="text" id="categoria" name="categoria" required><br>
-            <label for="ubicacion">Ubicacion:</label>
+            <label for="ubicacion">Ubicación:</label>
             <input type="text" id="ubicacion" name="ubicacion" required><br>
             <label for="foto">Foto:</label>
             <input type='file' name='foto' required>
-            <input type="submit" value="Crear cafeteria">
+            <input type="submit" value="Crea tu cafetería">
         </form>
         EOS;
         require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';

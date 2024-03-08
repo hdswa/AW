@@ -17,7 +17,7 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
 		<?php
 			if ($status == 0) {	
 				echo ' <a href="./login.php">
-							Iniciar Sesión
+							Iniciar sesión
 							</a> <br> <br>';
 			} else {
 				echo ' <a href="' . RUTA_APP . '/carrito.php?name=' . (isset($_SESSION['nombre']) ? urlencode($_SESSION['nombre']) : '') . '">
@@ -25,10 +25,10 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
 				</a> <br> <br>';
 
 				echo ' <a href="' . RUTA_APP . '/cafeteriaDetail.php?owner=' . (isset($_SESSION['nombre']) ? urlencode($_SESSION['nombre']) : '') . '">
-				Mi cafeteria
+				Mi cafetería
 				</a> <br> <br>';
 				echo ' <a href="./logout.php">
-							Cerrar Sesión
+							Cerrar sesión
 							</a> <br> <br> ';
 			}
 
