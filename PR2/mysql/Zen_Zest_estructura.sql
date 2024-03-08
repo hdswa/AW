@@ -15,6 +15,7 @@ CREATE TABLE Usuario (
     Nombre VARCHAR(50) PRIMARY KEY,
     Email VARCHAR(100),
     Password VARCHAR(100),
+    Password_hash VARCHAR(255), -- Nueva columna para almacenar las contraseñas hash
     Foto_de_perfil VARCHAR(255),
     Rol VARCHAR(50)
 );

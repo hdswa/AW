@@ -1,14 +1,16 @@
 -- Inserts para Usuario
-INSERT INTO Usuario (Nombre, Email, password, Foto_de_perfil, Rol)
-VALUES ('usuario1', 'usuario1@example.com', 'contraseña123', '/img/foto1.jpg', 'cliente'),
-       ('usuario2', 'usuario2@example.com', 'contraseña456', '/img/foto2.jpg', 'cliente'),
-       ('usuario3', 'usuario3@example.com', 'contraseña789', '/img/foto3.jpg', 'cliente'),
-       ('usuario4', 'usuario4@example.com', 'contraseñaabc', '/img/foto4.jpg', 'cliente'),
-       ('usuario5', 'usuario5@example.com', 'contraseñadef', '/img/foto5.jpg', 'cliente');
-   
+-- Inserts para Usuario
+INSERT INTO Usuario (Nombre, Email, Password, Password_hash, Foto_de_perfil, Rol)
+VALUES ('lucia', 'lucia@example.com', 'luciapass', '$2y$10$Lwgd1aHNKQeSR0APjDugtOqoLSSmb4zflF8lzz2VW0bThO7vhUnsW', '/img/perfiles/lucia_fotopersonal.jpg', 'cliente'),
+       ('usuario1', 'usuario1@example.com', 'contraseña123', '$2y$10$TFDB0sNW2zFLfOPN3UEXwe9GqHyoh9b6o..McCkx2NE6oKyxBmFoS', '/img/foto1.jpg', 'cliente'),
+       ('usuario2', 'usuario2@example.com', 'contraseña456', '$2y$10$ivM1stzK.Rp4JYUdUzO8z.i6dVzBIXBhX9IQfEHX12I43VnQw06wW', '/img/foto2.jpg', 'cliente'),
+       ('usuario3', 'usuario3@example.com', 'contraseña789', '$2y$10$KwWWiFAa8NU55.Ew4VDrCe7cAbPTLj6L8ULoF2OZBLf3NlveFZAmG', '/img/foto3.jpg', 'cliente'),
+       ('usuario4', 'usuario4@example.com', 'contraseñaabc', '$2y$10$oHRGWhw3E8lOwZcFy8LdweJ6l7GQg4dV6nRYuYRH0h99oA3Q5OtHq', '/img/foto4.jpg', 'cliente'),
+       ('usuario5', 'usuario5@example.com', 'contraseñadef', '$2y$10$BmeAKp0jg.sZf0IjDfnuWu4wEHF8ycsv8UbXfnNQv8kLm6hVg9dE.', '/img/foto5.jpg', 'cliente');
+
 
 -- Inserts para Cafeteria
-INSERT INTO Cafeteria (Nombre, Descripcion, owner, Categoria, Ubicacion,Foto, Cantidad_de_likes)
+INSERT INTO Cafeteria (Nombre, Descripcion, Owner, Categoria, Ubicacion,Foto, Cantidad_de_likes)
 VALUES ('cafeteria1', 'Cafetería acogedora con una amplia variedad de bebidas y aperitivos.', 'usuario1', 'Café', 'Calle Principal 123','/img/basic/logo.png', 100),
        ('cafeteria2', 'Cafetería moderna especializada en café de especialidad.', 'usuario2', 'Café', 'Avenida Central 456','/img/basic/logo.png', 150),
        ('cafeteria3', 'Cafetería con ambiente relajado y wifi gratuito.', 'usuario3', 'Café', 'Plaza del Sol 789','/img/basic/logo.png', 80),
@@ -26,7 +28,7 @@ VALUES ('usuario1', 'cafeteria1', 5, 'Excelente café y ambiente acogedor.'),
        ('usuario3', 'cafeteria1', 5, 'Me encanta este lugar, siempre vengo a estudiar aquí.');
 
 -- Inserts para Productos (20 productos repartidos entre las diferentes cafeterias)
-INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Foto,Descripcion)
+INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Foto, Descripcion)
 VALUES ('Café Latte', 'cafeteria1', 2.50,'/img/basic/logo.png', 'Café espresso con leche caliente y espuma de leche.'),
        ('Capuchino', 'cafeteria1', 3.00,'/img/basic/logo.png', 'Café espresso con leche vaporizada y espuma de leche.'),
        ('Té Verde Matcha', 'cafeteria2', 3.50,'/img/basic/logo.png', 'Té verde japonés en polvo con leche caliente o fría.'),
