@@ -1,0 +1,244 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+p {
+    margin-bottom: 10px;
+
+}
+
+div#contenedor {
+	width: 100%;
+	margin: auto;
+	border: 1px solid rgb(0, 0, 0);
+	background-color: #aaaaaa;
+	margin-top: 30px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+	margin-top: 1px;
+}
+
+.logo img {
+    width: 95px;
+    height: auto;
+	background-color: transparent;
+
+}
+
+ a, header a:visited {
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+header a:hover {
+	color: red;
+	font-weight: bold;
+	text-decoration: underline;
+} 
+
+
+nav {
+	padding: 10px;
+	float: left;
+	width: 170px;
+	height: 400px;
+	background-color: #dddddd;
+}
+
+.icons a {
+    margin-left: 1px;
+}
+
+.icons img {
+    width: 30px;
+    height: auto;
+    float:right;
+}
+
+.container {
+	display: flex;
+}
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 20px;
+}
+
+main {
+	padding: 10px;
+	float: left;
+	min-height: 600px;
+	flex:1;
+	background-color: white;
+}
+
+
+th, td, table {
+    border: 1px solid black;
+}
+
+* {
+    margin: 10;
+    padding: 100;
+    box-sizing: border-box;
+}
+
+
+form {
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: #eff0f1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+/* listas */
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ol li {
+    display: inline;
+    margin-right: 10px;
+}
+
+#sidebarIzq {
+    width: 200px;
+    background-color: #b6d8f2;
+    padding: 20px;
+	margin-left: 1px;
+}
+
+#sidebarIzq ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+#sidebarIzq ul li {
+    margin-bottom: 10px;
+}
+
+#sidebarIzq ul li a {
+    display: block;
+    text-decoration: plum;
+    color: #333;
+}
+
+.mensaje {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+.comentario {
+    background-color: #90c0da; /* Color de fondo claro para la div */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno para no tocar los bordes */
+    margin: 10px 0; /* Margen superior e inferior para separar los comentarios */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+}
+
+.cafeteria {
+    background-color: #b7c4d6; /* Color de fondo claro para la div */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno para no tocar los bordes */
+    margin: 10px 0; /* Margen superior e inferior para separar los comentarios */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+}
+
+
+.productos {
+    background-color: #b7c4d6;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Nuevo selector para el contenedor de items */
+.cafeteria-item {
+    background-color: #dce1e7;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.perfil-usuario{
+    background-color: #b7c4d6; /* Color de fondo claro para la div */
+    border-radius: 8px; /* Bordes redondeados */
+    padding : 10px;
+    margin : 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+    
+}
+
+.imagen_perfil {
+    align-content: center;
+    width: 100px; /* Establece el ancho de la imagen */
+    height: 100px; /* Establece el alto de la imagen para que sea igual al ancho */
+    border-radius: 50%; /* Esto hace que los bordes de la imagen sean completamente redondos */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse, útil para imágenes no cuadradas */
+}
+
+
+
+
+
+
+

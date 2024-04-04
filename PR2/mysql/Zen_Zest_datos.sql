@@ -1,14 +1,17 @@
 -- Inserts para Usuario
-INSERT INTO Usuario (Nombre, Email, password, Foto_de_perfil, Rol)
-VALUES ('usuario1', 'usuario1@example.com', 'contraseña123', '/img/foto1.jpg', 'cliente'),
-       ('usuario2', 'usuario2@example.com', 'contraseña456', '/img/foto2.jpg', 'cliente'),
-       ('usuario3', 'usuario3@example.com', 'contraseña789', '/img/foto3.jpg', 'cliente'),
-       ('usuario4', 'usuario4@example.com', 'contraseñaabc', '/img/foto4.jpg', 'cliente'),
-       ('usuario5', 'usuario5@example.com', 'contraseñadef', '/img/foto5.jpg', 'cliente');
-   
+INSERT INTO Usuario (Nombre, Email, Password_hash, Foto_de_perfil, Rol)
+VALUES ('profe',    'profe@example.com',    '$2y$10$a0EJlruBOC/S0RicOb5mneLoRQvDPXhjBDO0LpSdp58CnvIblJnXW', './img/perfiles/profe.jpg', 'cliente'),
+       ('lucia',    'lucia@example.com',    '$2y$10$Lwgd1aHNKQeSR0APjDugtOqoLSSmb4zflF8lzz2VW0bThO7vhUnsW', './img/perfiles/lucia_fotopersonal.jpeg', 'cliente'),
+       ('maria',    'maria@example.com',    '$2y$10$uLQGjf5eWq4YTvsOHtUMFe8gOU0IFvtsh5dmgjR68ukkekzzMO7FS', './img/perfiles/maria_fotopersonal.jpg', 'cliente'),
+       ('usuario1', 'usuario1@example.com', '$2y$10$8CiAtMxhTmVAwVG8NPPN8uzQkZofRB4qz3y2EvzromhllHBAobJWW', './img/perfiles/foto1.png', 'cliente'),
+       ('usuario2', 'usuario2@example.com', '$2y$10$xaI9VQHt9aIFYnsRPSuWcuszGYOz6N8WJbRSNhxNhU2UMJjx8eUB.', './img/perfiles/foto2.png', 'cliente'),
+       ('usuario3', 'usuario3@example.com', '$2y$10$RO4EbCSxOF5YV8Qn1rbJYOf.xg7XJCLwYhjzmJCxZz32Wvg0n/C/a', './img/perfiles/foto3.png', 'cliente'),
+       ('usuario4', 'usuario4@example.com', '$2y$10$PLrvUUvAiURYb0IJriCWK.sESSHgSKsoIaV6MqMxMPsCHa7N/.O.e', './img/perfiles/foto4.png', 'cliente'),
+       ('usuario5', 'usuario5@example.com', '$2y$10$U6szMhYxKJqJKUR9NbXxm.59ppl0Qgoc/tPOmynIKhEQ8F8oVgoPm', './img/perfiles/foto5.png', 'cliente');
+
 
 -- Inserts para Cafeteria
-INSERT INTO Cafeteria (Nombre, Descripcion, owner, Categoria, Ubicacion,Foto, Cantidad_de_likes)
+INSERT INTO Cafeteria (Nombre, Descripcion, Owner, Categoria, Ubicacion,Foto, Cantidad_de_likes)
 VALUES ('cafeteria1', 'Cafetería acogedora con una amplia variedad de bebidas y aperitivos.', 'usuario1', 'Café', 'Calle Principal 123','/img/basic/logo.png', 100),
        ('cafeteria2', 'Cafetería moderna especializada en café de especialidad.', 'usuario2', 'Café', 'Avenida Central 456','/img/basic/logo.png', 150),
        ('cafeteria3', 'Cafetería con ambiente relajado y wifi gratuito.', 'usuario3', 'Café', 'Plaza del Sol 789','/img/basic/logo.png', 80),
@@ -23,10 +26,14 @@ VALUES ('usuario1', 'usuario2', 'Hola, ¿cómo estás?');
 INSERT INTO Comentarios (Usuario, Cafeteria_Comentada, Valoracion, Mensaje)
 VALUES ('usuario1', 'cafeteria1', 5, 'Excelente café y ambiente acogedor.'),
        ('usuario2', 'cafeteria1', 4, 'Buena variedad de bebidas, pero el servicio puede mejorar.'),
-       ('usuario3', 'cafeteria1', 5, 'Me encanta este lugar, siempre vengo a estudiar aquí.');
+       ('usuario3', 'cafeteria1', 5, 'Me encanta este lugar, siempre vengo a estudiar aquí.'),
+       ('profe', 'cafeteria1', 5, 'Servicio atento y amable. Muy recomendable.'),
+        ('profe', 'cafeteria2', 3, 'Tardaron mucho en traer la comida.'),
+       ('maria', 'cafeteria1', 5, 'Siempre que vengo a esta cafetería tengo una buena experiencia.'),
+       ('lucia', 'cafeteria1', 4, 'Bien decorado, pero pedí un flat white y no sabían como hacerlo.');
 
 -- Inserts para Productos (20 productos repartidos entre las diferentes cafeterias)
-INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Foto,Descripcion)
+INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Foto, Descripcion)
 VALUES ('Café Latte', 'cafeteria1', 2.50,'/img/basic/logo.png', 'Café espresso con leche caliente y espuma de leche.'),
        ('Capuchino', 'cafeteria1', 3.00,'/img/basic/logo.png', 'Café espresso con leche vaporizada y espuma de leche.'),
        ('Té Verde Matcha', 'cafeteria2', 3.50,'/img/basic/logo.png', 'Té verde japonés en polvo con leche caliente o fría.'),
@@ -59,6 +66,11 @@ VALUES ('usuario1', 'usuario2'),
        ('usuario3', 'usuario2'),
        ('lucia', 'usuario1'),
        ('lucia', 'usuario2'),
-       ('lucia', 'usuario3');
+       ('lucia', 'usuario3'),
+       ('profe', 'usuario1'),
+       ('profe', 'usuario2'),
+       ('profe', 'usuario3'),
+       ('profe', 'lucia'),
+       ('profe', 'maria');
 
 

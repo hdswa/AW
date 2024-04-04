@@ -12,7 +12,6 @@ $mensaje = "";
 
 $nombre = htmlspecialchars(trim(strip_tags($_POST["nombre"])));
 $password = htmlspecialchars(trim(strip_tags($_POST["password"])));
-
 $usuario = Usuario::login($nombre, $password);
 
 if (!$usuario ) {

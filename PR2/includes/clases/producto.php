@@ -35,7 +35,7 @@ class Producto {
         return $productos;
     }
 
-<<<<<<< Updated upstream
+
     public function saveProducto(){
 
         $conn = Aplicacion::getInstance()->getConexionBd();
@@ -69,7 +69,7 @@ class Producto {
         }
         return $producto;
     }
-=======
+
     public function añadirProducto() {
         $conn = Aplicacion::getInstance()->getConexionBd();
         
@@ -93,7 +93,7 @@ class Producto {
         }
     }
     
->>>>>>> Stashed changes
+
 
     public function getId() {
         return $this->id;
@@ -160,4 +160,3 @@ class Producto {
     // Add other functions as per your requirements
 }
 
-?>

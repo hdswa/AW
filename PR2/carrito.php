@@ -4,37 +4,48 @@ require_once __DIR__.'/includes/config.php';
 require_once __DIR__.'/includes/clases/carrito.php';
 
 $tituloPagina = 'Carrito';
-$name= $_GET['name'];
+$name= $_SESSION['nombre'];
 
 $carrito = Carrito::getCarritoByOwner($name);
 
 $contenidoPrincipal = <<<EOS
   <h1>Carrito de $name</h1>
   EOS;
+
+if (isset($_SESSION['nombre'])) {
 // Check if getCarritoByOwner returned a Carrito object or a message
-if (is_a($carrito, 'Carrito')) {
-  try{
-  $lista = $carrito->getItemList();
-  $itemList = json_decode($lista, true);
-  foreach ($itemList as $item) {
-    $item_name=$item['Nombre'];
-    $item_price=$item['Precio'];
-    $item_quantity=$item['Cantidad'];
-    $item_subtotal=$item_price*$item_quantity;
-    
-    $contenidoPrincipal .="<h2>$item_name----$item_price €----$item_quantity uds---SUM: $item_subtotal € </h2>";
-    
+  if (is_a($carrito, 'Carrito')) {
+    try{
+    $lista = $carrito->getItemList();
+    $itemList = json_decode($lista, true);
+    foreach ($itemList as $item) {
+      $item_name=$item['Nombre'];
+      $item_price=$item['Precio'];
+      $item_quantity=$item['Cantidad'];
+      $item_subtotal=$item_price*$item_quantity;
+      
+      $contenidoPrincipal .="<h5><bold>$item_name</bold> :  $item_price € x $item_quantity uds  =  $item_subtotal € </h5>";
+      
+    }
+    $total=$carrito->getPrecioFinal();
+    $contenidoPrincipal .= "<h4>Total: $total €</h4>";
+    $contenidoPrincipal .= <<<HTML
+      <form action="realizarPago.php" method="post">
+          <input type="hidden" name="owner" value="$name">
+          <input type="submit" value="Pagar">
+      </form>
+    HTML;
+    }
+    catch(Exception $e){
+      echo "An error occurred: " . $e->getMessage();
+    }
+  } else {
+    $contenidoPrincipal .="No tienes items en el carrito haga una compra";
   }
-  $total=$carrito->getPrecioFinal();
-  $contenidoPrincipal .= "<h2>Total: $total €</h2>";
-  $contenidoPrincipal.="<h3>añadir boton de pagar con JS o un form y poder quitar items de tu lista</h3>";
-  }
-  catch(Exception $e){
-    echo "An error occurred: " . $e->getMessage();
-  }
-} else {
-  $contenidoPrincipal .="No tienes items en el carrito haga una compra";
+}else {
+  $contenidoPrincipal =  "<p>Por favor, <a href='login.php'>inicia sesión</a> para poder acceder a tu carrito.</p>";
 }
+
 
 require_once __DIR__.'/includes/vistas/plantillas/plantilla.php';
 

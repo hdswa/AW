@@ -33,7 +33,7 @@ class Usuario {
                 print("Ha entreado en if");
             } else {
                 print("ha entredo en else");
-                $query = sprintf("INSERT INTO Usuario(Nombre, Email, password,Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s','%s')"
+                $query = sprintf("INSERT INTO Usuario(Nombre, Email, Password_hash, Foto_de_perfil,rol) VALUES('%s', '%s', '%s','%s', '%s')"
                     , $conn->real_escape_string($username)
                     , $conn->real_escape_string($email)
                     , self::hashcontraseña($contraseña)
@@ -77,7 +77,7 @@ class Usuario {
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil']);
+                $user = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password_hash'], $fila['Foto_de_perfil']);
                 $result = $user;
             }
             $rs->free();
@@ -96,7 +96,7 @@ class Usuario {
         if ($rs) {
             $fila = $rs->fetch_assoc();
             if($fila){
-                return password_verify($contraseña, $fila['Password']); 
+                return password_verify($contraseña, $fila['Password_hash']); 
             }
             $rs->free();
         } else {
@@ -110,12 +110,12 @@ class Usuario {
         $conn = Aplicacion::getInstance()->getConexionBd();
         $seguidos = [];
     
-        $query = sprintf("SELECT U.Nombre, U.Email, U.Password, U.Foto_de_perfil FROM Usuario U INNER JOIN Seguidores S ON U.Nombre = S.Seguido WHERE S.Seguidor='%s'", $conn->real_escape_string($this->username));
+        $query = sprintf("SELECT U.Nombre, U.Email, U.Password_hash, U.Foto_de_perfil FROM Usuario U INNER JOIN Seguidores S ON U.Nombre = S.Seguido WHERE S.Seguidor='%s'", $conn->real_escape_string($this->username));
     
         $rs = $conn->query($query);
         if ($rs) {
             while ($fila = $rs->fetch_assoc()) {
-                $usuario = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password'], $fila['Foto_de_perfil']);
+                $usuario = new Usuario($fila['Nombre'], $fila['Email'], $fila['Password_hash'], $fila['Foto_de_perfil']);
                 array_push($seguidos, $usuario);
             }
             $rs->free();
@@ -161,10 +161,11 @@ class Usuario {
 
         // Comprobar si existe una foto de perfil, de lo contrario, usar una predeterminada
         $rutaFoto = $this->foto ? $this->foto : './img/basic/user.png';
-        $perfil .= "<img src='" . htmlspecialchars($rutaFoto) . "' alt='Foto de perfil' style='width: 200px; height: 200px;' />";
+        $perfil .= "<img src='" . htmlspecialchars($rutaFoto) . "' alt='Foto de perfil' style='width: 200px; height: 200px;' class='imagen_perfil' />";
 
         //Formulario para modificar la foto de perfil del usuario
         $perfil .= <<<HTML
+        <h5>Modifica la foto de perfil</h5>
         <form action="procesarImagenUser.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="username" value="{$this->username}">
             <input type="file" name="fotoPerfil" required>
@@ -178,7 +179,7 @@ class Usuario {
         // Mostrar el email
         $perfil .= "<p>Email: " . htmlspecialchars($this->email) . "</p>";
         
-        $perfil .= "<p>Rol: " .$rutaFoto. "</p>";
+       
         // Finalizar el HTML
         $perfil .= "</div>";
 
