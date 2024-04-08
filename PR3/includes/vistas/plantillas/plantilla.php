@@ -20,9 +20,7 @@ $params['app']->doInclude('/vistas/comun/sidebarIzq.php');
 			<?= $params['contenidoPrincipal'] ?>
 		</article>
 	</main>
-<?php
-
-$params['app']->doInclude('/vistas/comun/pie.php');
+<?ph
 ?>
 </div>
 </body>

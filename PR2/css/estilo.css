@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #FFFFFF;
+    background-color: #f2f2f2;
     padding: 20px;
 }
 
@@ -9,98 +9,78 @@ h1, h2 {
 }
 
 p {
-    margin-bottom: 10px;
-
+    margin-bottom: 15px;
 }
 
 div#contenedor {
-	width: 100%;
-	margin: auto;
-	border: 1px solid rgb(0, 0, 0);
-	background-color: #aaaaaa;
-	margin-top: 30px;
+    width: 90%;
+    margin: auto;
+    border: 2px solid #ccc;
+    background-color: #ffffff;
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: transparent;
-	margin-top: 1px;
+    padding: 15px 20px;
+    background-color: #007bff;
+    color: #ffffff;
 }
 
 .logo img {
-    width: 95px;
+    width: 90px;
     height: auto;
-	background-color: transparent;
-
 }
 
- a, header a:visited {
-	color: rgb(0, 0, 0);
-	font-weight: bold;
-	text-decoration: none;
+a, header a:visited {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
 } 
 
 header a:hover {
-	color: red;
-	font-weight: bold;
-	text-decoration: underline;
+    text-decoration: underline;
 } 
 
-
 nav {
-	padding: 10px;
-	float: left;
-	width: 170px;
-	height: 400px;
-	background-color: #dddddd;
+    padding: 10px;
+    width: 200px;
+    background-color: #dddddd;
 }
 
 .icons a {
-    margin-left: 1px;
+    margin-left: 5px;
 }
 
 .icons img {
-    width: 30px;
+    width: 25px;
     height: auto;
-    float:right;
 }
 
 .container {
-	display: flex;
-}
-.grid-container {
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
-	gap: 20px;
+    display: flex;
 }
 
 main {
-	padding: 10px;
-	float: left;
-	min-height: 600px;
-	flex:1;
-	background-color: white;
+    padding: 20px;
+    min-height: 600px;
+    flex: 1;
 }
-
 
 th, td, table {
-    border: 1px solid black;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
 }
-
-* {
-    margin: 10;
-    padding: 100;
-    box-sizing: border-box;
-}
-
 
 form {
-    max-width: 750px;
+    max-width: 600px;
     margin: 0 auto;
-    background-color: #eff0f1;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -108,7 +88,7 @@ form {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: #333;
 }
 
@@ -116,7 +96,7 @@ input[type="text"],
 textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -141,8 +121,6 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-
-/* listas */
 ol {
     list-style-type: none;
     margin: 0;
@@ -151,14 +129,13 @@ ol {
 
 ol li {
     display: inline;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 #sidebarIzq {
     width: 200px;
     background-color: #b6d8f2;
     padding: 20px;
-	margin-left: 1px;
 }
 
 #sidebarIzq ul {
@@ -173,7 +150,7 @@ ol li {
 
 #sidebarIzq ul li a {
     display: block;
-    text-decoration: plum;
+    text-decoration: none;
     color: #333;
 }
 
@@ -189,56 +166,49 @@ ol li {
 }
 
 .comentario {
-    background-color: #90c0da; /* Color de fondo claro para la div */
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 15px; /* Espaciado interno para no tocar los bordes */
-    margin: 10px 0; /* Margen superior e inferior para separar los comentarios */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .cafeteria {
-    background-color: #b7c4d6; /* Color de fondo claro para la div */
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 20px; /* Espaciado interno para no tocar los bordes */
-    margin: 10px 0; /* Margen superior e inferior para separar los comentarios */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-
 .productos {
-    background-color: #b7c4d6;
+    background-color: #f2f2f2;
     border-radius: 8px;
-    padding: 10px;
+    padding: 15px;
     margin: 10px auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Nuevo selector para el contenedor de items */
 .cafeteria-item {
-    background-color: #dce1e7;
-    justify-content: space-around;
-    align-items: flex-start;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-.perfil-usuario{
-    background-color: #b7c4d6; /* Color de fondo claro para la div */
-    border-radius: 8px; /* Bordes redondeados */
-    padding : 10px;
-    margin : 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
-    
+
+.perfil-usuario {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .imagen_perfil {
-    align-content: center;
-    width: 100px; /* Establece el ancho de la imagen */
-    height: 100px; /* Establece el alto de la imagen para que sea igual al ancho */
-    border-radius: 50%; /* Esto hace que los bordes de la imagen sean completamente redondos */
-    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse, útil para imágenes no cuadradas */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
-
-
-
-
-
-
-
