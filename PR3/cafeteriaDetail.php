@@ -22,10 +22,6 @@ if (isset($_GET['owner'])){
         $tituloPagina = 'Cafeteria no encontrada';
         
 
-        
-$formLogin = new \es\ucm\fdi\aw\usuarios\FormularioLogin();
-$formLogin = $formLogin->gestiona();
-
         $formCafe=new \es\ucm\fdi\aw\cafeterias\FormularioAddCafeteria();
         $formCafe=$formCafe->gestiona(); 
 
@@ -76,15 +72,20 @@ foreach ($productos as $producto) {
     $contenidoPrincipal .= "<p>$descripcion</p>";
 
     // Formulario para añadir al carrito, ahora incluye cantidad y precio
-    $contenidoPrincipal .= <<<HTML
-    <form action="procesarAñadirAlCarrito.php" method="post">
-        <input type="hidden" name="nombreProducto" value="$nombre">
-        <input type="hidden" name="precioProducto" value="$precio">
-        <label for="cantidad-$nombre">Cantidad:</label>
-        <input type="number" id="cantidad-$nombre" name="cantidad" value="1" min="1" required>
-        <input type="submit" value="Añadir al carrito">
-    </form>
-    HTML;
+    // $contenidoPrincipal .= <<<HTML
+    // <form action="procesarAñadirAlCarrito.php" method="post">
+    //     <input type="hidden" name="nombreProducto" value="$nombre">
+    //     <input type="hidden" name="precioProducto" value="$precio">
+    //     <label for="cantidad-$nombre">Cantidad:</label>
+    //     <input type="number" id="cantidad-$nombre" name="cantidad" value="1" min="1" required>
+    //     <input type="submit" value="Añadir al carrito">
+    // </form>
+    // HTML;
+    $formCarrito= new \es\ucm\fdi\aw\carrito\FormularioAddToCarrito($nombre,$precio);
+    $formCarrito=$formCarrito->gestiona();
+    $contenidoPrincipal.=<<<EOF
+    $formCarrito
+    EOF;
 
     $contenidoPrincipal .= "</div><br>"; 
 }
@@ -93,13 +94,19 @@ foreach ($productos as $producto) {
 ///Updated upstream
 
 if (isset($owner)&&$owner==$_SESSION['nombre']){
-    $contenidoPrincipal .= "<a href='addProducto.php' class='square-button' style='background-color: gray; color: black;'>Add Product</a>";
-    $contenidoPrincipal .="<br>";
+
+    $formAddProducto=new \es\ucm\fdi\aw\productos\FormularioAddProducto($name);
+    $formAddProducto=$formAddProducto->gestiona();
+    $contenidoPrincipal .=$formAddProducto;
+   
     $contenidoPrincipal .= "<h2>Editar Foto Cafeteria</h2>";
-    $contenidoPrincipal .="<form action='procesarImagenes.php?cafe=$name' method='post' enctype='multipart/form-data'>
-            <input type='file' name='foto' required>
-            <button type='submit'>Cambiar foto Cafeteria</button>
-        </form>";
+    $formchangeFoto=new \es\ucm\fdi\aw\cafeterias\FormularioCambiarFotoCafeteria($name);
+    $formchangeFoto=$formchangeFoto->gestiona();
+    $contenidoPrincipal .=$formchangeFoto;
+    // $contenidoPrincipal .="<form action='procesarImagenes.php?cafe=$name' method='post' enctype='multipart/form-data'>
+    //         <input type='file' name='foto' required>
+    //         <button type='submit'>Cambiar foto Cafeteria</button>
+    //     </form>";
 
 }
 

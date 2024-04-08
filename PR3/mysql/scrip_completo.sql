@@ -119,16 +119,16 @@ VALUES ('usuario1', 'cafeteria1', 5, 'Excelente café y ambiente acogedor.'),
 
 -- Inserts para Productos (20 productos repartidos entre las diferentes cafeterias)
 INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Foto, Descripcion)
-VALUES ('Café Latte', 'cafeteria1', 2.50,'/img/basic/logo.png', 'Café espresso con leche caliente y espuma de leche.'),
-       ('Capuchino', 'cafeteria1', 3.00,'/img/basic/logo.png', 'Café espresso con leche vaporizada y espuma de leche.'),
-       ('Té Verde Matcha', 'cafeteria2', 3.50,'/img/basic/logo.png', 'Té verde japonés en polvo con leche caliente o fría.'),
-       ('Café Americano', 'cafeteria2', 2.00,'/img/basic/logo.png', 'Café espresso mezclado con agua caliente.'),
-       ('Muffin de Arándanos', 'cafeteria3', 2.50,'/img/basic/logo.png', 'Delicioso muffin con arándanos frescos.'),
-       ('Croissant de Chocolate', 'cafeteria3', 2.00,'/img/basic/logo.png', 'Croissant hojaldrado relleno de chocolate.'),
-       ('Bagel de Salmón', 'cafeteria4', 5.00,'/img/basic/logo.png', 'Bagel integral con salmón ahumado, queso crema y pepino.'),
-       ('Ensalada César', 'cafeteria4', 6.50,'/img/basic/logo.png', 'Ensalada fresca con pollo a la parrilla, crutones y aderezo César.'),
-       ('Tostada de Aguacate', 'cafeteria5', 4.50,'/img/basic/logo.png', 'Tostada de pan integral con aguacate, huevo pochado y tomate cherry.'),
-       ('Smoothie de Frutas Tropicales', 'cafeteria5', 4.00,'/img/basic/logo.png', 'Batido refrescante con mango, piña y plátano.');
+VALUES ('Café Latte', 'cafeteria1', 2.50,'/img/productos/logo.png', 'Café espresso con leche caliente y espuma de leche.'),
+       ('Capuchino', 'cafeteria1', 3.00,'/img/productos/logo.png', 'Café espresso con leche vaporizada y espuma de leche.'),
+       ('Té Verde Matcha', 'cafeteria2', 3.50,'/img/productos/logo.png', 'Té verde japonés en polvo con leche caliente o fría.'),
+       ('Café Americano', 'cafeteria2', 2.00,'/img/productos/logo.png', 'Café espresso mezclado con agua caliente.'),
+       ('Muffin de Arándanos', 'cafeteria3', 2.50,'/img/productos/logo.png', 'Delicioso muffin con arándanos frescos.'),
+       ('Croissant de Chocolate', 'cafeteria3', 2.00,'/img/productos/logo.png', 'Croissant hojaldrado relleno de chocolate.'),
+       ('Bagel de Salmón', 'cafeteria4', 5.00,'/img/productos/logo.png', 'Bagel integral con salmón ahumado, queso crema y pepino.'),
+       ('Ensalada César', 'cafeteria4', 6.50,'/img/productos/logo.png', 'Ensalada fresca con pollo a la parrilla, crutones y aderezo César.'),
+       ('Tostada de Aguacate', 'cafeteria5', 4.50,'/img/productos/logo.png', 'Tostada de pan integral con aguacate, huevo pochado y tomate cherry.'),
+       ('Smoothie de Frutas Tropicales', 'cafeteria5', 4.00,'/img/productos/logo.png', 'Batido refrescante con mango, piña y plátano.');
 
 -- Puedes continuar agregando más productos para las diferentes cafeterías de manera similar.
 -- Insert para Carrito del Usuario1 con 5 productos

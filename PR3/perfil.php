@@ -1,12 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require_once __DIR__ . '/includes/config.php';
-require_once __DIR__ . '/includes/clases/usuario.php';
-require_once __DIR__ . '/includes/clases/comentarios.php';
 
 $tituloPagina = 'Perfil';
 $contenidoPrincipal = <<<EOS
@@ -15,19 +9,22 @@ EOS;
 
 if (isset($_SESSION['nombre'])) {
     $nombreUsuario = $_SESSION['nombre'];
-    $user = \es\ucm\fdi\aw\usuarios\Usuario::buscaUsuario($nombreUsuario);
+    $user =  \es\ucm\fdi\aw\usuarios\Usuario::buscaUsuario($nombreUsuario);
 
 
     if ($user) {
         $perfil = $user->perfilUsuario();
         $contenidoPrincipal .= $perfil;
+        $formCambiarFotoPerfil = new \es\ucm\fdi\aw\usuarios\FormularioCambiarFotoPerfil($nombreUsuario);
+        $formCambiarFotoPerfil = $formCambiarFotoPerfil->gestiona();
+        $contenidoPrincipal .= $formCambiarFotoPerfil;
 
     } else {
         $contenidoPrincipal .= "<p>Error al cargar el perfil del usuario.</p>";
     }
 
     $contenidoPrincipal .= "<h1>Mis comentarios </h1>";
-    $comentarios = Comentarios::getComentariosPorUsuario($nombreUsuario);
+    $comentarios = \es\ucm\fdi\aw\comentarios\Comentarios::getComentariosPorUsuario($nombreUsuario);
 
     // Comprobar si la lista de comentarios está vacía
     if (empty($comentarios)) {
@@ -50,6 +47,6 @@ if (isset($_SESSION['nombre'])) {
 
 
 
-
-require_once __DIR__ . '/includes/vistas/plantillas/plantilla.php';
+$params = ['tituloPagina' => $tituloPagina, 'contenidoPrincipal' => $contenidoPrincipal];
+$app->generaVista('/plantillas/plantilla.php', $params);
 

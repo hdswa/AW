@@ -8,7 +8,7 @@ $tituloPagina = 'Añadir nuevo producto';
 
         <form action="procesarAddProducto.php" method="post" enctype='multipart/form-data'>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
+            <input type="text" id="nombre" name="nombre" re+quired><br>
             <label for="precio">precio en €:</label>
             <input type="number" id="precio" name="precio" required><br>
             <label for="descripcion">descripcion:</label>
