@@ -34,7 +34,7 @@ if (isset($_SESSION['nombre'])) {
         foreach ($usuariosSeguidos as $usuarioSeguido) {
             $nombre = htmlspecialchars($usuarioSeguido->getNombre());
             $email = htmlspecialchars($usuarioSeguido->getEmail()); // Asumiendo que quieres mostrar el email
-            $foto = htmlspecialchars($usuarioSeguido->getFotoDePerfil());
+            $foto = htmlspecialchars($usuarioSeguido->getFoto());
 
             $contenidoPrincipal .= "<div class='usuario-seguido-item'>";
             $contenidoPrincipal .= "<img src='$foto' alt='Foto de perfil de $nombre' style='max-width: 100px; max-height: 100px;' class='imagen_usuario'/>";

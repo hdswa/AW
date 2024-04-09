@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #FFFFFF;
+    background-color: #b6d8f2;
     padding: 20px;
 }
 
@@ -16,9 +16,6 @@ p {
 div#contenedor {
 	width: 100%;
 	margin: auto;
-	border: 1px solid rgb(0, 0, 0);
-	background-color: #aaaaaa;
-	margin-top: 30px;
 }
 
 header {
@@ -34,6 +31,7 @@ header {
     width: 95px;
     height: auto;
 	background-color: transparent;
+    display: flex;
 
 }
 
@@ -55,7 +53,6 @@ nav {
 	float: left;
 	width: 170px;
 	height: 400px;
-	background-color: #dddddd;
 }
 
 .icons a {
@@ -82,7 +79,6 @@ main {
 	float: left;
 	min-height: 600px;
 	flex:1;
-	background-color: white;
 }
 
 
@@ -98,12 +94,9 @@ th, td, table {
 
 
 form {
-    max-width: 750px;
-    margin: 0 auto;
-    background-color: #eff0f1;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    background-color: #b6d8f2;
+    margin-bottom: 10px;
 }
 
 label {
@@ -132,7 +125,6 @@ input[type="submit"] {
     background-color: #007bff;
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
     cursor: pointer;
     border-radius: 4px;
 }
@@ -141,6 +133,10 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+input[type="number"] {
+    color: black;
+    cursor: pointer;
+}
 
 /* listas */
 ol {
@@ -197,7 +193,6 @@ ol li {
 }
 
 .cafeteria {
-    background-color: #b7c4d6; /* Color de fondo claro para la div */
     border-radius: 8px; /* Bordes redondeados */
     padding: 20px; /* Espaciado interno para no tocar los bordes */
     margin: 10px 0; /* Margen superior e inferior para separar los comentarios */
@@ -206,7 +201,6 @@ ol li {
 
 
 .productos {
-    background-color: #b7c4d6;
     border-radius: 8px;
     padding: 10px;
     margin: 10px auto;
@@ -215,7 +209,6 @@ ol li {
 
 /* Nuevo selector para el contenedor de items */
 .cafeteria-item {
-    background-color: #dce1e7;
     justify-content: space-around;
     align-items: flex-start;
 }

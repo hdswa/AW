@@ -33,7 +33,7 @@ if (isset($_SESSION['nombre'])) {
         foreach ($comentarios as $comentario) {
             $contenidoPrincipal .= "<div class='comentario'>";
             $contenidoPrincipal .= "<h2>" . htmlspecialchars($comentario->getUsuario()) . "</h2>";
-            $contenidoPrincipal .= "<h3> Cafeteria:" . htmlspecialchars($comentario->getCafeteriaComentada()) . "</h3>";
+            $contenidoPrincipal .= "<h3> Cafetería: " . htmlspecialchars($comentario->getCafeteriaComentada()) . "</h3>";
             $contenidoPrincipal .= "<p><b>Valoración:</b> " . htmlspecialchars($comentario->getValoracion()) . "/5</p>";
             $contenidoPrincipal .= "<p><b>Comentario:</b> " . htmlspecialchars($comentario->getMensaje()) . "</p>";
             $contenidoPrincipal .= "</div>";
