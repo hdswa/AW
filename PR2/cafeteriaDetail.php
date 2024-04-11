@@ -43,7 +43,7 @@ if (isset($_GET['owner'])){
     
         $name=$cafeteria->getNombre();
         $productos = Producto::getCafeAllItemsByOwner($name);
-        // $contenidoPrincipal.="<h2>asdasdasdasa</h2>";
+        $contenidoPrincipal.="<h2>asdasdasdasa</h2>";
     
 }
 

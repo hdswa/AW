@@ -1,5 +1,6 @@
 <?php
 use es\ucm\fdi\aw\Aplicacion;
+use es\ucm\fdi\aw\usuarios\FormularioLogout;
 
 $app = Aplicacion::getInstance();
 

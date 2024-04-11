@@ -12,10 +12,10 @@ define('BD_PASS', 'zen_zest');
  * Parámetros de configuración utilizados para generar las URLs y las rutas a ficheros en la aplicación
  */
 define('RAIZ_APP', __DIR__);
-define('RUTA_APP', '/PR3');
-define('RUTA_IMGS', RUTA_APP.'img/');
-define('RUTA_CSS', RUTA_APP.'css/');
-define('RUTA_JS', RUTA_APP.'js/');
+define('RUTA_APP', '/AW/AW/PR3');
+define('RUTA_IMGS', RUTA_APP.'/img');
+define('RUTA_CSS', RUTA_APP.'/css');
+define('RUTA_JS', RUTA_APP.'/js');
 
 /**
  * Configuración del soporte de UTF-8, localización (idioma y país) y zona horaria

@@ -15,7 +15,7 @@ EOS;
 
 if (isset($_SESSION['nombre'])) {
     $nombreUsuario = $_SESSION['nombre'];
-    $user = \es\ucm\fdi\aw\usuarios\Usuario::buscaUsuario($nombreUsuario);
+    $user = Usuario::buscaUsuario($nombreUsuario);
 
 
     if ($user) {

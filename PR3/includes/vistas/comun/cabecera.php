@@ -9,10 +9,11 @@ function mostrarSaludo()
     $app = Aplicacion::getInstance();
     if ($app->usuarioLogueado()) {
         $nombreUsuario = $app->nombreUsuario();
-
-        $formLogout = new FormularioLogout();
+        
+        $formLogout = new \es\ucm\fdi\aw\usuarios\FormularioLogout();
         $htmlLogout = $formLogout->gestiona();
-        $html = "Bienvenido, ${nombreUsuario}. $htmlLogout";
+        $html = "Bienvenido, ${nombreUsuario}". $htmlLogout;
+      
     } else {
         $loginUrl = $app->resuelve('/login.php');
         $registroUrl = $app->resuelve('/registro.php');
