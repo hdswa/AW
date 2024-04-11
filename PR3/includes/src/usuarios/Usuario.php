@@ -8,9 +8,9 @@ class Usuario
 {
     use MagicProperties;
 
-    public const ADMIN_ROLE = 1;
+    public const ADMIN_ROLE = "admin";
 
-    public const USER_ROLE = 2;
+    public const USER_ROLE = "cliente";
 
     public static function login($nombreUsuario, $password)
     {
