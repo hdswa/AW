@@ -93,11 +93,14 @@ class Comentarios {
         return $comentarios;
     }
     
-    
-
-
-    
-    
+    public static function guardarComentario($usuario, $cafeteria, $mensaje, $valoracion) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $stmt = $conn->prepare("INSERT INTO Comentarios (Usuario, Cafeteria_Comentada, Mensaje, Valoracion) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssi", $usuario, $cafeteria, $mensaje, $valoracion);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
 
 
     // Getters and Setters

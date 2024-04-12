@@ -2,6 +2,7 @@
 
 <?php
 
+use es\ucm\fdi\aw\comentarios\FormularioComentario;
 use es\ucm\fdi\aw\cafeterias\FormularioLikeCafeteria;
 
 ini_set('display_errors', 1);  // Activa la visualización de errores en el navegador
@@ -140,21 +141,14 @@ $comentariosHTML .= "</div>";
 
 $contenidoPrincipal .= $comentariosHTML; 
 
-
-$formComment = <<<HTML
-<form method="post" action="procesarComentario.php">
-    <input type="hidden" name="cafeteriaNombre" value="$name">
-    <textarea name="comentario" required placeholder="Escribe un comentario..."></textarea>
-    <button type="submit" name="submitComment">Añadir Comentario</button>
-</form>
-
-HTML;
+$formComment = new FormularioComentario($name);
+$htmlAddComment = $formComment->gestiona();
 
 
 if ($owner != $nombreUsuario) {
 $contenidoPrincipal .= "<div class='comentarios-add-seccion'>";
 $contenidoPrincipal .= "<h2>Añade un Comentario</h2>";
-$contenidoPrincipal .= $formComment; // Añade el formulario de comentario a la página
+$contenidoPrincipal .= $htmlAddComment; // Añade el formulario de comentario a la página
 $contenidoPrincipal .= "</div>";
 }
 ///Updated upstream
