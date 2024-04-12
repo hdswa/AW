@@ -1,8 +1,6 @@
 
 <?php
-
-
-
+use es\ucm\fdi\aw\Aplicacion;
 require_once __DIR__.'/includes/config.php';
 
 
@@ -39,12 +37,12 @@ if (isset($_SESSION['nombre'])) {
             $contenidoPrincipal .= "<div class='usuario-seguido-item'>";
             $contenidoPrincipal .= "<img src='$foto' alt='Foto de perfil de $nombre' style='max-width: 100px; max-height: 100px;' class='imagen_usuario'/>";
             $contenidoPrincipal .= "<h2>$nombre</h2>";
-            $contenidoPrincipal .= "<p>$email</p>";
+            
 
             // Formulario para dejar de seguir
             $contenidoPrincipal .= "<form method='post' action=''>";
             $contenidoPrincipal .= "<input type='hidden' name='dejarDeSeguir' value='$nombre'>";
-            $contenidoPrincipal .= "<button type='submit'>Dejar de seguir</button>";
+            $contenidoPrincipal .= "<button class='boton-primario' type='submit'>Dejar de seguir</button>";
             $contenidoPrincipal .= "</form>";
 
             $contenidoPrincipal .= "</div>";
@@ -58,4 +56,5 @@ if (isset($_SESSION['nombre'])) {
 }
 
 $params = ['tituloPagina' => $tituloPagina, 'contenidoPrincipal' => $contenidoPrincipal];
+
 $app->generaVista('/plantillas/plantilla.php', $params);

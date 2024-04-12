@@ -251,3 +251,139 @@ ol li {
     grid-template-columns: auto auto auto;
     padding: 10px;
 }
+.usuario-seguido-item img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+/* Estilo del contenedor principal */
+.usuarios-seguidos-container {
+    width: 100%; /* Establece el ancho al 100% del contenedor padre */
+    max-width: 100%; 
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/* Estilo para cada usuario seguido */
+.usuario-seguido-item {
+    padding: 40px;
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+
+/* Estilo para el nombre del usuario */
+.usuario-seguido-item h2 {
+    flex-grow: 1; /* Para que ocupe el espacio disponible */
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Estilo para el botón de dejar de seguir */
+.usuario-seguido-item form {
+    margin: 0;
+}
+
+.usuario-seguido-item .boton-primario {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    margin: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.usuario-seguido-item .boton-primario:hover {
+    background-color: #cc0000;
+}
+/* Estilo general para botones */
+.boton-primario {
+    background-color: #ff4d4d; /* Cambia al color que prefieras */
+    color: white; /* Color de texto */
+    padding: 10px 15px; /* Espacio interno */
+    border: none; /* Remueve el borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor tipo puntero para indicar interactividad */
+    transition: background-color 0.3s; /* Transición suave para cambio de color de fondo */
+    outline: none; /* Remueve el contorno que aparece al hacer clic */
+    margin: 5px 0; /* Margen exterior */
+    text-align: center; /* Alineación del texto */
+    display: inline-block; /* Para permitir definir un ancho y alto */
+    width: auto; /* Ancho automático basado en el contenido interior */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-sizing: border-box; /* Incluye el padding y border dentro del ancho y alto definidos */
+}
+
+/* Remueve el cajetín blanco alrededor de los botones */
+button {
+    background: none; /* Fondo transparente */
+    border: none; /* Sin borde */
+    box-shadow: none; /* Sin sombra */
+}
+
+/* Aplica el estilo solamente a los botones dentro de .usuario-seguido-item */
+.usuario-seguido-item .boton-primario {
+    /* Aquí aplicarías los estilos específicos como background-color, padding, etc. */
+}
+
+/* Asegúrate de que no haya un estilo adicional que afecte los botones */
+.usuario-seguido-item button {
+    border: none; /* Sin borde */
+    background: transparent; /* Fondo transparente */
+    box-shadow: none; /* Sin sombra */
+}
+
+/* Resto de tus estilos... */
+
+
+.usuarios-seguidos-container .usuario-seguido-item form button.boton-primario {
+    background-color: transparent; /* Hace que el fondo sea transparente */
+    border: none; /* Elimina el borde */
+    box-shadow: none; /* Elimina la sombra de la caja */
+    color: #090365da; /* Color del texto del botón */
+    padding: 0.5em 1em; /* Espaciado dentro del botón */
+    text-transform: uppercase; /* Transforma el texto a mayúsculas */
+    font-weight: bold; /* Hace el texto en negrita */
+    transition: background-color 0.3s ease; /* Suaviza el cambio de color al hacer hover */
+}
+
+.usuarios-seguidos-container .usuario-seguido-item form button.boton-primario:hover {
+    background-color: #e0e0e0; /* Color de fondo al hacer hover */
+}
+
+.usuarios-seguidos-container .usuario-seguido-item form {
+    display: inline-block; /* Hace que el formulario sea en línea con otros elementos */
+    margin: 0; /* Elimina márgenes predeterminados */
+}
+
+.usuarios-seguidos-container .usuario-seguido-item {
+    display: flex; /* Usa flexbox para la alineación */
+    align-items: center; /* Centra los items verticalmente */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    margin-bottom: 1em; /* Espacio debajo de cada elemento */
+}
+
+.usuarios-seguidos-container .usuario-seguido-item img.imagen_usuario {
+    border-radius: 50%; /* Hace la imagen circular */
+    margin-right: 1em; /* Espacio a la derecha de la imagen */
+}
+
+
+
+
+
