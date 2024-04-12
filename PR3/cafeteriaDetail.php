@@ -4,11 +4,17 @@
 
 use es\ucm\fdi\aw\cafeterias\FormularioLikeCafeteria;
 
+ini_set('display_errors', 1);  // Activa la visualización de errores en el navegador
+ini_set('display_startup_errors', 1);  // Activa la visualización de errores durante el inicio de PHP
+error_reporting(E_ALL);  // Reporta todos los errores, incluyendo E_NOTICE y otros
+
 
 require_once __DIR__.'/includes/config.php';
 
 $tituloPagina = 'Cafeteria';
 $contenidoPrincipal="";
+
+
 
 
 if (isset($_GET['name'])){
@@ -44,19 +50,24 @@ if (isset($_GET['owner'])){
         $contenidoPrincipal.="<h2>asdasdasdasa</h2>";
     
 }
+$nombreUsuario = $_SESSION['nombre']; // Nombre del usuario actual
+$owner = $cafeteria->getDueno();
 
 $fotoCafe=$cafeteria->getFoto();
 $fotoCafe=RUTA_APP.$fotoCafe;
 $descripcion = $cafeteria->getDescripcion();
 $cantidadLikes =$cafeteria->obtenerCantidadLikes($name);
 
+
 $cafeteriaNombre = $cafeteria->getNombre(); 
-$yaDioLike = \es\ucm\fdi\aw\cafeterias\Cafeteria::yaDioLike($name, $cafeteriaNombre);
-
-$formLike = new FormularioLikeCafeteria($cafeteriaNombre);
-$htmlLikeButton = $formLike->gestiona();
 
 
+$htmlLikeButton = '';
+if ($owner != $nombreUsuario) {
+    $yaDioLike = \es\ucm\fdi\aw\cafeterias\Cafeteria::yaDioLike($name, $cafeteriaNombre);
+    $formLike = new FormularioLikeCafeteria($name);
+    $htmlLikeButton = $formLike->gestiona();
+}
 
 $contenidoPrincipal = <<<EOS
 <div class= 'cafeteria'>
@@ -64,7 +75,7 @@ $contenidoPrincipal = <<<EOS
 
 <img src='$fotoCafe'alt='Image description' style='max-width: 200px; max-height: 200px;'>
 <h3>Descripcion: $descripcion </h3>
-<h3>Likes: $likes </h3>
+<h3>Likes: $cantidadLikes </h3>
 $htmlLikeButton <!-- Aquí se inserta el formulario de likes -->
 </div>
 <div class='productos'>
@@ -138,11 +149,14 @@ $formComment = <<<HTML
 </form>
 
 HTML;
+
+
+if ($owner != $nombreUsuario) {
 $contenidoPrincipal .= "<div class='comentarios-add-seccion'>";
 $contenidoPrincipal .= "<h2>Añade un Comentario</h2>";
 $contenidoPrincipal .= $formComment; // Añade el formulario de comentario a la página
 $contenidoPrincipal .= "</div>";
-
+}
 ///Updated upstream
 
 if (isset($owner)&&$owner==$_SESSION['nombre']){
