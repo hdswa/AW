@@ -82,3 +82,12 @@ CREATE TABLE Seguidores (
     PRIMARY KEY (Seguidor, Seguido)
 );
 
+CREATE TABLE Likes_cafeteria (
+    id_usuario VARCHAR(50),
+    nombre_cafeteria VARCHAR(50),
+    fecha_like TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_usuario, nombre_cafeteria),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(Nombre) ON DELETE CASCADE,
+    FOREIGN KEY (nombre_cafeteria) REFERENCES Cafeteria(Nombre) ON DELETE CASCADE
+);
+

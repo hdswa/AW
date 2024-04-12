@@ -38,6 +38,8 @@ class Aplicacion
      *             parámetro debería de tomar el valor "/miApp".
      */
     private $rutaApp;
+    //No se si es necesario
+    private $rutaRaizApp;
 
     /**
      * @var string Ruta absoluta al directorio "includes" de la aplicación.
@@ -72,7 +74,7 @@ class Aplicacion
     private function __construct()
     {
         $this->inicializada = false;
-        $this->generandoErro = false;
+        $this->generandoError = false;
     }
 
     /**

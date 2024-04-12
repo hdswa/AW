@@ -2,6 +2,11 @@
 
 <?php
 
+use es\ucm\fdi\aw\cafeterias\FormularioLikeCafeteria;
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once __DIR__.'/includes/config.php';
 
 $tituloPagina = 'Cafeteria';
@@ -13,8 +18,10 @@ if (isset($_GET['name'])){
     $productos = \es\ucm\fdi\aw\productos\Producto::getCafeAllItemsByOwner($name); // Assuming getCafeterias() is a function that returns an array of cafeterias
     $cafeteria= \es\ucm\fdi\aw\cafeterias\Cafeteria::getCafeteriaByName($name);
     $descripcion=$cafeteria->getDescripcion();
-    $likes =$cafeteria->getCantidadDeLikes();
-    }
+    $likes =$cafeteria->obtenerCantidadLikes($name);
+}
+
+
 if (isset($_GET['owner'])){
     $owner=$_GET['owner'];
     $cafeteria= \es\ucm\fdi\aw\cafeterias\Cafeteria::getCafeteriaByOwnerName($owner);
@@ -43,7 +50,16 @@ if (isset($_GET['owner'])){
 $fotoCafe=$cafeteria->getFoto();
 $fotoCafe=RUTA_APP.$fotoCafe;
 $descripcion = $cafeteria->getDescripcion();
-$likes = $cafeteria->getCantidadDeLikes();
+$cantidadLikes =$cafeteria->obtenerCantidadLikes($name);
+
+$cafeteriaNombre = $cafeteria->getNombre(); 
+$yaDioLike = \es\ucm\fdi\aw\cafeterias\Cafeteria::yaDioLike($name, $cafeteriaNombre);
+
+$formLike = new FormularioLikeCafeteria($cafeteriaNombre);
+$htmlLikeButton = $formLike->gestiona();
+
+
+
 $contenidoPrincipal = <<<EOS
 <div class= 'cafeteria'>
 <h1>Cafeteria: $name</h1>
@@ -51,11 +67,17 @@ $contenidoPrincipal = <<<EOS
 <img src='$fotoCafe'alt='Image description' style='max-width: 200px; max-height: 200px;'>
 <h3>Descripcion: $descripcion </h3>
 <h3>Likes: $likes </h3>
+$htmlLikeButton <!-- Aquí se inserta el formulario de likes -->
 </div>
 <div class='productos'>
 <h1>Productos</h1>
 
 EOS;
+
+
+
+
+
 //$contenidoPrincipal .= '<div class="grid-container">';
 
 // Dentro del bucle que muestra los productos en $contenidoPrincipal
@@ -89,6 +111,21 @@ foreach ($productos as $producto) {
 
     $contenidoPrincipal .= "</div><br>"; 
 }
+
+$contenidoPrincipal .= "<div class='cafeteria-comentarios'>";
+$contenidoPrincipal .= "<h1>Comentarios</h1>";
+$contenidoPrincipal .= "</div>";
+
+$formComment = <<<HTML
+<form method="post" action="procesarComentario.php">
+    <input type="hidden" name="cafeteriaNombre" value="$name">
+    <textarea name="comentario" required placeholder="Escribe un comentario..."></textarea>
+    <button type="submit" name="submitComment">Añadir Comentario</button>
+</form>
+
+HTML;
+
+$contenidoPrincipal .= $formComment; // Añade el formulario de comentario a la página
 
 
 ///Updated upstream

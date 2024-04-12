@@ -175,6 +175,70 @@ public function setFoto($foto) {
         return false; // Error al actualizar
     }
 }
+
+    public static function yaDioLike($idUsuario, $nombreCafeteria) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $stmt = $conn->prepare("SELECT 1 FROM Likes_cafeteria WHERE id_usuario = ? AND nombre_cafeteria = ?");
+        $stmt->bind_param('ss', $idUsuario, $nombreCafeteria);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
+
+
+    public static function incrementarLikes($idCafeteria, $idUsuario) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+       
+
+       /* // Primero, verifica si el usuario ya ha dado "like" a la cafetería
+        $stmt = $conn->prepare("SELECT * FROM Likes_cafeteria WHERE id_usuario = ? AND nombre_cafeteria = ?");
+        $stmt->bind_param('ss', $idUsuario, $idCafeteria);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            return false; // El usuario ya ha dado "like" a esta cafetería
+        }
+*/
+        // Si no, inserta el nuevo "like"
+        $stmt = $conn->prepare("INSERT INTO Likes_cafeteria (id_usuario, nombre_cafeteria) VALUES (?, ?)");
+        $stmt->bind_param('ss', $idUsuario, $idCafeteria);
+        $result = $stmt->execute();
+
+        header("Location: cafeteriaDetail.php?name=" . urlencode($idCafeteria));
+        exit();
+    }
+
+    public static function disminuirLikes($idCafeteria, $idUsuario) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+
+        // Eliminar el like de la tabla Likes_cafeteria
+        $stmt = $conn->prepare("DELETE FROM Likes_cafeteria WHERE id_usuario = ? AND nombre_cafeteria = ?");
+        $stmt->bind_param('ss', $idUsuario, $idCafeteria);
+        $stmt->execute();
+
+        // Disminuir el contador de likes en la tabla Cafeteria
+        $stmt = $conn->prepare("UPDATE Cafeteria SET Cantidad_de_likes = Cantidad_de_likes - 1 WHERE Nombre = ?");
+        $stmt->bind_param('s', $idCafeteria);
+        $stmt->execute();
+
+        header("Location: cafeteriaDetail.php?name=" . urlencode($idCafeteria));
+        exit();
+    }
+
+
+
+
+    public static function obtenerCantidadLikes($nombre) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+       
+        $stmt = $conn->prepare("SELECT COUNT(*) AS likes FROM Likes_cafeteria WHERE nombre_cafeteria = ?");
+        $stmt->bind_param('s', $nombre);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $fila = $resultado->fetch_assoc();
+        return $fila['likes'];
+    }
 }
 
-?>
+
+
