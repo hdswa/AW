@@ -112,9 +112,25 @@ foreach ($productos as $producto) {
     $contenidoPrincipal .= "</div><br>"; 
 }
 
-$contenidoPrincipal .= "<div class='cafeteria-comentarios'>";
-$contenidoPrincipal .= "<h1>Comentarios</h1>";
-$contenidoPrincipal .= "</div>";
+
+
+
+
+$comentariosHTML = "<div class='comentarios-seccion'>";
+$comentariosHTML .= "<h1>Comentarios</h1>";
+
+$comentarios = \es\ucm\fdi\aw\comentarios\Comentarios::getComentariosPorCafeteria($cafeteriaNombre);
+foreach ($comentarios as $comentario) {
+    $comentariosHTML .= "<div class='comentario'>";
+    $comentariosHTML .= "<h4>Comentado por: " . htmlspecialchars($comentario->getUsuario()) . "</h4>";
+    $comentariosHTML .= "<p>" . htmlspecialchars($comentario->getMensaje()) . "</p>";
+    $comentariosHTML .= "<p>Valoración: " . htmlspecialchars($comentario->getValoracion()) . " estrellas</p>";
+    $comentariosHTML .= "</div>";
+}
+$comentariosHTML .= "</div>";
+
+$contenidoPrincipal .= $comentariosHTML; 
+
 
 $formComment = <<<HTML
 <form method="post" action="procesarComentario.php">
@@ -124,9 +140,10 @@ $formComment = <<<HTML
 </form>
 
 HTML;
-
+$contenidoPrincipal .= "<div class='comentarios-add-seccion'>";
+$contenidoPrincipal .= "<h2>Añade un Comentario</h2>";
 $contenidoPrincipal .= $formComment; // Añade el formulario de comentario a la página
-
+$contenidoPrincipal .= "</div>";
 
 ///Updated upstream
 

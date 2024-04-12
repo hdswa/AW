@@ -71,6 +71,32 @@ class Comentarios {
         
         return $comentarios;
     }
+
+    public static function getComentariosPorCafeteria($nombreCafeteria) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $comentarios = [];
+
+        // Prepara la consulta SQL para evitar inyecciones SQL
+        $query = $conn->prepare("SELECT * FROM Comentarios WHERE Cafeteria_Comentada = ? ORDER BY ID DESC");
+        $query->bind_param("s", $nombreCafeteria); // "s" indica que el parámetro es una cadena (string)
+        $query->execute();
+
+        $resultado = $query->get_result();
+
+        while ($fila = $resultado->fetch_assoc()) {
+            $comentarios[] = new Comentarios(
+                $fila['ID'],
+                $fila['Usuario'],
+                $fila['Cafeteria_Comentada'],
+                $fila['Valoracion'],
+                $fila['Mensaje']
+            );
+        }
+
+        $query->close();
+
+        return $comentarios;
+    }
     
     
 
