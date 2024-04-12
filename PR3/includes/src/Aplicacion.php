@@ -17,7 +17,7 @@ class Aplicacion
     /**
      * Devuele una instancia de {@see Aplicacion}.
      *
-     * @return Applicacion Obtiene la única instancia de la <code>Aplicacion</code>
+     * @return Aplicacion Obtiene la única instancia de la <code>Aplicacion</code>
      */
     public static function getInstance()
     {
@@ -385,5 +385,22 @@ class Aplicacion
             }
         }
         return $query;
+    }
+
+    public function getUsuariosSeguidos($nombreUsuario){
+        $conn = $this->getConexionBd();
+        $usuariosSeguidos = [];
+
+        $stmt = $conn->prepare("SELECT Seguido FROM Seguidores WHERE Seguidor = ?");
+        $stmt->bind_param("s", $nombreUsuario);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        while ($fila = $resultado->fetch_assoc()) {
+            $usuariosSeguidos[] = $fila['Seguido'];
+        }
+
+        $stmt->close();
+        return $usuariosSeguidos;
     }
 }
