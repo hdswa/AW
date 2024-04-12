@@ -25,7 +25,9 @@ if (isset($_SESSION['nombre'])) {
     $comentariosHTML = "<div class='comentarios-seccion'>";
     foreach ($comentariosSeguidos as $comentario) {
         $comentariosHTML .= "<div class='comentario'>";
-        $comentariosHTML .= "<h4>Comentado por: " . htmlspecialchars($comentario->getUsuario()) . "</h4>";
+        $comentariosHTML .= "<h4>" . htmlspecialchars($comentario->getUsuario()) . "</h4>";
+        $comentariosHTML .= "<h5>" . htmlspecialchars($comentario->getCafeteriaComentada()) . "</h5>";
+
         $comentariosHTML .= "<p>" . htmlspecialchars($comentario->getMensaje()) . "</p>";
         $comentariosHTML .= "<p>Valoración: " . htmlspecialchars($comentario->getValoracion()) . " estrellas</p>";
         $comentariosHTML .= "</div>";

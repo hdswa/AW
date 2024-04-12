@@ -68,11 +68,12 @@ nav a:hover {
 
 
 .icons a {
-    margin-left: 5px;
+    margin-left: 70px;
+    margin-top: 10px;
 }
 
 .icons img {
-    width: 25px;
+    width: 50px;
     height: auto;
 }
 
@@ -184,13 +185,26 @@ ol li {
     z-index: 9999;
 }
 
-.comentario {
+.comentarios {
     background-color: #f2f2f2;
     border-radius: 8px;
     padding: 15px;
     margin: 10px 0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+.comentario {
+    background-color: #fff; /* Color de fondo blanco */
+    padding: 15px; /* Espacio interno alrededor del contenido */
+    margin: 20px 0; /* Espacio externo arriba y abajo de la `div` */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil */
+    font-family: 'Arial', sans-serif; /* Tipo de fuente */
+    color: #333; /* Color de texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+    border: 1px solid #ddd; /* Borde sutil alrededor de la `div` */
+}
+
 
 .cafeteria {
     background-color: #f2f2f2;
