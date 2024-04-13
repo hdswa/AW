@@ -13,9 +13,9 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
 
 <nav id="sidebarIzq">
 	<ul>
-		<li><a href="<?= RUTA_APP ?>/index.php">Inicio</a></li>
-		<li><a href="<?= RUTA_APP ?>/seguidos.php">Seguidos</a></li>
-		<li><a href="<?= RUTA_APP ?>/cafeterias.php">Cafeterías</a></li>
+		<a href="<?= RUTA_APP ?>/index.php">Inicio</a> <br> <br>
+		<a href="<?= RUTA_APP ?>/seguidos.php">Seguidos</a> <br> <br>
+		<a href="<?= RUTA_APP ?>/cafeterias.php">Cafeterías</a> <br> <br>
 		
 		<?php
 			if ($status == 0) {	
@@ -30,9 +30,7 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
 				echo ' <a href="' . RUTA_APP . '/cafeteriaDetail.php?owner=' . (isset($_SESSION['nombre']) ? urlencode($_SESSION['nombre']) : '') . '">
 				Mi cafetería
 				</a> <br> <br>';
-				echo ' <a href="./logout.php">
-				Cerrar sesión
-				</a> <br> <br> ';
+				
 			}
 
 		?>

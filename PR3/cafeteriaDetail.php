@@ -80,7 +80,8 @@ $contenidoPrincipal = <<<EOS
 $htmlLikeButton <!-- Aquí se inserta el formulario de likes -->
 </div>
 <div class='productos'>
-<h1>Productos</h1>
+
+<h1 style="width:100%">Productos</h1>
 
 EOS;
 
@@ -122,7 +123,7 @@ foreach ($productos as $producto) {
     $contenidoPrincipal .= "</div><br>"; 
 }
 
-
+$contenidoPrincipal .= "</div><br>"; 
 
 
 

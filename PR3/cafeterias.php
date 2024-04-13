@@ -10,11 +10,10 @@ $contenidoPrincipal = <<<EOS
 <h1>Zen zest</h1>
 EOS;
 
-
 if (isset($_SESSION['nombre'])) {
 
     //session [user]cafeteria si existe poner tu cafeteria sino poner quieres crear tu propia cafeteria
-    $contenidoPrincipal .= '<div class="grid-container" style="display:flex;">';
+    $contenidoPrincipal .= '<div class="grid-container">';
     foreach ($cafeterias as $cafeteria) {
         $foto_URL=".";
         $foto_URL.=$cafeteria->getFoto();

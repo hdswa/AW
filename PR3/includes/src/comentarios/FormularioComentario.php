@@ -29,7 +29,7 @@ class FormularioComentario extends Formulario {
             <option value="4" {$this->selected(4, $valoracion)}>4 estrellas</option>
             <option value="5" {$this->selected(5, $valoracion)}>5 estrellas</option>
         </select>
-        <button type="submit" name="submitComment">Enviar Comentario</button>
+        <input type="submit" name="submitComment" value="Enviar Comentario"></input>
         EOF;
         return $html;
     }
