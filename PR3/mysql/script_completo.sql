@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS Chat;
 DROP TABLE IF EXISTS Comentarios;
 DROP TABLE IF EXISTS Carrito;
 DROP TABLE IF EXISTS Productos;
+DROP TABLE IF EXISTS Likes_cafeteria;
 DROP TABLE IF EXISTS Cafeteria;
 DROP TABLE IF EXISTS Seguidores;
 DROP TABLE IF EXISTS Usuario;
@@ -82,6 +83,14 @@ CREATE TABLE Seguidores (
     PRIMARY KEY (Seguidor, Seguido)
 );
 
+CREATE TABLE Likes_cafeteria (
+    id_usuario VARCHAR(50),
+    nombre_cafeteria VARCHAR(50),
+    fecha_like TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_usuario, nombre_cafeteria),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(Nombre) ON DELETE CASCADE,
+    FOREIGN KEY (nombre_cafeteria) REFERENCES Cafeteria(Nombre) ON DELETE CASCADE
+);
 
 -- Inserts para Usuario
 INSERT INTO Usuario (Nombre, Email, Password_hash, Foto_de_perfil, Rol)
