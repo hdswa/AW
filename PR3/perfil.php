@@ -14,7 +14,14 @@ if (isset($_SESSION['nombre'])) {
 
     if ($user) {
         $perfil = $user->perfilUsuario();
-        $contenidoPrincipal .= $perfil;
+
+        $perfilHTML = "<div class='perfil-usuario'>";
+        $perfilHTML .= "<img src='" . $perfil['rutaFoto'] . "' alt='Foto de perfil' style='width: 200px; height: 200px;' class='imagen_perfil' />";
+        $perfilHTML .= "<p>Nombre de Usuario: " . $perfil['nombre'] . "</p>";
+        $perfilHTML .= "<p>Email: " . $perfil['email'] . "</p>";
+        $perfilHTML .= "</div>";
+        $contenidoPrincipal .= $perfilHTML;
+        
         $formCambiarFotoPerfil = new \es\ucm\fdi\aw\usuarios\FormularioCambiarFotoPerfil($nombreUsuario);
         $formCambiarFotoPerfil = $formCambiarFotoPerfil->gestiona();
         $contenidoPrincipal .= $formCambiarFotoPerfil;

@@ -3,37 +3,42 @@
 use es\ucm\fdi\aw\Aplicacion;
 use es\ucm\fdi\aw\usuarios\FormularioLogout;
 
-function mostrarSaludo()
-{
-    $html = '';
-    $app = Aplicacion::getInstance();
-    if ($app->usuarioLogueado()) {
-        $nombreUsuario = $app->nombreUsuario();
+$app = Aplicacion::getInstance();
 
-        $formLogout = new \es\ucm\fdi\aw\usuarios\FormularioLogout();
-        $htmlLogout = $formLogout->gestiona();
-        $html = "Bienvenido,{$nombreUsuario}". $htmlLogout;
-      
-    } else {
-        $loginUrl = $app->resuelve('/login.php');
-        $registroUrl = $app->resuelve('/registro.php');
-        $html = <<<EOS
-        Usuario desconocido. <a href="{$loginUrl}">Login</a> <a href="{$registroUrl}">Registro</a>
-      EOS;
-    }
-
-    return $html;
+$status = 0;
+if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
+    $status = 1;
 }
 
 ?>
+
 <header>
 <a href="index.php" class="logo"><img src="./img/basic/logo_sinfondo.png" name="logo" width="75"></a>
+
+    <a href="<?= RUTA_APP ?>/index.php">Inicio</a> <br> <br>
+		<a href="<?= RUTA_APP ?>/seguidos.php">Seguidos</a> <br> <br>
+		<a href="<?= RUTA_APP ?>/cafeterias.php">Cafeterías</a> <br> <br>
+		
+		<?php
+			if ($status == 0) {	
+				echo ' <a href="./login.php">
+				Iniciar sesión
+				</a> <br> <br>';
+			} 
+			else {
+				echo ' <a href="' . RUTA_APP . '/cafeteriaDetail.php?owner=' . (isset($_SESSION['nombre']) ? urlencode($_SESSION['nombre']) : '') . '">
+				Mi cafetería
+				</a> <br> <br>';
+				echo ' <a href="./logout.php">
+				Cerrar sesión
+				</a> <br> <br>';
+			}
+
+		?>
+    
     <div class="icons">
-        <a href="chat.php"><img src="./img/basic/comentarios.png" name="comentarios" width="50"></a>
         <a href="carrito.php"><img src="./img/basic/cesta.png" name="cesta" width="50"></a>
         <a href="perfil.php"><img src="./img/basic/user.png" name="login" width="50"></a>
     </div>
-    <div class="saludo">
-        <?= mostrarSaludo() ?>
-    </div>
 </header>
+

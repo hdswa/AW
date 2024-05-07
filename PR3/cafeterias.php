@@ -13,7 +13,7 @@ EOS;
 if (isset($_SESSION['nombre'])) {
 
     //session [user]cafeteria si existe poner tu cafeteria sino poner quieres crear tu propia cafeteria
-    $contenidoPrincipal .= '<div class="grid-container">';
+    $contenidoPrincipal .= '<div class="cafeterias">';
     foreach ($cafeterias as $cafeteria) {
         $foto_URL=".";
         $foto_URL.=$cafeteria->getFoto();
@@ -21,7 +21,7 @@ if (isset($_SESSION['nombre'])) {
         $nombre = $cafeteria->getNombre();
         //foto cuadrada 200px
         $contenidoPrincipal .= "<div class='cafeteria-item'>";
-        $contenidoPrincipal .="<img src='$foto_URL' alt='Image description' style='max-width: 200px; max-height: 200px;'>";
+        $contenidoPrincipal .="<img src='$foto_URL' alt='Image description' style='max-width: 2000px; max-height: 200px;'>";
         $contenidoPrincipal .="<h2><a href='cafeteriaDetail.php?name=$nombre'>$nombre</a></h2>";
         $contenidoPrincipal .= "</div><br>";
     }

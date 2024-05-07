@@ -30,6 +30,7 @@ class Producto {
             while ($fila = $rs->fetch_assoc()) {
                 $productos[] = new Producto($fila['Nombre'],$fila['Cafeteria_Owner'],$fila['Precio'],$fila['Foto'],$fila['Descripcion']);
             }
+            $rs->free();
         } else
         {
             $productos = array();
@@ -58,6 +59,8 @@ class Producto {
         } else {
             return false;
         }
+
+        $result->free();
     }
 
     public static function getProductoByNameAndOwner($name,$owner){
@@ -67,6 +70,7 @@ class Producto {
         if ($rs->num_rows > 0) {
             $fila = $rs->fetch_assoc();
             $producto = new Producto($fila['Nombre'],$fila['Cafeteria_Owner'],$fila['Precio'],$fila['Foto'],$fila['Descripcion']);
+            $rs->free();
         } else
         {
             $producto = false;
@@ -156,11 +160,8 @@ class Producto {
         } else {
             return false;
         }
-    }
 
-        // Add other functions as per your requirements
-    
-    
-    // Add other functions as per your requirements
+        $result->free();
+    }
 }
 

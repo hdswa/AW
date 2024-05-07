@@ -323,40 +323,24 @@ class Usuario
     
 
     public function perfilUsuario() {
-        // Iniciar la construcción del HTML
-        $perfil = "<div class='perfil-usuario'>";
-        $rutaFoto =".";
-        // Comprobar si existe una foto de perfil, de lo contrario, usar una predeterminada
-        $rutaFoto .= $this->foto ? $this->foto : './img/basic/user.png';
-      
-        $perfil .= "<img src='" . htmlspecialchars($rutaFoto) . "' alt='Foto de perfil' style='width: 200px; height: 200px;' class='imagen_perfil' />";
 
-        //Formulario para modificar la foto de perfil del usuario
-       
-        // Mostrar el nombre de usuario
-        $perfil .= "<p>Nombre de Usuario: " . htmlspecialchars($this->nombre) . "</p>";
-        
-        // Mostrar el email
-        $perfil .= "<p>Email: " . htmlspecialchars($this->email) . "</p>";
-        
-       
-        // Finalizar el HTML
-        $perfil .= "</div>";
-
-        return $perfil;
+        $rutaFoto = $this->foto ? $this->foto : './img/basic/user.png';
+    
+        return [
+            'rutaFoto' => htmlspecialchars($rutaFoto),
+            'nombre' => htmlspecialchars($this->nombre),
+            'email' => htmlspecialchars($this->email)
+        ];
     }
     public function setFotoDePerfil($Foto_de_perfil) {
         $this->foto = $Foto_de_perfil;
 
-            // Obtén la conexión a la base de datos
         $conn = Aplicacion::getInstance()->getConexionBd();
 
-        // Prepara la consulta SQL para actualizar la ruta de la foto de perfil
         $query = sprintf("UPDATE Usuario U SET U.Foto_de_perfil='%s' WHERE U.Nombre='%s'",
                         $conn->real_escape_string($Foto_de_perfil),
                         $conn->real_escape_string($this->nombre));
 
-        // Ejecuta la consulta
         if ($conn->query($query) === TRUE) {
             return true; // Actualización exitosa
         } else {

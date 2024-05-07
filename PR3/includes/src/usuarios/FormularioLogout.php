@@ -16,7 +16,7 @@ class FormularioLogout extends Formulario
     protected function generaCamposFormulario(&$datos)
     {
         $camposFormulario = <<<EOS
-        <button class="enlace" type="submit">(salir)</button>
+        <button class="enlace" type="submit">Cerrar sesión</button>
         EOS;
         return $camposFormulario;
     }

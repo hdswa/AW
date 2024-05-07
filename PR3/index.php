@@ -12,11 +12,11 @@ if (isset($_SESSION['nombre'])) {
 
 
   // Deberías inicializar la variable aquí para asegurarte de que tiene un valor base.
-  $contenidoPrincipal = "<h1>Página principal</h1>";
+  $contenidoPrincipal = "<h1>Inicio</h1>";
 
 
   if (empty($usuariosSeguidos)) {
-    $contenidoPrincipal =  "<p>No sigues todavia a ningun usuario.<p>";
+    $contenidoPrincipal =  "<p>Aún no sigues a ningún usuario.<p>";
   }
   else{
     $comentariosSeguidos = es\ucm\fdi\aw\comentarios\Comentarios::getComentariosDeSeguidos($usuariosSeguidos);
@@ -38,7 +38,7 @@ if (isset($_SESSION['nombre'])) {
   }
 }
 else{
-  $contenidoPrincipal = "<p>Por favor, <a href='login.php'>inicia sesión</a> para acceder al contenido.</p>";
+  $contenidoPrincipal = "<p>Por favor, <a href='login.php'>inicia sesión</a> o <a href='registro.php'>regístrate</a> para acceder al contenido.</p>";
 }
 
 

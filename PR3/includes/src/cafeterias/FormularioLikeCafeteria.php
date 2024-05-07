@@ -21,7 +21,7 @@ class FormularioLikeCafeteria extends Formulario {
         // Comprueba si el usuario ya dio like
         $yaDioLike = Cafeteria::yaDioLike($this->usuarioNombre, $this->cafeteriaNombre);
         
-        $botonTexto = $yaDioLike ? 'Quitar Like' : 'Dar Like';
+        $botonTexto = $yaDioLike ? '💙' : '👍';
         $accion = $yaDioLike ? 'dislike' : 'like';
 
         $html = <<<EOF

@@ -1,423 +1,215 @@
-*,::after,::before {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    
-}
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #accae9;
     padding: 20px;
-    height: 100%;
-}
-
-h1, h2 {
+    box-sizing: border-box;
+  }
+  
+  h1, h2 {
     color: #333;
-}
-
-p {
+  }
+  
+  p {
     margin-bottom: 15px;
-}
-
-div#contenedor {
-    display: flex;
-
-    flex-direction: column;
-    height: 100%;
-    width: 90%;
-    margin: auto;
-    border: 2px solid #ccc;
-    background-color: #ffffff;
-    margin-top: 30px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-header {
+  }
+  
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #007bff;
+    background-color: #accae9;
     color: #ffffff;
-}
-
-.logo img {
+  }
+  
+  .logo img {
     width: 90px;
     height: auto;
-}
-
-a, header a:visited {
+  }
+  
+  a,
+  a:visited {
     color: #000000;
     font-weight: bold;
     text-decoration: none;
-} 
-
-header a:hover {
+  }
+  
+  a:hover {
     text-decoration: underline;
-} 
-
-nav {
-	padding: 10px;
-	float: left;
-	width: 170px;
-	height: 400px;
-	background-color: #dddddd;
-}
-
-nav a, nav a:visited {
-	color: black;
-	font-weight: bold;
-	text-decoration: none;
-} 
-
-nav a:hover {
-	color: red;
-	text-decoration: underline;
-} 
-
-
-.icons a {
-    margin-left: 70px;
-    margin-top: 10px;
-}
-
-.icons img {
-    width: 50px;
-    height: auto;
-}
-
-.container {
-    display: flex;
-}
-
-.main{
+  }
+  
+  nav {
+    padding: 10px;
+    width: 170px;
+    height: 400px;
+    background-color: #accae9;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    padding: 20px;
-}
-main {
+  }
+  
+  nav a,
+  nav a:visited {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+  
+  nav a:hover {
+    color: rgb(10, 3, 28);
+    text-decoration: underline;
+  }
+  
+  .icons a {
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+  
+  .icons img {
+    width: 50px;
+    height: auto;
+  }
+  
+  main {
     height: 100%;
     display: flex;
     flex-direction: row;
-	width: 100%;
-	background-color: white;
-}
+    width: 100%;
+    background-color: #accae9;
+    justify-content: center;
+    align-items: center;
+  }
+  
 
-
-th, td, table {
+  th,
+  td,
+  table {
     border: 1px solid #ccc;
     border-collapse: collapse;
-}
-
-form {
-    max-width: 600px;
+  }
+  
+  form {
     margin: 0 auto;
     background-color: #ffffff;
-    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-#formLogout{
-   padding: 5px;
-   background-color: #007bff;
-   box-shadow: none;
-}
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+  }
 
-.enlace{
-    background-color: white;
-    border: 1px solid black;
-}
-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-}
+  #formDarLike{
+    margin: 0 auto;
+    background-color: transparent;
+    border-radius: 16px;
+  }
 
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+  #formAddCafeteria{
+    margin: 0 auto;
+    background-color: transparent;
+    border-radius: 16px;
+  }
+
+  fieldset {
+    padding: 70px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  legend {
+    font-weight: bold;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-    margin-right: 5px;
-    margin-bottom: 15px;
-}
-
-input[type="submit"] {
+  }
+  
+  
+  .enlace {
+    background-color: white;
+    border: 1px solid black;
+  }
+  
+  label {
+    display: flex;
+    margin-bottom: 10px;
     margin-top: 5px;
-    background-color: #007bff;
+    color: #333;
+  }
+
+  button{
+
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    color: #333;
+  }
+  
+  input[type="text"],
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="submit"] {
+    background-color: #3498db;
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     cursor: pointer;
-    border-radius: 4px;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-ol {
+    border-radius: 3px;
+    font-weight: bold;
+  }
+  
+  ol {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-ol li {
+  }
+  
+  ol li {
     display: inline;
-    margin-right: 15px;
-}
+  }
 
-#sidebarIzq {
-    width: 15%;
-    min-height: 100%;
-   
-    background-color: #b6d8f2;
-    padding: 20px;
-}
+  /*NO FUNCIONA !!!!!!!!!!*/
+/*Imagenes*/
 
-#sidebarIzq ul {
-    height: 100%;
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-}
-
-#sidebarIzq ul li {
-    
-    margin-bottom: 10px;
-}
-
-#sidebarIzq ul li a {
-    display: block;
-    text-decoration: none;
-    color: #333;
-}
-
-.mensaje {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #f44336;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 9999;
-}
-
-.comentarios {
-    background-color: #f2f2f2;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.comentario {
-    background-color: #fff; /* Color de fondo blanco */
-    padding: 15px; /* Espacio interno alrededor del contenido */
-    margin: 20px 0; /* Espacio externo arriba y abajo de la `div` */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil */
-    font-family: 'Arial', sans-serif; /* Tipo de fuente */
-    color: #333; /* Color de texto */
-    line-height: 1.6; /* Espaciado entre líneas */
-    border: 1px solid #ddd; /* Borde sutil alrededor de la `div` */
-}
-
-
-.cafeteria {
-    background-color: #f2f2f2;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.productos {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 5px;
-    background-color: #f2f2f2;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.cafeteria-item {
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 10px 0;
-    width :250px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.perfil-usuario {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.imagen_perfil {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
 .grid-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap:1rem;
-}
-.usuario-seguido-item img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-
-/* Estilo del contenedor principal */
-.usuarios-seguidos-container {
-    width: 100%; /* Establece el ancho al 100% del contenedor padre */
-    max-width: 100%; 
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
-
-/* Estilo para cada usuario seguido */
-.usuario-seguido-item {
-    padding: 40px;
-    width: 100%; 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid; /* Enable grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Create columns with a minimum width of 250px and flexible width */
+    gap: 20px; /* Add spacing between grid items */
+  }
+  
+.cafeteria-item {
+    flex: 0 0 50%;
     margin-bottom: 20px;
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-
-
-/* Estilo para el nombre del usuario */
-.usuario-seguido-item h2 {
-    flex-grow: 1; /* Para que ocupe el espacio disponible */
+    text-align: center;
+  }
+  
+  .cafeteria-item img {
+    max-width: 2000px;
+    max-height: 200px;
+    margin-bottom: 10px;
+  }
+  
+  .cafeteria-item h2 {
     margin: 0;
     padding: 0;
-    font-size: 1.2em;
-    text-align: center;
-}
+    font-size: 18px;
+  }
+  
+  .cafeteria-item h2 a {
+    color: #333;
+    text-decoration: none;
+  }
 
-/* Estilo para el botón de dejar de seguir */
-.usuario-seguido-item form {
-    margin: 0;
-}
-
-.usuario-seguido-item .boton-primario {
-    background-color: #ff4d4d;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    margin: 0px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.usuario-seguido-item .boton-primario:hover {
-    background-color: #cc0000;
-}
-/* Estilo general para botones */
-.boton-primario {
-    background-color: #ff4d4d; /* Cambia al color que prefieras */
-    color: white; /* Color de texto */
-    padding: 10px 15px; /* Espacio interno */
-    border: none; /* Remueve el borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cursor tipo puntero para indicar interactividad */
-    transition: background-color 0.3s; /* Transición suave para cambio de color de fondo */
-    outline: none; /* Remueve el contorno que aparece al hacer clic */
-    margin: 5px 0; /* Margen exterior */
-    text-align: center; /* Alineación del texto */
-    display: inline-block; /* Para permitir definir un ancho y alto */
-    width: auto; /* Ancho automático basado en el contenido interior */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    box-sizing: border-box; /* Incluye el padding y border dentro del ancho y alto definidos */
-}
-
-/* Remueve el cajetín blanco alrededor de los botones */
-button {
-    background: none; /* Fondo transparente */
-    border: none; /* Sin borde */
-    box-shadow: none; /* Sin sombra */
-}
-
-/* Aplica el estilo solamente a los botones dentro de .usuario-seguido-item */
-.usuario-seguido-item .boton-primario {
-    /* Aquí aplicarías los estilos específicos como background-color, padding, etc. */
-}
-
-/* Asegúrate de que no haya un estilo adicional que afecte los botones */
-.usuario-seguido-item button {
-    border: none; /* Sin borde */
-    background: transparent; /* Fondo transparente */
-    box-shadow: none; /* Sin sombra */
-}
-
-/* Resto de tus estilos... */
-
-
-.usuarios-seguidos-container .usuario-seguido-item form button.boton-primario {
-    background-color: transparent; /* Hace que el fondo sea transparente */
-    border: none; /* Elimina el borde */
-    box-shadow: none; /* Elimina la sombra de la caja */
-    color: #090365da; /* Color del texto del botón */
-    padding: 0.5em 1em; /* Espaciado dentro del botón */
-    text-transform: uppercase; /* Transforma el texto a mayúsculas */
-    font-weight: bold; /* Hace el texto en negrita */
-    transition: background-color 0.3s ease; /* Suaviza el cambio de color al hacer hover */
-}
-
-.usuarios-seguidos-container .usuario-seguido-item form button.boton-primario:hover {
-    background-color: #e0e0e0; /* Color de fondo al hacer hover */
-}
-
-.usuarios-seguidos-container .usuario-seguido-item form {
-    display: inline-block; /* Hace que el formulario sea en línea con otros elementos */
-    margin: 0; /* Elimina márgenes predeterminados */
-}
-
-.usuarios-seguidos-container .usuario-seguido-item {
-    display: flex; /* Usa flexbox para la alineación */
-    align-items: center; /* Centra los items verticalmente */
-    justify-content: space-between; /* Distribuye el espacio entre los elementos */
-    margin-bottom: 1em; /* Espacio debajo de cada elemento */
-}
-
-.usuarios-seguidos-container .usuario-seguido-item img.imagen_usuario {
-    border-radius: 50%; /* Hace la imagen circular */
-    margin-right: 1em; /* Espacio a la derecha de la imagen */
-}
-
-
-
-
+  

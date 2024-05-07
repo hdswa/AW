@@ -1,10 +1,16 @@
 <?php
 require_once __DIR__.'/includes/config.php';
 
+//Doble seguridad: unset + destroy
+unset($_SESSION['username']);
+//unset($_SESSION['roles']);
+unset($_SESSION['nombre']);
 
-if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
-    $app->redirige('/index.php');
-}
+session_destroy();
+session_start();
 
-$formLogout = new \es\ucm\fdi\aw\usuarios\FormularioLogout();
-$formLogout->gestiona();
+$contenidoPrincipal =  "<p>Sesión cerrada correctamente.<p>";
+
+header('Location: index.php');
+
+?>

@@ -60,11 +60,12 @@ public static function getAllCafe() {
         while($fila = $rs->fetch_assoc()){
         $cafeterias[] = new cafeteria($fila['Nombre'], $fila['Descripcion'], $fila['Owner'], $fila['Categoria'], $fila['Ubicacion'],$fila['Foto'], $fila['Cantidad_de_likes']);
         }
+        $rs->free();
     } else
     {
         $cafeterias = array();
     }
-    $rs->free();
+    
     // Return the results
     return $cafeterias;
 }
