@@ -1,13 +1,9 @@
 <?php
 require_once __DIR__.'/includes/config.php';
 
-//Doble seguridad: unset + destroy
-unset($_SESSION['username']);
-//unset($_SESSION['roles']);
-unset($_SESSION['nombre']);
+use es\ucm\fdi\aw\Aplicacion;
 
-session_destroy();
-session_start();
+$app->logout();
 
 $contenidoPrincipal =  "<p>Sesión cerrada correctamente.<p>";
 

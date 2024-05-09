@@ -25,7 +25,7 @@ CREATE TABLE Cafeteria (
     Nombre VARCHAR(50) PRIMARY KEY,
     Descripcion TEXT,
     Owner VARCHAR(50),
-    FOREIGN KEY (Owner) REFERENCES Usuario(Nombre),
+    FOREIGN KEY (Owner) REFERENCES Usuario(Nombre) ON DELETE CASCADE ON UPDATE CASCADE,
     Categoria VARCHAR(50),
     Ubicacion VARCHAR(255),
     Foto VARCHAR(255),
@@ -37,7 +37,7 @@ CREATE TABLE Productos (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(100),
     Cafeteria_Owner VARCHAR(50),
-    FOREIGN KEY (Cafeteria_Owner) REFERENCES Cafeteria(Nombre),
+    FOREIGN KEY (Cafeteria_Owner) REFERENCES Cafeteria(Nombre) ON DELETE CASCADE ON UPDATE CASCADE,
     Precio DECIMAL(10,2),
     Foto VARCHAR(255),
     Descripcion TEXT
@@ -48,7 +48,7 @@ CREATE TABLE Carrito (
   Owner VARCHAR(50),
   Item_list JSON,
   Pagado BOOLEAN,
-  FOREIGN KEY (Owner) REFERENCES Usuario(Nombre)
+  FOREIGN KEY (Owner) REFERENCES Usuario(Nombre) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -60,8 +60,8 @@ CREATE TABLE Comentarios (
     Cafeteria_Comentada VARCHAR(50),
     Valoracion INT,
     Mensaje TEXT,
-    FOREIGN KEY (Usuario) REFERENCES Usuario(Nombre),
-    FOREIGN KEY (Cafeteria_Comentada) REFERENCES Cafeteria(Nombre)
+    FOREIGN KEY (Usuario) REFERENCES Usuario(Nombre) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (Cafeteria_Comentada) REFERENCES Cafeteria(Nombre) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Tabla Chat
@@ -70,16 +70,16 @@ CREATE TABLE Chat (
     Usuario2 VARCHAR(50),
     Mensaje TEXT,
     Tiempo_de_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (Usuario1) REFERENCES Usuario(Nombre),
-    FOREIGN KEY (Usuario2) REFERENCES Usuario(Nombre)
+    FOREIGN KEY (Usuario1) REFERENCES Usuario(Nombre) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (Usuario2) REFERENCES Usuario(Nombre) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Tabla Seguidores
 CREATE TABLE Seguidores (
     Seguidor VARCHAR(50),
     Seguido VARCHAR(50),
-    FOREIGN KEY (Seguidor) REFERENCES Usuario(Nombre),
-    FOREIGN KEY (Seguido) REFERENCES Usuario(Nombre),
+    FOREIGN KEY (Seguidor) REFERENCES Usuario(Nombre) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (Seguido) REFERENCES Usuario(Nombre) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (Seguidor, Seguido)
 );
 
@@ -101,16 +101,17 @@ VALUES ('profe',    'profe@example.com',    '$2y$10$a0EJlruBOC/S0RicOb5mneLoRQvD
        ('usuario2', 'usuario2@example.com', '$2y$10$xaI9VQHt9aIFYnsRPSuWcuszGYOz6N8WJbRSNhxNhU2UMJjx8eUB.', './img/perfiles/foto2.png', 'cliente'),
        ('usuario3', 'usuario3@example.com', '$2y$10$RO4EbCSxOF5YV8Qn1rbJYOf.xg7XJCLwYhjzmJCxZz32Wvg0n/C/a', './img/perfiles/foto3.png', 'cliente'),
        ('usuario4', 'usuario4@example.com', '$2y$10$PLrvUUvAiURYb0IJriCWK.sESSHgSKsoIaV6MqMxMPsCHa7N/.O.e', './img/perfiles/foto4.png', 'cliente'),
-       ('usuario5', 'usuario5@example.com', '$2y$10$U6szMhYxKJqJKUR9NbXxm.59ppl0Qgoc/tPOmynIKhEQ8F8oVgoPm', './img/perfiles/foto5.png', 'cliente');
+       ('usuario5', 'usuario5@example.com', '$2y$10$U6szMhYxKJqJKUR9NbXxm.59ppl0Qgoc/tPOmynIKhEQ8F8oVgoPm', './img/perfiles/foto5.png', 'cliente'),
+       ('admin',    'admin@admin.com',      '$2y$10$ABsU41J0WZeiXm1glClaI.Eio9OcJEnCwT7ocqNiwH5U/zVP0xtLO', './img/perfiles/admin.png', 'admin');
 
 
 -- Inserts para Cafeteria
 INSERT INTO Cafeteria (Nombre, Descripcion, Owner, Categoria, Ubicacion,Foto, Cantidad_de_likes)
-VALUES ('Aroma y Sabor', 'Cafetería acogedora con una amplia variedad de bebidas y aperitivos.', 'usuario1', 'Café', 'Calle Principal 123','/img/cafeterias/1.jpg', 100),
-       ('El Alquimista', 'Cafetería moderna especializada en café de calidad.', 'usuario2', 'Café', 'Avenida Central 456','/img/cafeterias/2.jpg', 150),
-       ('Dulce Amargo', 'Cafetería con ambiente relajado y wifi gratuito.', 'usuario3', 'Café', 'Plaza del Sol 789','/img/cafeterias/3.jpg', 80),
-       ('Happy Café', 'Cafetería familiar con opciones saludables y pasteles caseros.', 'usuario4', 'Café', 'Avenida Norte 234','/img/cafeterias/4.jpg', 120),
-       ('Serendipia Home', 'Cafetería con terraza al aire libre y música en vivo los fines de semana.', 'usuario5', 'Café', 'Calle Sur 567','/img/cafeterias/5.jpg', 200);
+VALUES ('Hogar de Aromas', 'Cafetería acogedora con una amplia variedad de bebidas y aperitivos.', 'usuario1', 'Café', 'Calle Principal 123','/img/cafeterias/1.jpg', 100),
+       ('Urban Coffe', 'Cafetería moderna especializada en café de calidad.', 'usuario2', 'Café', 'Avenida Central 456','/img/cafeterias/2.jpg', 150),
+       ('Momento Zen', 'Cafetería con ambiente relajado y wifi gratuito.', 'usuario3', 'Café', 'Plaza del Sol 789','/img/cafeterias/3.jpg', 80),
+       ('Generaciones de Café', 'Cafetería familiar con opciones saludables y pasteles caseros.', 'usuario4', 'Café', 'Avenida Norte 234','/img/cafeterias/4.jpg', 120),
+       ('El Oasis', 'Cafetería con terraza al aire libre y música en vivo los fines de semana.', 'usuario5', 'Café', 'Calle Sur 567','/img/cafeterias/5.jpg', 200);
 
 -- Insertar un chat entre dos usuarios
 INSERT INTO Chat (Usuario1, Usuario2, Mensaje)
@@ -118,26 +119,26 @@ VALUES ('usuario1', 'usuario2', 'Hola, ¿cómo estás?');
 
 -- Inserts para Comentarios (3 comentarios para una cafeteria)
 INSERT INTO Comentarios (Usuario, Cafeteria_Comentada, Valoracion, Mensaje)
-VALUES ('usuario1', 'Aroma y Sabor', 5, 'Excelente café y ambiente acogedor.'),
-       ('usuario2', 'Aroma y Sabor', 4, 'Buena variedad de bebidas, pero el servicio puede mejorar.'),
-       ('usuario3', 'Aroma y Sabor', 5, 'Me encanta este lugar, siempre vengo a estudiar aquí.'),
-       ('profe', 'Aroma y Sabor', 5, 'Servicio atento y amable. Muy recomendable.'),
-        ('profe', 'El Alquimista', 3, 'Tardaron mucho en traer la comida.'),
-       ('maria', 'Aroma y Sabor', 5, 'Siempre que vengo a esta cafetería tengo una buena experiencia.'),
-       ('lucia', 'Aroma y Sabor', 4, 'Bien decorado, pero pedí un flat white y no sabían como hacerlo.');
+VALUES ('usuario1', 'Hogar de Aromas', 5, 'Excelente café y ambiente acogedor.'),
+       ('usuario2', 'Hogar de Aromas', 4, 'Buena variedad de bebidas, pero el servicio puede mejorar.'),
+       ('usuario3', 'Hogar de Aromas', 5, 'Me encanta este lugar, siempre vengo a estudiar aquí.'),
+       ('profe', 'Hogar de Aromas', 5, 'Servicio atento y amable. Muy recomendable.'),
+        ('profe', 'Urban Coffe', 3, 'Tardaron mucho en traer la comida.'),
+       ('maria', 'Hogar de Aromas', 5, 'Siempre que vengo a esta cafetería tengo una buena experiencia.'),
+       ('lucia', 'Hogar de Aromas', 4, 'Bien decorado, pero pedí un flat white y no sabían como hacerlo.');
 
 -- Inserts para Productos (20 productos repartidos entre las diferentes cafeterias)
 INSERT INTO Productos (Nombre, Cafeteria_Owner, Precio, Foto, Descripcion)
-VALUES ('Café Latte', 'Aroma y Sabor', 2.50,'/img/productos/latte.jpg', 'Café espresso con leche caliente y espuma de leche.'),
-       ('Capuchino', 'Aroma y Sabor', 3.00,'/img/productos/capuchino.jpg', 'Café espresso con leche vaporizada y espuma de leche.'),
-       ('Té Verde Matcha', 'El Alquimista', 3.50,'/img/productos/matcha.jpg', 'Té verde japonés en polvo con leche caliente o fría.'),
-       ('Café Americano', 'El Alquimista', 2.00,'/img/productos/americano.jpg', 'Café espresso mezclado con agua caliente.'),
-       ('Muffin de Arándanos', 'Dulce Amargo', 2.50,'/img/productos/muffin_arandanos.jpg', 'Delicioso muffin con arándanos frescos.'),
-       ('Croissant de Chocolate', 'Dulce Amargo', 2.00,'/img/productos/croissant_chocolate.jpg', 'Croissant hojaldrado relleno de chocolate.'),
-       ('Bagel de Salmón', 'Happy Café', 5.00,'/img/productos/bagel_salmon.jpg', 'Bagel integral con salmón ahumado, queso crema y pepino.'),
-       ('Ensalada César', 'Happy Café', 6.50,'/img/productos/ensalada_cesar.jpg', 'Ensalada fresca con pollo a la parrilla, crutones y aderezo César.'),
-       ('Tostada de Aguacate', 'Serendipia Home', 4.50,'/img/productos/tostada_aguacate.jpg', 'Tostada de pan integral con aguacate, huevo pochado y tomate cherry.'),
-       ('Smoothie de Frutas Tropicales', 'Serendipia Home', 4.00,'/img/productos/smoothie_frutas.jpg', 'Batido refrescante con mango, piña y plátano.');
+VALUES ('Café Latte', 'Hogar de Aromas', 2.50,'/img/productos/latte.jpg', 'Café espresso con leche caliente y espuma de leche.'),
+       ('Capuchino', 'Hogar de Aromas', 3.00,'/img/productos/capuchino.jpg', 'Café espresso con leche vaporizada y espuma de leche.'),
+       ('Té Verde Matcha', 'Urban Coffe', 3.50,'/img/productos/matcha.jpg', 'Té verde japonés en polvo con leche caliente o fría.'),
+       ('Café Americano', 'Urban Coffe', 2.00,'/img/productos/americano.jpg', 'Café espresso mezclado con agua caliente.'),
+       ('Muffin de Arándanos', 'Momento Zen', 2.50,'/img/productos/muffin_arandanos.jpg', 'Delicioso muffin con arándanos frescos.'),
+       ('Croissant de Chocolate', 'Momento Zen', 2.00,'/img/productos/croissant_chocolate.jpg', 'Croissant hojaldrado relleno de chocolate.'),
+       ('Bagel de Salmón', 'Generaciones de Café', 5.00,'/img/productos/bagel_salmon.jpg', 'Bagel integral con salmón ahumado, queso crema y pepino.'),
+       ('Ensalada César', 'Generaciones de Café', 6.50,'/img/productos/ensalada_cesar.jpg', 'Ensalada fresca con pollo a la parrilla, crutones y aderezo César.'),
+       ('Tostada de Aguacate', 'El Oasis', 4.50,'/img/productos/tostada_aguacate.jpg', 'Tostada de pan integral con aguacate, huevo pochado y tomate cherry.'),
+       ('Smoothie de Frutas Tropicales', 'El Oasis', 4.00,'/img/productos/smoothie_frutas.jpg', 'Batido refrescante con mango, piña y plátano.');
 
 -- Puedes continuar agregando más productos para las diferentes cafeterías de manera similar.
 -- Insert para Carrito del Usuario1 con 5 productos

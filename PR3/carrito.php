@@ -24,7 +24,7 @@ $contenidoPrincipal = <<<EOS
 
 if (isset($_SESSION['nombre'])) {
     if(!$carrito){
-      $contenidoPrincipal .="No tienes items en el carrito haga una compra";
+      $contenidoPrincipal .="No tienes productos en el carrito, añade alguno!";
     }
     else{
     try{

@@ -31,9 +31,9 @@ class FormularioAddProducto extends Formulario
         
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br>
-            <label for="precio">precio en €:</label>
+            <label for="precio">Precio en €:</label>
             <input type="number" id="precio" name="precio" required><br>
-            <label for="descripcion">descripcion:</label>
+            <label for="descripcion">Descripción:</label>
             <input type="text" id="descripcion" name="descripcion" required><br>
             <label for="foto">Foto:</label>
             <input type='file' name='foto' required>

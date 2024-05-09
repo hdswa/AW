@@ -50,6 +50,36 @@ public function saveCafeteria() {
         return false;
     }
 }
+
+public function updateCafeteria($name) {
+    $conn = Aplicacion::getInstance()->getConexionBd();
+
+    $query = sprintf("UPDATE Cafeteria SET 
+                        Descripcion = '%s',
+                        Owner = '%s',
+                        Categoria = '%s',
+                        Ubicacion = '%s',
+                        Foto = '%s',
+                        Cantidad_de_likes = '%s'
+                      WHERE Nombre = '%s'",
+        $conn->real_escape_string($this->descripcion),
+        $conn->real_escape_string($this->owner),
+        $conn->real_escape_string($this->categoria),
+        $conn->real_escape_string($this->ubicacion),
+        $conn->real_escape_string($this->foto),
+        $conn->real_escape_string($this->cantidadDeLikes),
+        $conn->real_escape_string($name)
+    );
+
+    $result = $conn->query($query);
+
+    if ($result) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 public static function getAllCafe() {
     
     $conn = Aplicacion::getInstance()->getConexionBd();
@@ -238,6 +268,25 @@ public function setFoto($foto) {
         $resultado = $stmt->get_result();
         $fila = $resultado->fetch_assoc();
         return $fila['likes'];
+    }
+	
+    public function deleteFoto(){
+      
+        self::setFoto("/img/cafeterias/default.png");
+     }
+ 
+     public function deleteCafeteria(){
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        // Prepara la consulta SQL para actualizar la ruta de la foto de perfil
+        $query = sprintf("DELETE FROM Cafeteria WHERE Nombre='%s'",
+                        $conn->real_escape_string($this->nombre));
+        // Ejecuta la consulta
+        if ($conn->query($query) === TRUE) {
+            return true; // Actualización exitosa
+        } else {
+            error_log("Error al borrar : " . $conn->error);
+            return false; // Error al actualizar
+        }
     }
 }
 

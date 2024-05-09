@@ -34,6 +34,13 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
 				</a> <br> <br>';
 			}
 
+			if(isset($_SESSION['esAdmin'])&&$_SESSION['esAdmin']=1){
+				?>
+					<a href="<?= RUTA_APP ?>/admin.php">Panel de Administrador</a> <br> <br>
+				<?php
+	
+				}
+	
 		?>
     
     <div class="icons">

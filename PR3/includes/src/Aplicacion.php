@@ -254,6 +254,9 @@ class Aplicacion
         $_SESSION['nombre'] = $user->getNombre();
         $_SESSION['esAdmin'] = false;
      
+        if($user->getRoles()==='admin'){
+            $_SESSION['esAdmin']=true;
+        }
     }
 
     public function logout()
@@ -264,7 +267,7 @@ class Aplicacion
         unset($_SESSION['nombre']);
         unset($_SESSION['idUsuario']);
         unset($_SESSION['roles']);
-
+        unset($_SESSION['esAdmin']);
 
         session_destroy();
         session_start();
@@ -297,7 +300,7 @@ class Aplicacion
     public function tieneRol($rol)
     {
         $this->compruebaInstanciaInicializada();
-        return $this->usuarioLogueado() && (array_search($rol, $_SESSION['roles']) !== false);
+        return $this->usuarioLogueado() && ($_SESSION['esAdmin'] !== false);
     }
 
     public function paginaError($codigoRespuesta, $tituloPagina, $mensajeError, $explicacion = '')

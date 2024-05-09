@@ -102,6 +102,31 @@ class Comentarios {
         return $result;
     }
 
+    public static function getAllComentarios() {
+    
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        
+        $query = "SELECT * FROM Comentarios";
+        $rs = $conn->query($query);
+        if ($rs->num_rows > 0) {
+            while ($fila = $rs->fetch_assoc()) {
+                $comentarios[] = new Comentarios(
+                    $fila['ID'],
+                    $fila['Usuario'],
+                    $fila['Cafeteria_Comentada'],
+                    $fila['Valoracion'],
+                    $fila['Mensaje']
+                );
+            }
+        } else
+        {
+            $comentarios = array();
+        }
+        $rs->free();
+        // Return the results
+        return $comentarios;
+    }
+    
 
     // Getters and Setters
     public function getID() {
@@ -143,7 +168,37 @@ class Comentarios {
     public function setMensaje($Mensaje) {
         $this->Mensaje = $Mensaje;
     }
+
+
+    public function deleteComentario($id) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("DELETE FROM Comentarios WHERE ID = %d",
+            $id
+        );
+        $result = $conn->query($query);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+        $result->free();
+    }
+    
+    public static function getComentarioById($id){
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        
+        $query = sprintf("SELECT * FROM Comentarios C WHERE C.ID = '%d'", $id);
+        $rs = $conn->query($query);
+        if ($rs->num_rows > 0) {
+            $fila = $rs->fetch_assoc();
+            $cafeteria = new Comentarios($fila['ID'], $fila['Usuario'], $fila['Cafeteria_Comentada'], $fila['Valoracion'], $fila['Mensaje']);
+            $result=$cafeteria;
+            $rs->free();
+        } else
+        {
+            $result = false;
+        }
+        return $result;
+
+    }
 }
-
-
-

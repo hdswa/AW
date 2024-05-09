@@ -123,7 +123,7 @@ class Producto {
         return $this->foto;
     }
     public function setFoto($foto){
-        $this->foto;
+        $this->foto=$foto;
     }
 
     public function getDescripcion() {
@@ -162,6 +162,28 @@ class Producto {
         }
 
         $result->free();
+    }
+
+    public function updateProducto() {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = sprintf("UPDATE Productos SET
+                            Cafeteria_Owner = '%s',
+                            Precio = '%s',
+                            Foto = '%s',
+                            Descripcion = '%s'
+                          WHERE Nombre = '%s'",
+            $conn->real_escape_string($this->cafeteriaOwner),
+            $conn->real_escape_string($this->precio),
+            $conn->real_escape_string($this->foto),
+            $conn->real_escape_string($this->descripcion),
+            $conn->real_escape_string($this->nombre)
+        );
+        $result = $conn->query($query);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

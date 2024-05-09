@@ -300,7 +300,7 @@ class Usuario
                          $conn->real_escape_string($nombreUsuarioASeguir));
     
         if ($conn->query($query)) {
-            return true; // Seguimiento exitoso
+            return true; // Empezó a seguir
         } else {
             error_log("Error al intentar seguir al usuario ({$conn->errno}): {$conn->error}");
             return false; // Error al seguir al usuario
@@ -314,7 +314,7 @@ class Usuario
                          $conn->real_escape_string($nombreUsuarioADejarDeSeguir));
     
         if ($conn->query($query)) {
-            return true; // Dejó de seguir exitosamente
+            return true; // Dejó de seguir
         } else {
             error_log("Error al intentar dejar de seguir al usuario ({$conn->errno}): {$conn->error}");
             return false; // Error al dejar de seguir al usuario
@@ -348,4 +348,44 @@ class Usuario
             return false; // Error al actualizar
         }
     }
+
+    public static function getAllUser() {
+    
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        
+        $query = "SELECT * FROM Usuario";
+        $rs = $conn->query($query);
+        if ($rs->num_rows > 0) {
+            while($fila = $rs->fetch_assoc()){
+          
+            $usuarios[]= new Usuario($fila['Nombre'], $fila['Email'], $fila['Password_hash'], $fila['Foto_de_perfil'], $fila['Rol']);    
+        }
+        } else
+        {
+            $usuarios = array();
+        }
+        $rs->free();
+        
+        return $usuarios;
+    }
+    
+    public function deleteFoto(){
+      
+        self::setFotoDePerfil("./img/perfiles/Default.png");
+    }
+    
+    public function deleteUser(){
+        $conn = Aplicacion::getInstance()->getConexionBd();
+
+        $query = sprintf("DELETE FROM Usuario WHERE Nombre='%s'",
+                        $conn->real_escape_string($this->nombre));
+
+        if ($conn->query($query) === TRUE) {
+            return true;
+        } else {
+            error_log("Error al eliminar el usuario: " . $conn->error);
+            return false;
+        }
+    }
+
 }

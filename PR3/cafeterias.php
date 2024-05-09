@@ -2,8 +2,7 @@
 
 require_once __DIR__.'/includes/config.php';
 
-$tituloPagina = 'Título cafetrías';
-// $cafeterias = Cafeteria::getAllCafe(); // Assuming getCafeterias() is a function that returns an array of cafeterias
+$tituloPagina = 'Título cafeterías';
 $cafeterias = \es\ucm\fdi\aw\cafeterias\Cafeteria::getAllCafe();
 
 $contenidoPrincipal = <<<EOS
