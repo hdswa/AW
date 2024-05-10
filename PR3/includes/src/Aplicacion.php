@@ -252,7 +252,7 @@ class Aplicacion
         $this->compruebaInstanciaInicializada();
         $_SESSION['login'] = true;
         $_SESSION['nombre'] = $user->getNombre();
-        $_SESSION['esAdmin'] = false;
+       
      
         if($user->getRoles()==='admin'){
             $_SESSION['esAdmin']=true;
