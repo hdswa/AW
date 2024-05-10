@@ -35,6 +35,7 @@ class Usuario
     public static function buscaUsuario($nombreUsuario)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
+        $nombreUsuario = html_entity_decode($nombreUsuario, ENT_QUOTES, 'UTF-8');
         $query = sprintf("SELECT * FROM usuario U WHERE U.Nombre='%s'", $conn->real_escape_string($nombreUsuario));
         $rs = $conn->query($query);
         $result = false;
@@ -53,6 +54,7 @@ class Usuario
     public static function buscaPorId($idUsuario)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
+       
         $query = sprintf("SELECT * FROM Usuarios WHERE id=%d", $idUsuario);
         $rs = $conn->query($query);
         $result = false;
@@ -295,6 +297,7 @@ class Usuario
 
     public function seguirUsuario($nombreUsuarioASeguir) {
         $conn = Aplicacion::getInstance()->getConexionBd();
+        
         $query = sprintf("INSERT INTO Seguidores (Seguidor, Seguido) VALUES ('%s', '%s')",
                          $conn->real_escape_string($this->nombre),
                          $conn->real_escape_string($nombreUsuarioASeguir));

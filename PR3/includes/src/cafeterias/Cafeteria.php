@@ -53,7 +53,7 @@ public function saveCafeteria() {
 
 public function updateCafeteria($name) {
     $conn = Aplicacion::getInstance()->getConexionBd();
-
+    $name = html_entity_decode($name, ENT_QUOTES, 'UTF-8');
     $query = sprintf("UPDATE Cafeteria SET 
                         Descripcion = '%s',
                         Owner = '%s',
@@ -102,6 +102,7 @@ public static function getAllCafe() {
 
 public static function getCafeteriaByName($name){
     $conn = Aplicacion::getInstance()->getConexionBd();
+    $name = html_entity_decode($name, ENT_QUOTES, 'UTF-8');
     
     $query = sprintf("SELECT * FROM Cafeteria C WHERE C.Nombre = '%s'", $conn->real_escape_string($name));
     $rs = $conn->query($query);
@@ -119,7 +120,7 @@ public static function getCafeteriaByName($name){
 }
 public static function getCafeteriaByOwnerName($name){
     $conn = Aplicacion::getInstance()->getConexionBd();
-    
+    $name = html_entity_decode($name, ENT_QUOTES, 'UTF-8');
     $query = sprintf("SELECT * FROM Cafeteria C WHERE C.Owner = '%s'", $conn->real_escape_string($name));
     $rs = $conn->query($query);
     if ($rs->num_rows > 0) {

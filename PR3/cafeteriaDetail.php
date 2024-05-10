@@ -17,7 +17,20 @@ $contenidoPrincipal="";
 
 
 
+if(isset($_GET['producto'])){
 
+$contenidoPrincipal="<h2>Editar Producto</h2>";
+
+$nombreProducto = $_GET['producto'];
+$cafeName=$_GET['cafeNombre'];   
+
+$producto= \es\ucm\fdi\aw\productos\Producto::getProductoByNameAndOwner($nombreProducto,$cafeName);
+
+$formEdit=new \es\ucm\fdi\aw\productos\FormularioEditarProducto($nombreProducto,$producto->getPrecio(),$producto->getDescripcion(),$producto->getFoto(),$cafeName);
+$formEdit=$formEdit->gestiona();
+$contenidoPrincipal.=$formEdit;
+}
+else{
 if (isset($_GET['name'])){
     $name= $_GET['name'];
     $productos = \es\ucm\fdi\aw\productos\Producto::getCafeAllItemsByOwner($name); // Assuming getCafeterias() is a function that returns an array of cafeterias
@@ -48,7 +61,7 @@ if (isset($_GET['owner'])){
     
         $name=$cafeteria->getNombre();
         $productos = \es\ucm\fdi\aw\productos\Producto::getCafeAllItemsByOwner($name);
-        $contenidoPrincipal.="<h2>asdasdasdasa</h2>";
+       
     
 }
 $nombreUsuario = $_SESSION['nombre']; // Nombre del usuario actual
@@ -103,7 +116,7 @@ foreach ($productos as $producto) {
     $contenidoPrincipal .= "<h2>$nombre</h2>";
     $contenidoPrincipal .= "<h3>$precio €</h3>";
     $contenidoPrincipal .= "<p>$descripcion</p>";
-
+   
     // Formulario para añadir al carrito, ahora incluye cantidad y precio
     // $contenidoPrincipal .= <<<HTML
     // <form action="procesarAñadirAlCarrito.php" method="post">
@@ -116,10 +129,18 @@ foreach ($productos as $producto) {
     // HTML;
     $formCarrito= new \es\ucm\fdi\aw\carrito\FormularioAddToCarrito($nombre,$precio);
     $formCarrito=$formCarrito->gestiona();
+    
     $contenidoPrincipal.=<<<EOF
     $formCarrito
+    
     EOF;
-
+    if($owner===$nombreUsuario){
+        $formVerProd= new \es\ucm\fdi\aw\productos\FormularioVerProducto($nombre,$precio,$foto_URL,$owner,$cafeteriaNombre);
+        $formVerProd=$formVerProd->gestiona();
+        $contenidoPrincipal.=<<<EOF
+        $formVerProd
+        EOF;
+       }
     $contenidoPrincipal .= "</div><br>"; 
 }
 
@@ -172,7 +193,7 @@ if (isset($owner)&&$owner==$_SESSION['nombre']){
 }
 
 
-
+}
 //$contenidoPrincipal .= '</div>';
 
 

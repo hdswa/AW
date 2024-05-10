@@ -63,35 +63,37 @@ if ($app->tieneRol(es\ucm\fdi\aw\usuarios\Usuario::ADMIN_ROLE)) {
       $contenidoPrincipal.="<table>";
       $contenidoPrincipal.="<tr><th>Nombre</th><th>Dueño</th><th>Foto</th><th>Ubicación</th><th>likes</th><th>Editar</th></tr>";
       foreach($cafeterias as $cafeteria){
-        $nombre=$cafeteria->getNombre();
+        $nombreCafe=$cafeteria->getNombre();
         $owner=$cafeteria->getDueno();
         $foto=$cafeteria->getFoto();
         $ubicacion=$cafeteria->getUbicacion();
         $likes=$cafeteria->getCantidadDeLikes();
 
-        $formDeleteFoto=new \es\ucm\fdi\aw\cafeterias\FormularioEliminarFoto($nombre);
+        $formDeleteFoto=new \es\ucm\fdi\aw\cafeterias\FormularioEliminarFoto($nombreCafe);
         $formDeleteFoto=$formDeleteFoto->gestiona();
         
-        $formEditLikes=new \es\ucm\fdi\aw\cafeterias\FormularioEditarLikes($nombre);
+        $formEditLikes=new \es\ucm\fdi\aw\cafeterias\FormularioEditarLikes($nombreCafe);
         $formEditLikes=$formEditLikes->gestiona();
         $foto=".".$foto;
         
       
         
-        $formEditUbicacion = new \es\ucm\fdi\aw\cafeterias\FormularioEditarUbicacion($nombre);
+        $formEditUbicacion = new \es\ucm\fdi\aw\cafeterias\FormularioEditarUbicacion($nombreCafe);
         $formEditUbicacion=$formEditUbicacion->gestiona();
 
-        $formDeleteCafeteria = new \es\ucm\fdi\aw\cafeterias\FormularioEliminarCafeteria($nombre);
+        $formDeleteCafeteria = new \es\ucm\fdi\aw\cafeterias\FormularioEliminarCafeteria($nombreCafe);
         $formDeleteCafeteria = $formDeleteCafeteria->gestiona();
 
-        $formVerProductos = new \es\ucm\fdi\aw\cafeterias\FormularioVerProductos($nombre);
+        $formVerProductos = new \es\ucm\fdi\aw\cafeterias\FormularioVerProductos($nombreCafe);
         $formVerProductos = $formVerProductos->gestiona();
 
-        $productURL = Aplicacion::getInstance()->resuelve("/admin.php?action=productos&cafeName=$nombre");
+        $productURL = Aplicacion::getInstance()->resuelve("/admin.php?action=productos&cafeName=$nombreCafe");
+        $URL = "./admin.php?action=productos";
+
         $contenidoPrincipal.=<<<EOS
         <tr>
         <td>
-        <h3>$nombre</h3>
+        <h3>$nombreCafe</h3>
         </td>
         <td>
         <h3>$owner</h3>
@@ -110,10 +112,12 @@ if ($app->tieneRol(es\ucm\fdi\aw\usuarios\Usuario::ADMIN_ROLE)) {
     
         $formDeleteFoto
         
-
-        <form id="redirectForm" method="get" action="">
         
-        <input type="hidden" name="cafeName" value="$nombre">
+
+        
+        <form method="get" action="$URL">
+        <input type="hidden" name="action" value="productos">
+        <input type="hidden" name="cafeName" value="$nombreCafe">
       
         <input type="submit" value="Productos disponibles">
          </form>
@@ -263,7 +267,7 @@ $app->generaVista('/plantillas/plantilla.php', $params);
     document.getElementById("redirectForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent default form submission
         var productURL = "<?php echo Aplicacion::getInstance()->resuelve('/admin.php?action=productos'); ?>";
-        var cafeName = "<?php echo $nombre; ?>";
+        var cafeName = "<?php echo $nombreCafe; ?>";
         window.location.href = productURL + "&cafeName=" + encodeURIComponent(cafeName);
     });
 </script>

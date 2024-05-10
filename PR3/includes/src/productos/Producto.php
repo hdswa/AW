@@ -65,6 +65,9 @@ class Producto {
 
     public static function getProductoByNameAndOwner($name,$owner){
         $conn = Aplicacion::getInstance()->getConexionBd();
+        $conn->set_charset("utf8");
+        $name = html_entity_decode($name, ENT_QUOTES, 'UTF-8');
+        $owner = html_entity_decode($owner, ENT_QUOTES, 'UTF-8');
         $query = sprintf("SELECT * FROM Productos WHERE Nombre='%s' AND Cafeteria_Owner='%s'", $conn->real_escape_string($name),$conn->real_escape_string($owner));
         $rs=$conn->query($query);
         if ($rs->num_rows > 0) {
@@ -123,6 +126,7 @@ class Producto {
         return $this->foto;
     }
     public function setFoto($foto){
+        
         $this->foto=$foto;
     }
 
@@ -132,6 +136,19 @@ class Producto {
 
     public function setId($id) {
         $this->id = $id;
+    }
+
+    public function setNombre($nombre) {
+        $nombre = html_entity_decode($nombre, ENT_QUOTES, 'UTF-8');
+        $this->nombre = $nombre;
+    }
+    public function setPrecio($precio) {
+        $precio = html_entity_decode($precio, ENT_QUOTES, 'UTF-8');
+        $this->precio = $precio;
+    }
+    public function setDescripcion($descripcion) {
+        $descripcion = html_entity_decode($descripcion, ENT_QUOTES, 'UTF-8');
+        $this->descripcion = $descripcion;
     }
 
     
@@ -153,6 +170,8 @@ class Producto {
 
     public function deleteByNameAndOwner($name, $owner) {
         $conn = Aplicacion::getInstance()->getConexionBd();
+        $name = html_entity_decode($name, ENT_QUOTES, 'UTF-8');
+        $owner = html_entity_decode($owner, ENT_QUOTES, 'UTF-8');
         $query = sprintf("DELETE FROM Productos WHERE Nombre='%s' AND Cafeteria_Owner='%s'", $conn->real_escape_string($name), $conn->real_escape_string($owner));
         $result = $conn->query($query);
         if ($result) {
@@ -166,6 +185,8 @@ class Producto {
 
     public function updateProducto() {
         $conn = Aplicacion::getInstance()->getConexionBd();
+
+
         $query = sprintf("UPDATE Productos SET
                             Cafeteria_Owner = '%s',
                             Precio = '%s',
@@ -178,7 +199,40 @@ class Producto {
             $conn->real_escape_string($this->descripcion),
             $conn->real_escape_string($this->nombre)
         );
+
+      
         $result = $conn->query($query);
+        
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function updateProductoByName($name) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+
+        $name = html_entity_decode($name, ENT_QUOTES, 'UTF-8');
+        $query = sprintf("UPDATE Productos SET
+                            Cafeteria_Owner = '%s',
+                            Precio = '%s',
+                            Foto = '%s',
+                            Descripcion = '%s',
+                            Nombre = '%s'
+                          WHERE Nombre = '%s'",
+            $conn->real_escape_string($this->cafeteriaOwner),
+            $conn->real_escape_string($this->precio),
+            $conn->real_escape_string($this->foto),
+            $conn->real_escape_string($this->descripcion),
+            $conn->real_escape_string($this->nombre),
+            $conn->real_escape_string($name)
+        );
+
+      
+        $result = $conn->query($query);
+        // var_dump($result);
+        // var_dump($query);
+        // die();
         if ($result) {
             return true;
         } else {

@@ -108,6 +108,11 @@ body {
     border-radius: 16px;
   }
 
+  #formVerProducto{
+    margin: 0 auto;
+    background-color: transparent !important;
+    border-radius: 16px;
+  }
   fieldset {
     padding: 70px;
     border-radius: 8px;

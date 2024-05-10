@@ -62,7 +62,7 @@ spl_autoload_register(function ($class) {
 /* */
 
 define('INSTALADA', true);
-
+ini_set('default_charset', 'UTF-8');
 $app = \es\ucm\fdi\aw\Aplicacion::getInstance();
 $app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS), RUTA_APP, RAIZ_APP);
 

@@ -51,7 +51,7 @@ class FormularioEliminarFoto extends Formulario{
         
         if (count($this->errores) === 0) {
             $producto= \es\ucm\fdi\aw\productos\Producto::getProductoByNameAndOwner($nombreProducto,$nombreCafeteria);
-
+            
             $producto->setFoto("/img/productos/logo.png");
             $producto->updateProducto();
             }
