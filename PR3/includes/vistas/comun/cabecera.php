@@ -24,6 +24,9 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)){ // Logged In
 				echo ' <a href="./login.php">
 				Iniciar sesión
 				</a> <br> <br>';
+				echo ' <a href="./registro.php">
+				Registrarse
+				</a> <br> <br>';
 			} 
 			else {
 				echo ' <a href="' . RUTA_APP . '/cafeteriaDetail.php?owner=' . (isset($_SESSION['nombre']) ? urlencode($_SESSION['nombre']) : '') . '">

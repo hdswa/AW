@@ -70,7 +70,7 @@ class Carrito {
 
     public function realizarPago() {
       $conn = Aplicacion::getInstance()->getConexionBd();
-      $query = sprintf("UPDATE carrito SET Pagado=1 WHERE Owner='%s' AND Pagado=0",
+      $query = sprintf("UPDATE Carrito SET Pagado=1 WHERE Owner='%s' AND Pagado=0",
                        $conn->real_escape_string($this->owner));
   
       if ($conn->query($query) === TRUE) {
@@ -105,7 +105,7 @@ class Carrito {
 
     private function existsInDB() {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT * FROM carrito WHERE Owner = '%s'", 
+        $query = sprintf("SELECT * FROM Carrito WHERE Owner = '%s'", 
                          $conn->real_escape_string($this->owner));
 
         $rs = $conn->query($query);
@@ -119,7 +119,7 @@ class Carrito {
     // Implementación del método getCarritoByOwner sigue igual
     public static function getCarritoByOwner($owner) {
       $conn = Aplicacion::getInstance()->getConexionBd();
-      $query = sprintf("SELECT * FROM carrito C WHERE C.Owner = '%s' AND C.Pagado=false", $owner);
+      $query = sprintf("SELECT * FROM Carrito C WHERE C.Owner = '%s' AND C.Pagado=false", $owner);
     
       $rs = $conn->query($query);
       $result = false;

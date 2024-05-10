@@ -36,7 +36,7 @@ class Usuario
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
         $nombreUsuario = html_entity_decode($nombreUsuario, ENT_QUOTES, 'UTF-8');
-        $query = sprintf("SELECT * FROM usuario U WHERE U.Nombre='%s'", $conn->real_escape_string($nombreUsuario));
+        $query = sprintf("SELECT * FROM Usuario U WHERE U.Nombre='%s'", $conn->real_escape_string($nombreUsuario));
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
@@ -104,7 +104,7 @@ class Usuario
     {
         $result = false;
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query=sprintf("INSERT INTO usuario (Nombre, Email, Password_hash, Foto_de_perfil, Rol) VALUES ('%s', '%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO Usuario (Nombre, Email, Password_hash, Foto_de_perfil, Rol) VALUES ('%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->email)
             , $conn->real_escape_string($usuario->password)
